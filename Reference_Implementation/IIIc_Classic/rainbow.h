@@ -13,7 +13,7 @@
 #ifdef  __cplusplus
 extern  "C" {
 #endif
-
+#include "api.h"
 
 ///
 /// @brief Signing function for classical secret key.
@@ -22,7 +22,7 @@ extern  "C" {
 /// @param[in]  sk        - the secret key.
 /// @param[in]  digest    - the digest.
 ///
-int rainbow_sign( uint8_t * signature , const sk_t * sk , const uint8_t * digest );
+int rainbow_sign( uint8_t * signature , const unsigned char sk[CRYPTO_SECRETKEYBYTES] , const uint8_t * digest );
 
 ///
 /// @brief Verifying function.
@@ -32,7 +32,7 @@ int rainbow_sign( uint8_t * signature , const sk_t * sk , const uint8_t * digest
 /// @param[in]  pk        - the public key.
 /// @return 0 for successful verified. -1 for failed verification.
 ///
-int rainbow_verify( const uint8_t * digest , const uint8_t * signature , const pk_t * pk );
+int rainbow_verify( const uint8_t * digest , const uint8_t * signature , const unsigned char * pk );
 
 
 ///

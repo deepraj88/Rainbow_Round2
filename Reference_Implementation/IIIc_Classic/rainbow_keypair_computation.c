@@ -21,68 +21,112 @@
 
 void extcpk_to_pk( pk_t * pk , const ext_cpk_t * cpk )
 {
+	int k;
+	unsigned i,j;
     const unsigned char * idx_l1 = cpk->l1_Q1;
     const unsigned char * idx_l2 = cpk->l2_Q1;
-    for(unsigned i=0;i<_V1;i++) {
-        for(unsigned j=i;j<_V1;j++) {
+    for(i=0;i<_V1;i++) {
+        for(j=i;j<_V1;j++) {
             unsigned pub_idx = idx_of_trimat(i,j,_PUB_N);
-            memcpy( & pk->pk[ _PUB_M_BYTE*pub_idx ] , idx_l1 , _O1_BYTE );
-            memcpy( (&pk->pk[ _PUB_M_BYTE*pub_idx ]) + _O1_BYTE , idx_l2 , _O2_BYTE );
+            for(k = 0; k < _O1_BYTE;k++)
+            {
+            	(& pk->pk[ _PUB_M_BYTE*pub_idx ])[k] = idx_l1[k];
+            }
+
+            for(k = 0; k < _O2_BYTE;k++)
+                       {
+                       	((&pk->pk[ _PUB_M_BYTE*pub_idx ]) + _O1_BYTE)[k] = idx_l2[k];
+                       }
             idx_l1 += _O1_BYTE;
             idx_l2 += _O2_BYTE;
         }
     }
     idx_l1 = cpk->l1_Q2;
     idx_l2 = cpk->l2_Q2;
-    for(unsigned i=0;i<_V1;i++) {
-        for(unsigned j=_V1;j<_V1+_O1;j++) {
+    for(i=0;i<_V1;i++) {
+        for(j=_V1;j<_V1+_O1;j++) {
             unsigned pub_idx = idx_of_trimat(i,j,_PUB_N);
-            memcpy( & pk->pk[ _PUB_M_BYTE*pub_idx ] , idx_l1 , _O1_BYTE );
-            memcpy( (&pk->pk[ _PUB_M_BYTE*pub_idx ]) + _O1_BYTE , idx_l2 , _O2_BYTE );
+            for(k = 0; k < _O1_BYTE;k++)
+                       {
+                       	(& pk->pk[ _PUB_M_BYTE*pub_idx ])[k] = idx_l1[k];
+                       }
+
+                       for(k = 0; k < _O2_BYTE;k++)
+                                  {
+                                  	((&pk->pk[ _PUB_M_BYTE*pub_idx ]) + _O1_BYTE)[k] = idx_l2[k];
+                                  }
             idx_l1 += _O1_BYTE;
             idx_l2 += _O2_BYTE;
         }
     }
     idx_l1 = cpk->l1_Q3;
     idx_l2 = cpk->l2_Q3;
-    for(unsigned i=0;i<_V1;i++) {
-        for(unsigned j=_V1+_O1;j<_PUB_N;j++) {
+    for(i=0;i<_V1;i++) {
+        for(j=_V1+_O1;j<_PUB_N;j++) {
             unsigned pub_idx = idx_of_trimat(i,j,_PUB_N);
-            memcpy( & pk->pk[ _PUB_M_BYTE*pub_idx ]             , idx_l1 , _O1_BYTE );
-            memcpy( (&pk->pk[ _PUB_M_BYTE*pub_idx ]) + _O1_BYTE , idx_l2 , _O2_BYTE );
+            for(k = 0; k < _O1_BYTE;k++)
+                       {
+                       	(& pk->pk[ _PUB_M_BYTE*pub_idx ])[k] = idx_l1[k];
+                       }
+
+                       for(k = 0; k < _O2_BYTE;k++)
+                                  {
+                                  	((&pk->pk[ _PUB_M_BYTE*pub_idx ]) + _O1_BYTE)[k] = idx_l2[k];
+                                  }
             idx_l1 += _O1_BYTE;
             idx_l2 += _O2_BYTE;
         }
     }
     idx_l1 = cpk->l1_Q5;
     idx_l2 = cpk->l2_Q5;
-    for(unsigned i=_V1;i<_V1+_O1;i++) {
-        for(unsigned j=i;j<_V1+_O1;j++) {
+    for(i=_V1;i<_V1+_O1;i++) {
+        for(j=i;j<_V1+_O1;j++) {
             unsigned pub_idx = idx_of_trimat(i,j,_PUB_N);
-            memcpy( & pk->pk[ _PUB_M_BYTE*pub_idx ]             , idx_l1 , _O1_BYTE );
-            memcpy( (&pk->pk[ _PUB_M_BYTE*pub_idx ]) + _O1_BYTE , idx_l2 , _O2_BYTE );
+            for(k = 0; k < _O1_BYTE;k++)
+                       {
+                       	(& pk->pk[ _PUB_M_BYTE*pub_idx ])[k] = idx_l1[k];
+                       }
+
+                       for(k = 0; k < _O2_BYTE;k++)
+                                  {
+                                  	((&pk->pk[ _PUB_M_BYTE*pub_idx ]) + _O1_BYTE)[k] = idx_l2[k];
+                                  }
             idx_l1 += _O1_BYTE;
             idx_l2 += _O2_BYTE;
         }
     }
     idx_l1 = cpk->l1_Q6;
     idx_l2 = cpk->l2_Q6;
-    for(unsigned i=_V1;i<_V1+_O1;i++) {
-        for(unsigned j=_V1+_O1;j<_PUB_N;j++) {
+    for(i=_V1;i<_V1+_O1;i++) {
+        for(j=_V1+_O1;j<_PUB_N;j++) {
             unsigned pub_idx = idx_of_trimat(i,j,_PUB_N);
-            memcpy( & pk->pk[ _PUB_M_BYTE*pub_idx ]             , idx_l1 , _O1_BYTE );
-            memcpy( (&pk->pk[ _PUB_M_BYTE*pub_idx ]) + _O1_BYTE , idx_l2 , _O2_BYTE );
+            for(k = 0; k < _O1_BYTE;k++)
+                       {
+                       	(& pk->pk[ _PUB_M_BYTE*pub_idx ])[k] = idx_l1[k];
+                       }
+
+                       for(k = 0; k < _O2_BYTE;k++)
+                                  {
+                                  	((&pk->pk[ _PUB_M_BYTE*pub_idx ]) + _O1_BYTE)[k] = idx_l2[k];
+                                  }
             idx_l1 += _O1_BYTE;
             idx_l2 += _O2_BYTE;
         }
     }
     idx_l1 = cpk->l1_Q9;
     idx_l2 = cpk->l2_Q9;
-    for(unsigned i=_V1+_O1;i<_PUB_N;i++) {
-        for(unsigned j=i;j<_PUB_N;j++) {
+    for(i=_V1+_O1;i<_PUB_N;i++) {
+        for(j=i;j<_PUB_N;j++) {
             unsigned pub_idx = idx_of_trimat(i,j,_PUB_N);
-            memcpy( & pk->pk[ _PUB_M_BYTE*pub_idx ]             , idx_l1 , _O1_BYTE );
-            memcpy( (&pk->pk[ _PUB_M_BYTE*pub_idx ]) + _O1_BYTE , idx_l2 , _O2_BYTE );
+            for(k = 0; k < _O1_BYTE;k++)
+                       {
+                       	(& pk->pk[ _PUB_M_BYTE*pub_idx ])[k] = idx_l1[k];
+                       }
+
+                       for(k = 0; k < _O2_BYTE;k++)
+                                  {
+                                  	((&pk->pk[ _PUB_M_BYTE*pub_idx ]) + _O1_BYTE)[k] = idx_l2[k];
+                                  }
             idx_l1 += _O1_BYTE;
             idx_l2 += _O2_BYTE;
         }
@@ -97,6 +141,7 @@ void extcpk_to_pk( pk_t * pk , const ext_cpk_t * cpk )
 static
 void calculate_Q_from_F_ref( ext_cpk_t * Qs, const sk_t * Fs , const sk_t * Ts )
 {
+	int k;
 /*
     Layer 1
     Computing :
@@ -107,15 +152,23 @@ void calculate_Q_from_F_ref( ext_cpk_t * Qs, const sk_t * Fs , const sk_t * Ts )
 */
     const unsigned char * t2 = Ts->t4;
 
-    memcpy( Qs->l1_Q1 , Fs->l1_F1 , _O1_BYTE * N_TRIANGLE_TERMS(_V1) );
+  //  memcpy( Qs->l1_Q1 , Fs->l1_F1 , _O1_BYTE * N_TRIANGLE_TERMS(_V1) );
+    for(k = 0; k < _O1_BYTE * N_TRIANGLE_TERMS(_V1);k++ )Qs->l1_Q1[k] = Fs->l1_F1[k];
+  //  memcpy( Qs->l1_Q2 , Fs->l1_F2 , _O1_BYTE * _V1 * _O1 );
+    for(k = 0; k < _O1_BYTE * _V1 * _O1;k++ )Qs->l1_Q2[k] = Fs->l1_F2[k];
 
-    memcpy( Qs->l1_Q2 , Fs->l1_F2 , _O1_BYTE * _V1 * _O1 );
     batch_trimat_madd( Qs->l1_Q2 , Fs->l1_F1 , Ts->t1 , _V1, _V1_BYTE , _O1, _O1_BYTE );    // F1*T1 + F2
 
-    memset( Qs->l1_Q3 , 0 , _O1_BYTE * _V1 * _O2 );
-    memset( Qs->l1_Q5 , 0 , _O1_BYTE * N_TRIANGLE_TERMS(_O1) );
-    memset( Qs->l1_Q6 , 0 , _O1_BYTE * _O1 * _O2 );
-    memset( Qs->l1_Q9 , 0 , _O1_BYTE * N_TRIANGLE_TERMS(_O2) );
+  //  memset( Qs->l1_Q3 , 0 , _O1_BYTE * _V1 * _O2 );
+    for(k= 0 ; k <_O1_BYTE * _V1 * _O2; k++ )Qs->l1_Q3[k] = 0;
+    //memset( Qs->l1_Q5 , 0 , _O1_BYTE * N_TRIANGLE_TERMS(_O1) );
+    for(k= 0 ; k < _O1_BYTE * N_TRIANGLE_TERMS(_O1); k++ )Qs->l1_Q5[k] = 0;
+
+  //  memset( Qs->l1_Q6 , 0 , _O1_BYTE * _O1 * _O2 );
+    for(k= 0 ; k <_O1_BYTE * _O1 * _O2; k++ )Qs->l1_Q6[k] = 0;
+
+  //  memset( Qs->l1_Q9 , 0 , _O1_BYTE * N_TRIANGLE_TERMS(_O2) );
+    for(k= 0 ; k <_O1_BYTE * N_TRIANGLE_TERMS(_O2); k++ )Qs->l1_Q9[k] = 0;
 
     // l1_Q5 : _O1_BYTE * _O1 * _O1
     // l1_Q9 : _O1_BYTE * _O2 * _O2
@@ -125,9 +178,11 @@ void calculate_Q_from_F_ref( ext_cpk_t * Qs, const sk_t * Fs , const sk_t * Ts )
     if( _O1_BYTE*_O2*_O2 > size_tempQ ) size_tempQ = _O1_BYTE*_O2*_O2;
     if( _O2_BYTE*_O1*_O1 > size_tempQ ) size_tempQ = _O2_BYTE*_O1*_O1;
     if( _O2_BYTE*_O2*_O2 > size_tempQ ) size_tempQ = _O2_BYTE*_O2*_O2;
-    unsigned char * tempQ = (unsigned char *) aligned_alloc( 32 , size_tempQ + 32 );
+    unsigned char  tempQ [size_tempQ + 32 ];
+//    unsigned char * tempQ = (unsigned char *) aligned_alloc( 32 , size_tempQ + 32 );
 
-    memset( tempQ , 0 , _O1_BYTE * _O1 * _O1 );   // l1_Q5
+//    memset( tempQ , 0 , _O1_BYTE * _O1 * _O1 );   // l1_Q5
+    for(k = 0; k<_O1_BYTE * _O1 * _O1;k++)tempQ[k]=0;
     batch_matTr_madd( tempQ , Ts->t1 , _V1, _V1_BYTE, _O1, Qs->l1_Q2, _O1, _O1_BYTE );  // t1_tr*(F1*T1 + F2)
     UpperTrianglize( Qs->l1_Q5 , tempQ , _O1, _O1_BYTE );    // UT( ... )   // Q5
 
@@ -144,7 +199,8 @@ void calculate_Q_from_F_ref( ext_cpk_t * Qs, const sk_t * Fs , const sk_t * Ts )
     batch_trimat_madd( Qs->l1_Q3 , Fs->l1_F1 , t2 , _V1, _V1_BYTE , _O2, _O1_BYTE );         // F1*T2
     batch_mat_madd( Qs->l1_Q3 , Fs->l1_F2 , _V1, Ts->t3 , _O1, _O1_BYTE , _O2, _O1_BYTE );   // F1_T2 + F2_T3
 
-    memset( tempQ , 0 , _O1_BYTE * _O2 * _O2 );                                              // l1_Q9
+ //   memset( tempQ , 0 , _O1_BYTE * _O2 * _O2 );
+    for(k = 0; k<_O1_BYTE * _O2 * _O2;k++)tempQ[k]=0;// l1_Q9
     batch_matTr_madd( tempQ , t2 , _V1, _V1_BYTE, _O2, Qs->l1_Q3, _O2, _O1_BYTE );           // T2tr * ( F1_T2 + F2_T3 )
     UpperTrianglize( Qs->l1_Q9 , tempQ , _O2 , _O1_BYTE );                                   // Q9
 
@@ -160,13 +216,17 @@ void calculate_Q_from_F_ref( ext_cpk_t * Qs, const sk_t * Fs , const sk_t * Ts )
     Q2 = F1_F1T*T1 + F2
     Q5 = UT( T1tr( F1*T1 + F2 )  + F5 )
 */
-    memcpy( Qs->l2_Q1 , Fs->l2_F1 , _O2_BYTE * N_TRIANGLE_TERMS(_V1) );
-
-    memcpy( Qs->l2_Q2 , Fs->l2_F2 , _O2_BYTE * _V1 * _O1 );
+  //  memcpy( Qs->l2_Q1 , Fs->l2_F1 , _O2_BYTE * N_TRIANGLE_TERMS(_V1) );
+    for(k=0;k< _O2_BYTE * N_TRIANGLE_TERMS(_V1);k++)Qs->l2_Q1[k] =Fs->l2_F1[k];
+  //  memcpy( Qs->l2_Q2 , Fs->l2_F2 , _O2_BYTE * _V1 * _O1 );
+    for(k=0;k< _O2_BYTE * _V1 * _O1;k++)Qs->l2_Q2[k] =Fs->l2_F2[k];
     batch_trimat_madd( Qs->l2_Q2 , Fs->l2_F1 , Ts->t1 , _V1, _V1_BYTE , _O1, _O2_BYTE );      // F1*T1 + F2
 
-    memcpy( Qs->l2_Q5 , Fs->l2_F5 , _O2_BYTE * N_TRIANGLE_TERMS(_O1) );
-    memset( tempQ , 0 , _O2_BYTE * _O1 * _O1 );                                               // l2_Q5
+  //  memcpy( Qs->l2_Q5 , Fs->l2_F5 , _O2_BYTE * N_TRIANGLE_TERMS(_O1) );
+    for(k=0;k< _O2_BYTE * N_TRIANGLE_TERMS(_O1);k++)Qs->l2_Q5[k] =Fs->l2_F5[k];
+
+    //  memset( tempQ , 0 , _O2_BYTE * _O1 * _O1 );                                               // l2_Q5
+    for(k = 0; k<_O2_BYTE * _O1 * _O1;k++)tempQ[k]=0;
     batch_matTr_madd( tempQ , Ts->t1 , _V1, _V1_BYTE, _O1, Qs->l2_Q2, _O1, _O2_BYTE );        // t1_tr*(F1*T1 + F2)
     UpperTrianglize( Qs->l2_Q5 , tempQ , _O1, _O2_BYTE );                                     // UT( ... )   // Q5
 
@@ -182,18 +242,24 @@ void calculate_Q_from_F_ref( ext_cpk_t * Qs, const sk_t * Fs , const sk_t * Ts )
     Q9 = UT( T2tr*( F1*T2 + F2*T3 + F3 )  +      T3tr*( F5*T3 + F6 ) )
     Q6 = T1tr*( F1_F1T*T2 + F2*T3 + F3 )  + F2Tr*T2 + F5_F5T*T3 + F6
 */
-    memcpy( Qs->l2_Q3 , Fs->l2_F3 , _O2_BYTE * _V1 * _O2 );
+  //  memcpy( Qs->l2_Q3 , Fs->l2_F3 , _O2_BYTE * _V1 * _O2 );
+    for(k=0;k< _O2_BYTE * _V1 * _O2 ;k++)Qs->l2_Q3[k] =Fs->l2_F3[k];
+
     batch_trimat_madd( Qs->l2_Q3 , Fs->l2_F1 , t2 , _V1, _V1_BYTE , _O2, _O2_BYTE );         // F1*T2 + F3
     batch_mat_madd( Qs->l2_Q3 , Fs->l2_F2 , _V1, Ts->t3 , _O1, _O1_BYTE , _O2, _O2_BYTE );   // F1_T2 + F2_T3 + F3
 
-    memset( tempQ , 0 , _O2_BYTE * _O2 * _O2 );                                              // l2_Q9
+   // memset( tempQ , 0 , _O2_BYTE * _O2 * _O2 );                                              // l2_Q9
+    for(k = 0; k<_O2_BYTE * _O2 * _O2;k++)tempQ[k]=0;
     batch_matTr_madd( tempQ , t2 , _V1, _V1_BYTE, _O2, Qs->l2_Q3, _O2, _O2_BYTE );           // T2tr * ( ..... )
 
-    memcpy( Qs->l2_Q6 , Fs->l2_F6 , _O2_BYTE * _O1 *_O2 );
+  //  memcpy( Qs->l2_Q6 , Fs->l2_F6 , _O2_BYTE * _O1 *_O2 );
+    for(k=0;k< _O2_BYTE * _O1 * _O2 ;k++)Qs->l2_Q6[k] =Fs->l2_F6[k];
 
     batch_trimat_madd( Qs->l2_Q6 , Fs->l2_F5 , Ts->t3 , _O1, _O1_BYTE, _O2, _O2_BYTE );      // F5*T3 + F6
     batch_matTr_madd( tempQ , Ts->t3 , _O1, _O1_BYTE, _O2, Qs->l2_Q6, _O2, _O2_BYTE );       // T2tr*( ..... ) + T3tr*( ..... )
-    memset( Qs->l2_Q9 , 0 , _O2_BYTE * N_TRIANGLE_TERMS(_O2) );
+//    memset( Qs->l2_Q9 , 0 , _O2_BYTE * N_TRIANGLE_TERMS(_O2) );
+    for(k=0;k< _O2_BYTE * N_TRIANGLE_TERMS(_O2) ;k++)Qs->l2_Q9[k] =0;
+
     UpperTrianglize( Qs->l2_Q9 , tempQ , _O2 , _O2_BYTE );                                   // Q9
 
     batch_trimatTr_madd( Qs->l2_Q3 , Fs->l2_F1 , t2 , _V1, _V1_BYTE, _O2, _O2_BYTE );        // F1_F1T_T2 + F2_T3 + F3 // Q3
@@ -202,8 +268,9 @@ void calculate_Q_from_F_ref( ext_cpk_t * Qs, const sk_t * Fs , const sk_t * Ts )
     batch_trimatTr_madd( Qs->l2_Q6 , Fs->l2_F5 , Ts->t3 , _O1, _O1_BYTE, _O2, _O2_BYTE );    //   F2tr*T2 + F5_F5T*T3 + F6
     batch_matTr_madd( Qs->l2_Q6 , Ts->t1, _V1, _V1_BYTE, _O1, Qs->l2_Q3, _O2, _O2_BYTE );    // Q6
 
-    memset( tempQ , 0 , size_tempQ + 32 );
-    free( tempQ );
+  //  memset( tempQ , 0 , size_tempQ + 32 );
+    for(k = 0; k<size_tempQ + 32;k++)tempQ[k]=0;
+    //  free( tempQ );
 }
 
 
@@ -250,7 +317,8 @@ void calculate_F_from_Q_ref( sk_t * Fs , const sk_t * Qs , sk_t * Ts )
     memcpy( Fs->l2_F2 , Qs->l2_F2 , _O2_BYTE * _V1*_O1 );
     batch_trimat_madd( Fs->l2_F2 , Qs->l2_F1 , Ts->t1 , _V1, _V1_BYTE , _O1, _O2_BYTE );    // Q1_T1+ Q2
 
-    unsigned char * tempQ = (unsigned char *) aligned_alloc( 32 , _O1*_O1*_O2_BYTE + 32 );
+    unsigned char * tempQ = (unsigned char *) malloc(_O1*_O1*_O2_BYTE + 32 );
+//    unsigned char * tempQ = (unsigned char *) aligned_alloc( 32 , _O1*_O1*_O2_BYTE + 32 );
     memset( tempQ , 0 , _O1*_O1*_O2_BYTE );
     batch_matTr_madd( tempQ , Ts->t1 , _V1, _V1_BYTE, _O1, Fs->l2_F2, _O1, _O2_BYTE );     // t1_tr*(Q1_T1+Q2)
     memcpy( Fs->l2_F5, Qs->l2_F5, _O2_BYTE * N_TRIANGLE_TERMS(_O1) );                      // F5

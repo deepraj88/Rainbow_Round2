@@ -99,10 +99,11 @@ unsigned gf16mat_gauss_elim_ref(uint8_t *mat, unsigned h, unsigned w) {
     /// assert( 0==(w&1) );  w must be even !!!
     unsigned n_w_byte = (w + 1) / 2;
     unsigned r8 = 1;
-    for (unsigned i = 0; i < h; i++) {
+    unsigned i, j;
+    for (i = 0; i < h; i++) {
         unsigned offset_byte = i >> 1;
         uint8_t *ai = mat + n_w_byte * i;
-        for (unsigned j = i + 1; j < h; j++) {
+        for (j = i + 1; j < h; j++) {
             uint8_t *aj = mat + n_w_byte * j;
             gf256v_predicated_add(ai + offset_byte, !gf16_is_nonzero(gf16v_get_ele(ai, i)), aj + offset_byte, n_w_byte - offset_byte);
         }
@@ -111,7 +112,7 @@ unsigned gf16mat_gauss_elim_ref(uint8_t *mat, unsigned h, unsigned w) {
         pivot = gf16_inv(pivot);
         offset_byte = (i + 1) >> 1;
         gf16v_mul_scalar(ai + offset_byte, pivot, n_w_byte - offset_byte);
-        for (unsigned j = 0; j < h; j++) {
+        for (j = 0; j < h; j++) {
             if (i == j) continue;
             uint8_t *aj = mat + n_w_byte * j;
             gf16v_madd(aj + offset_byte, ai + offset_byte, gf16v_get_ele(aj, i), n_w_byte - offset_byte);
@@ -125,12 +126,13 @@ unsigned gf16mat_solve_linear_eq_ref(uint8_t *sol, const uint8_t *inp_mat, const
     assert(64 >= n);
     uint8_t mat[64 * 33];
     unsigned n_byte = (n + 1) >> 1;
-    for (unsigned i = 0; i < n; i++) {
+    unsigned i;
+    for (i = 0; i < n; i++) {
         memcpy(mat + i * (n_byte + 1), inp_mat + i * n_byte, n_byte);
         mat[i * (n_byte + 1) + n_byte] = gf16v_get_ele(c_terms, i);
     }
     unsigned r8 = gf16mat_gauss_elim(mat, n, n + 2);  /// XXX: this function is ``defined'' in blas.h
-    for (unsigned i = 0; i < n; i++) {
+    for (i = 0; i < n; i++) {
         gf16v_set_ele(sol, i, mat[i * (n_byte + 1) + n_byte]);
     }
     return r8;
@@ -167,12 +169,13 @@ static
 unsigned gf256mat_gauss_elim_ref( uint8_t * mat , unsigned h , unsigned w )
 {
     unsigned r8 = 1;
+    unsigned i, j;
 
-    for(unsigned i=0;i<h;i++) {
+    for(i=0;i<h;i++) {
         uint8_t * ai = mat + w*i;
         unsigned skip_len_align4 = i&(~0x3);
 
-        for(unsigned j=i+1;j<h;j++) {
+        for(j=i+1;j<h;j++) {
             uint8_t * aj = mat + w*j;
 //            gf256v_predicated_add( ai + i , !gf256_is_nonzero(ai[i]) , aj + i , w-i );
             gf256v_predicated_add( ai + skip_len_align4 , !gf256_is_nonzero(ai[i]) , aj + skip_len_align4 , w - skip_len_align4 );
@@ -182,7 +185,7 @@ unsigned gf256mat_gauss_elim_ref( uint8_t * mat , unsigned h , unsigned w )
         pivot = gf256_inv( pivot );
 //        gf256v_mul_scalar( ai + (i+1) , pivot , w - (i+1) );
         gf256v_mul_scalar( ai + skip_len_align4  , pivot , w - skip_len_align4 );
-        for(unsigned j=0;j<h;j++) {
+        for(j=0;j<h;j++) {
             if(i==j) continue;
             uint8_t * aj = mat + w*j;
 //            gf256v_madd( aj + (i+1) , ai + (i+1) , aj[i] , w - (i+1) );
@@ -198,12 +201,13 @@ unsigned gf256mat_solve_linear_eq_ref( uint8_t * sol , const uint8_t * inp_mat ,
 {
     assert( 63 >= n );
     uint8_t mat[ 64*64 ];
-    for(unsigned i=0;i<n;i++) {
+    unsigned i;
+    for(i=0;i<n;i++) {
     memcpy( mat + i*(n+1) , inp_mat + i*n , n );
     mat[i*(n+1)+n] = c_terms[i];
     }
     unsigned r8 = gf256mat_gauss_elim( mat , n , n+1 );   /// XXX: this function is ``defined'' in blas.h
-    for(unsigned i=0;i<n;i++) sol[i] = mat[i*(n+1)+n];
+    for(i=0;i<n;i++) sol[i] = mat[i*(n+1)+n];
     return r8;
 }
 

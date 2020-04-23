@@ -1,18 +1,37 @@
-///
-///  @file rng.c
-///  @brief the implementation for rng.h
-///
-///  Created by Bassham, Lawrence E (Fed) on 8/29/17.
-///  Copyright © 2017 Bassham, Lawrence E (Fed). All rights reserved.
-///
+//
+//  rng.c
+//
+//  Created by Bassham, Lawrence E (Fed) on 8/29/17.
+//  Copyright © 2017 Bassham, Lawrence E (Fed). All rights reserved.
+//
 
 #include <string.h>
 #include "rng.h"
-#include <openssl/conf.h>
-#include <openssl/evp.h>
-#include <openssl/err.h>
+#include "aes.h"
+//#include <openssl/conf.h>
+//#include <openssl/evp.h>
+//#include <openssl/err.h>
+
 
 AES256_CTR_DRBG_struct  DRBG_ctx;
+
+void print_aes256_struct() {
+	int loop;
+	for(loop=0;loop<32;loop++)
+		printf("Key[%d]=%d;\n",loop,DRBG_ctx.Key[loop]);
+	for(loop=0;loop<16;loop++)
+		printf("V[%d]=%d;\n",loop,DRBG_ctx.V[loop]);
+	printf("reseed_counter=%d\n",DRBG_ctx.reseed_counter);
+}
+
+void write_aes256_struct(unsigned char Key1[32], unsigned char V1[16], int reseed_counter1) {
+	int loop;
+	for(loop=0;loop<32;loop++)
+		DRBG_ctx.Key[loop]=Key1[loop];
+	for(loop=0;loop<16;loop++)
+		DRBG_ctx.V[loop]=V1[loop];
+	DRBG_ctx.reseed_counter=reseed_counter1;
+}
 
 void    AES256_ECB(unsigned char *key, unsigned char *ctr, unsigned char *buffer);
 
@@ -72,7 +91,7 @@ seedexpander(AES_XOF_struct *ctx, unsigned char *x, unsigned long xlen)
     
     offset = 0;
     while ( xlen > 0 ) {
-        if ( (int)xlen <= (16-ctx->buffer_pos) ) { // buffer has what we need
+        if ( xlen <= (16-ctx->buffer_pos) ) { // buffer has what we need
             memcpy(x+offset, ctx->buffer+ctx->buffer_pos, xlen);
             ctx->buffer_pos += xlen;
             
@@ -105,8 +124,8 @@ seedexpander(AES_XOF_struct *ctx, unsigned char *x, unsigned long xlen)
 
 void handleErrors(void)
 {
-    ERR_print_errors_fp(stderr);
-    abort();
+    // ERR_print_errors_fp(stderr);
+    // abort();
 }
 
 // Use whatever AES implementation you have. This uses AES from openSSL library
@@ -116,24 +135,65 @@ void handleErrors(void)
 void
 AES256_ECB(unsigned char *key, unsigned char *ctr, unsigned char *buffer)
 {
-    EVP_CIPHER_CTX *ctx;
     
-    int len;
+   
+    struct AES_ctx ctx;
     
-//    int ciphertext_len;  /// setted but not use
+    int len = 16;
+    
+    int ciphertext_len;
     
     /* Create and initialise the context */
-    if(!(ctx = EVP_CIPHER_CTX_new())) handleErrors();
+    AES_init_ctx(&ctx, key);
+
+    // memcpy(buffer,ctr,16);
+
+    // for (int i = 0; i < 16; i++) {
+    // 	buffer[i] = ctr[i];
+    // }
+
+    uint8_t test[4][4];
     
-    if(1 != EVP_EncryptInit_ex(ctx, EVP_aes_256_ecb(), NULL, key, NULL))
-        handleErrors();
+    test[0][0] = ctr[0];
+    test[0][1] = ctr[1];
+    test[0][2] = ctr[2];
+    test[0][3] = ctr[3];
+    test[1][0] = ctr[4];
+    test[1][1] = ctr[5];
+    test[1][2] = ctr[6];
+    test[1][3] = ctr[7];
+    test[2][0] = ctr[8];
+    test[2][1] = ctr[9];
+    test[2][2] = ctr[10];
+    test[2][3] = ctr[11];
+    test[3][0] = ctr[12];
+    test[3][1] = ctr[13];
+    test[3][2] = ctr[14];
+    test[3][3] = ctr[15];
+
+
+    AES_ECB_encrypt(&ctx,(state_t*)test);
+
+    buffer[0] = test[0][0];
+    buffer[1] = test[0][1];
+    buffer[2] = test[0][2];
+    buffer[3] = test[0][3];
+    buffer[4] = test[1][0];
+    buffer[5] = test[1][1];
+    buffer[6] = test[1][2];
+    buffer[7] = test[1][3];
+    buffer[8] = test[2][0];
+    buffer[9] = test[2][1];
+    buffer[10] = test[2][2];
+    buffer[11] = test[2][3];
+    buffer[12] = test[3][0];
+    buffer[13] = test[3][1];
+    buffer[14] = test[3][2];
+    buffer[15] = test[3][3];
+
+
+    ciphertext_len = len;
     
-    if(1 != EVP_EncryptUpdate(ctx, buffer, &len, ctr, 16))
-        handleErrors();
-//    ciphertext_len = len;   /// setted but not use
-    
-    /* Clean up */
-    EVP_CIPHER_CTX_free(ctx);
 }
 
 void
@@ -143,7 +203,6 @@ randombytes_init(unsigned char *entropy_input,
 {
     unsigned char   seed_material[48];
     
-    (void)(security_strength);  /// unused
     memcpy(seed_material, entropy_input, 48);
     if (personalization_string)
         for (int i=0; i<48; i++)
@@ -154,38 +213,6 @@ randombytes_init(unsigned char *entropy_input,
     DRBG_ctx.reseed_counter = 1;
 }
 
-int
-randombytes(unsigned char *x, unsigned long long xlen)
-{
-    unsigned char   block[16];
-    int             i = 0;
-    
-    while ( xlen > 0 ) {
-        //increment V
-        for (int j=15; j>=0; j--) {
-            if ( DRBG_ctx.V[j] == 0xff )
-                DRBG_ctx.V[j] = 0x00;
-            else {
-                DRBG_ctx.V[j]++;
-                break;
-            }
-        }
-        AES256_ECB(DRBG_ctx.Key, DRBG_ctx.V, block);
-        if ( xlen > 15 ) {
-            memcpy(x+i, block, 16);
-            i += 16;
-            xlen -= 16;
-        }
-        else {
-            memcpy(x+i, block, xlen);
-            xlen = 0;
-        }
-    }
-    AES256_CTR_DRBG_Update(NULL, DRBG_ctx.Key, DRBG_ctx.V);
-    DRBG_ctx.reseed_counter++;
-    
-    return RNG_SUCCESS;
-}
 
 void
 AES256_CTR_DRBG_Update(unsigned char *provided_data,
@@ -193,8 +220,8 @@ AES256_CTR_DRBG_Update(unsigned char *provided_data,
                        unsigned char *V)
 {
     unsigned char   temp[48];
-    
-    for (int i=0; i<3; i++) {
+    int i=0;
+    for (i=0; i<3; i++) {
         //increment V
         for (int j=15; j>=0; j--) {
             if ( V[j] == 0xff )
@@ -207,41 +234,119 @@ AES256_CTR_DRBG_Update(unsigned char *provided_data,
         
         AES256_ECB(Key, V, temp+16*i);
     }
-    if ( provided_data != NULL )
-        for (int i=0; i<48; i++)
+
+//    if ( provided_data != NULL )
+        for (i=0; i<48; i++)
             temp[i] ^= provided_data[i];
-    memcpy(Key, temp, 32);
-    memcpy(V, temp+32, 16);
+    // memcpy(Key, temp, 32);
+    // memcpy(V, temp+32, 16)
+    for (i=0;i<32;i++)
+    	Key[i] = temp[i];
+    for (i=0;i<16;i++)
+    	V[i]=temp[32+i];;
 }
 
+void
+AES256_CTR_DRBG_Update2( unsigned char Key[32],
+                       unsigned char V[16])
+{
+    unsigned char   temp[48];
+    int i=0;
+    for (i=0; i<3; i++) {
+        //increment V
+        for (int j=15; j>=0; j--) {
+            if ( V[j] == 0xff )
+                V[j] = 0x00;
+            else {
+                V[j]++;
+                break;
+            }
+        }
 
+        AES256_ECB(Key, V, temp+16*i);
+    }
 
+    // memcpy(Key, temp, 32);
+    // memcpy(V, temp+32, 16)
+    for (i=0;i<32;i++)
+    	Key[i] = temp[i];
+    for (i=0;i<16;i++)
+    	V[i]=temp[32+i];;
+}
+int
+randombytes(unsigned char *x, unsigned long long xlen)
+{
+    unsigned char   block[16];
+    int             i = 0;
 
+    while ( xlen > 0 ) {
+        //increment V
+        for (int j=15; j>=0; j--) {
+            if ( DRBG_ctx.V[j] == 0xff )
+                DRBG_ctx.V[j] = 0x00;
+            else {
+                DRBG_ctx.V[j]++;
+                break;
+            }
+        }
+        AES256_ECB(DRBG_ctx.Key, DRBG_ctx.V, block);
+        // if ( xlen > 15 ) {
+        //     memcpy(x+i, block, 16);
+        //     i += 16;
+        //     xlen -= 16;
+        // }
+        // else {
+        //     memcpy(x+i, block, xlen);
+        //     xlen = 0;
+        // }
+        if ( xlen > 15 ) {
+            //memcpy(x+i, block, 16);
+        	int loop;
+        	for (loop=0;loop<16;loop++)
+        		x[i+loop] = block[loop];
+            i += 16;
+            xlen -= 16;
+        }
+        else {
+        	int loop;
+        	for (loop=0;loop<xlen;loop++)
+        	      x[i+loop] = block[loop];
+            //memcpy(x+i, block, xlen);
+            xlen = 0;
+        }
+    }
+    AES256_CTR_DRBG_Update2( DRBG_ctx.Key, DRBG_ctx.V);
+    DRBG_ctx.reseed_counter++;
+
+    return RNG_SUCCESS;
+}
 
 /////////////////////////////////////////////////////////
 
-
-
-void
-randombytes_init_with_state( AES256_CTR_DRBG_struct * states, unsigned char *entropy_input_48bytes )
-{
+void randombytes_init_with_state( AES256_CTR_DRBG_struct * states, unsigned char *entropy_input_48bytes )
+{int k;
 
     unsigned char   seed_material[48];
-    memcpy(seed_material, entropy_input_48bytes, 48);
-
-    memset(states->Key, 0x00, 32);
-    memset(states->V, 0x00, 16);
+   // memcpy(seed_material, entropy_input_48bytes, 48);
+    	for (k = 0;k<48; k++)
+    	{
+    		seed_material[k] = entropy_input_48bytes[k];
+    	}
+    //memset(states->Key, 0x00, 32);
+    for (k=0;k<32;k++) states->Key[k] = 0x00;
+    //memset(states->V, 0x00, 16);
+    for(k=0;k<16;k++)states->V[k] = 0x00;
     AES256_CTR_DRBG_Update(seed_material, states->Key, states->V);
     states->reseed_counter = 1;
 }
 
 int
-randombytes_with_state( AES256_CTR_DRBG_struct * states, unsigned char *x, unsigned long long xlen)
+randombytes_with_state16384( AES256_CTR_DRBG_struct * states, unsigned char x[16384], unsigned long long xlen)
 {
 
     unsigned char   block[16];
     int             i = 0;
-
+    int k;
     while ( xlen > 0 ) {
         //increment V
         for (int j=15; j>=0; j--) {
@@ -254,18 +359,196 @@ randombytes_with_state( AES256_CTR_DRBG_struct * states, unsigned char *x, unsig
         }
         AES256_ECB(states->Key, states->V, block);
         if ( xlen > 15 ) {
-            memcpy(x+i, block, 16);
-            i += 16;
+          //  memcpy(x+i, block, 16);
+            for (k= 0; k <16; k++)
+            {
+            	x[i] = block[k];
+            	i = i+1;
+            }
+          //  i += 16;
             xlen -= 16;
         }
         else {
-            memcpy(x+i, block, xlen);
+            //memcpy(x+i, block, xlen);
+            for (k= 0; k <xlen; k++)
+                        {
+                        	(x+i)[k] = block[k];
+                        }
             xlen = 0;
         }
     }
-    AES256_CTR_DRBG_Update(NULL, states->Key, states->V);
+    AES256_CTR_DRBG_Update2(states->Key, states->V);
     states->reseed_counter++;
 
     return RNG_SUCCESS;
 }
 
+int
+randombytes_with_state512( AES256_CTR_DRBG_struct * states, unsigned char x[512], unsigned long long xlen)
+{
+
+    unsigned char   block[16];
+    int             i = 0;
+    int k;
+    while ( xlen > 0 ) {
+        //increment V
+        for (int j=15; j>=0; j--) {
+            if ( states->V[j] == 0xff )
+                states->V[j] = 0x00;
+            else {
+                states->V[j]++;
+                break;
+            }
+        }
+        AES256_ECB(states->Key, states->V, block);
+        if ( xlen > 15 ) {
+          //  memcpy(x+i, block, 16);
+            for (k= 0; k <16; k++)
+            {
+            	x[i] = block[k];
+            	i = i +1;
+            }
+//            i += 16;
+            xlen -= 16;
+        }
+        else {
+            //memcpy(x+i, block, xlen);
+            for (k= 0; k <xlen; k++)
+                        {
+                        	(x+i)[k] = block[k];
+                        }
+            xlen = 0;
+        }
+    }
+    AES256_CTR_DRBG_Update2(states->Key, states->V);
+    states->reseed_counter++;
+
+    return RNG_SUCCESS;
+}
+
+int
+randombytes_with_state8448( AES256_CTR_DRBG_struct * states, unsigned char x[8448], unsigned long long xlen)
+{
+
+    unsigned char   block[16];
+    int             i = 0;
+    int k;
+    while ( xlen > 0 ) {
+        //increment V
+        for (int j=15; j>=0; j--) {
+            if ( states->V[j] == 0xff )
+                states->V[j] = 0x00;
+            else {
+                states->V[j]++;
+                break;
+            }
+        }
+        AES256_ECB(states->Key, states->V, block);
+        if ( xlen > 15 ) {
+          //  memcpy(x+i, block, 16);
+            for (k= 0; k <16; k++)
+            {
+            	x[i] = block[k];
+            	i = i+1;
+            }
+           // i += 16;
+            xlen -= 16;
+        }
+        else {
+            //memcpy(x+i, block, xlen);
+            for (k= 0; k <xlen; k++)
+                        {
+                        	(x+i)[k] = block[k];
+                        }
+            xlen = 0;
+        }
+    }
+    AES256_CTR_DRBG_Update2(states->Key, states->V);
+    states->reseed_counter++;
+
+    return RNG_SUCCESS;
+}
+
+int
+randombytes_with_state16( AES256_CTR_DRBG_struct * states, unsigned char  x[16], unsigned long long xlen)
+{
+
+    unsigned char   block[16];
+    int             i = 0;
+    int k;
+    while ( xlen > 0 ) {
+        //increment V
+        for (int j=15; j>=0; j--) {
+            if ( states->V[j] == 0xff )
+                states->V[j] = 0x00;
+            else {
+                states->V[j]++;
+                break;
+            }
+        }
+        AES256_ECB(states->Key, states->V, block);
+        if ( xlen > 15 ) {
+          //  memcpy(x+i, block, 16);
+            for (k= 0; k <16; k++)
+            {
+            	x[i] = block[k];
+            i = i +1;
+            }
+          //  i += 16;
+            xlen -= 16;
+        }
+        else {
+            //memcpy(x+i, block, xlen);
+            for (k= 0; k <xlen; k++)
+                        {
+                        	(x+i)[k] = block[k];
+                        }
+            xlen = 0;
+        }
+    }
+    AES256_CTR_DRBG_Update2(states->Key, states->V);
+    states->reseed_counter++;
+
+    return RNG_SUCCESS;
+}
+int
+randombytes_with_state( AES256_CTR_DRBG_struct * states, unsigned char * x, unsigned long long xlen)
+{
+
+    unsigned char   block[16];
+    int             i = 0;
+    int k;
+    while ( xlen > 0 ) {
+        //increment V
+        for (int j=15; j>=0; j--) {
+            if ( states->V[j] == 0xff )
+                states->V[j] = 0x00;
+            else {
+                states->V[j]++;
+                break;
+            }
+        }
+        AES256_ECB(states->Key, states->V, block);
+        if ( xlen > 15 ) {
+          //  memcpy(x+i, block, 16);
+            for (k= 0; k <16; k++)
+            {//printf("\nx+i = %x x = %x k = %d sizeof = %d i = %d\n",x+i,x,k,sizeof(x+i),i);
+            	(x+i)[k] = block[k];
+            }
+            i += 16;
+            xlen -= 16;
+        }
+        else {
+            //memcpy(x+i, block, xlen);
+            for (k= 0; k <xlen; k++)
+                        {//	printf("\n in else x+i = %d x = %x\n",x+i,x);
+                        	(x+i)[k] = block[k];
+                        }
+            xlen = 0;
+        }
+    }
+    AES256_CTR_DRBG_Update2(states->Key, states->V);
+    states->reseed_counter++;
+
+    return RNG_SUCCESS;
+}

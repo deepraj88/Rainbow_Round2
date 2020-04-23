@@ -1,0 +1,16 @@
+vimdiff ../Ia_Classic/blas_comm.c ./blas_comm.c
+vimdiff ../Ia_Classic/blas_u32.h ./blas_u32.h
+vimdiff ../Ia_Classic/parallel_matrix_op.c ./parallel_matrix_op.c
+vimdiff ../Ia_Classic/PQCgenKAT_sign.c ./PQCgenKAT_sign.c
+vimdiff ../Ia_Classic/rainbow.c ./rainbow.c
+vimdiff ../Ia_Classic/rainbow_config.h ./rainbow_config.h
+vimdiff ../Ia_Classic/rainbow.h ./rainbow.h
+vimdiff ../Ia_Classic/rainbow_keypair.c ./rainbow_keypair.c
+vimdiff ../Ia_Classic/rainbow_keypair_computation.c ./rainbow_keypair_computation.c
+vimdiff ../Ia_Classic/rainbow_keypair.h ./rainbow_keypair.h
+vimdiff ../Ia_Classic/rng.c ./rng.c
+vimdiff ../Ia_Classic/sign.c ./sign.c
+vimdiff ../Ia_Classic/utils_hash.c ./utils_hash.c
+vimdiff ../Ia_Classic/utils_prng.c ./utils_prng.c
+vimdiff ../Ia_Classic/utils_prng.h ./utils_prng.h
+vimdiff ../Ia_Classic/vivado_hls.log ./vivado_hls.log

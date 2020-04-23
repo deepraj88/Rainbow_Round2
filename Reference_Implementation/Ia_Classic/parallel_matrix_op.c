@@ -247,12 +247,13 @@ void batch_quad_trimat_eval_gf16( unsigned char * y, const unsigned char * trima
     unsigned char tmp[256];
 
     unsigned char _x[256];
-    for(unsigned i=0;i<dim;i++) _x[i] = gf16v_get_ele( x , i );
+    unsigned i, j;
+    for(i=0;i<dim;i++) _x[i] = gf16v_get_ele( x , i );
 
     gf256v_set_zero( y , size_batch );
-    for(unsigned i=0;i<dim;i++) {
+    for(i=0;i<dim;i++) {
         gf256v_set_zero( tmp , size_batch );
-        for(unsigned j=i;j<dim;j++) {
+        for(j=i;j<dim;j++) {
            gf16v_madd( tmp , trimat , _x[j] , size_batch );
            trimat += size_batch;
         }
@@ -268,12 +269,13 @@ void batch_quad_trimat_eval_gf256( unsigned char * y, const unsigned char * trim
     unsigned char tmp[256];
 
     unsigned char _x[256];
-    for(unsigned i=0;i<dim;i++) _x[i] = gf256v_get_ele( x , i );
+    unsigned i, j;
+    for(i=0;i<dim;i++) _x[i] = gf256v_get_ele( x , i );
 
     gf256v_set_zero( y , size_batch );
-    for(unsigned i=0;i<dim;i++) {
+    for(i=0;i<dim;i++) {
         gf256v_set_zero( tmp , size_batch );
-        for(unsigned j=i;j<dim;j++) {
+        for(j=i;j<dim;j++) {
            gf256v_madd( tmp , trimat , _x[j] , size_batch );
            trimat += size_batch;
         }
@@ -297,14 +299,15 @@ void batch_quad_recmat_eval_gf16( unsigned char * z, const unsigned char * y, un
     unsigned char tmp[128];
 
     unsigned char _x[128];
-    for(unsigned i=0;i<dim_x;i++) _x[i] = gf16v_get_ele( x , i );
+    unsigned i, j;
+    for(i=0;i<dim_x;i++) _x[i] = gf16v_get_ele( x , i );
     unsigned char _y[128];
-    for(unsigned i=0;i<dim_y;i++) _y[i] = gf16v_get_ele( y , i );
+    for(i=0;i<dim_y;i++) _y[i] = gf16v_get_ele( y , i );
 
     gf256v_set_zero( z , size_batch );
-    for(unsigned i=0;i<dim_y;i++) {
+    for(i=0;i<dim_y;i++) {
         gf256v_set_zero( tmp , size_batch );
-        for(unsigned j=0;j<dim_x;j++) {
+        for(j=0;j<dim_x;j++) {
            gf16v_madd( tmp , mat , _x[j] , size_batch );
            mat += size_batch;
         }
@@ -323,14 +326,15 @@ void batch_quad_recmat_eval_gf256( unsigned char * z, const unsigned char * y, u
     unsigned char tmp[128];
 
     unsigned char _x[128];
-    for(unsigned i=0;i<dim_x;i++) _x[i] = gf256v_get_ele( x , i );
+    unsigned i, j;
+    for(i=0;i<dim_x;i++) _x[i] = gf256v_get_ele( x , i );
     unsigned char _y[128];
-    for(unsigned i=0;i<dim_y;i++) _y[i] = gf256v_get_ele( y , i );
+    for(i=0;i<dim_y;i++) _y[i] = gf256v_get_ele( y , i );
 
     gf256v_set_zero( z , size_batch );
-    for(unsigned i=0;i<dim_y;i++) {
+    for(i=0;i<dim_y;i++) {
         gf256v_set_zero( tmp , size_batch );
-        for(unsigned j=0;j<dim_x;j++) {
+        for(j=0;j<dim_x;j++) {
            gf256v_madd( tmp , mat , _x[j] , size_batch );
            mat += size_batch;
         }

@@ -1,0 +1,148 @@
+INFO: [HLS 200-10] Running '/opt/Xilinx2018/Vivado/2018.2/bin/unwrapped/lnx64.o/vivado_hls'
+INFO: [HLS 200-10] For user 'dss545' on host 'dark-knight.poly.edu' (Linux_x86_64 version 2.6.32-754.9.1.el6.x86_64) on Fri Mar 20 11:16:41 EDT 2020
+INFO: [HLS 200-10] On os "CentOS release 6.10 (Final)"
+INFO: [HLS 200-10] In directory '/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/Ia_Classic'
+INFO: [HLS 200-10] Opening project '/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/Ia_Classic/rainbow1.prj'.
+INFO: [HLS 200-10] Adding design file 'aes.c' to the project
+INFO: [HLS 200-10] Adding design file 'blas_comm.c' to the project
+INFO: [HLS 200-10] Adding design file 'fips202.c' to the project
+INFO: [HLS 200-10] Adding design file 'parallel_matrix_op.c' to the project
+INFO: [HLS 200-10] Adding design file 'rainbow.c' to the project
+INFO: [HLS 200-10] Adding design file 'rainbow_keypair.c' to the project
+INFO: [HLS 200-10] Adding design file 'rainbow_keypair_computation.c' to the project
+INFO: [HLS 200-10] Adding design file 'rng.c' to the project
+INFO: [HLS 200-10] Adding design file 'sign.c' to the project
+INFO: [HLS 200-10] Adding design file 'utils.c' to the project
+INFO: [HLS 200-10] Adding design file 'utils_hash.c' to the project
+INFO: [HLS 200-10] Adding design file 'utils_prng.c' to the project
+INFO: [HLS 200-10] Adding test bench file 'PQCgenKAT_sign.c' to the project
+INFO: [HLS 200-10] Opening solution '/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/Ia_Classic/rainbow1.prj/sign_open2'.
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7a200tfbg676-2'
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Analyzing design file 'utils_prng.c' ... 
+INFO: [HLS 200-10] Analyzing design file 'utils_hash.c' ... 
+INFO: [HLS 200-10] Analyzing design file 'utils.c' ... 
+INFO: [HLS 200-10] Analyzing design file 'sign.c' ... 
+INFO: [HLS 200-10] Analyzing design file 'rng.c' ... 
+INFO: [HLS 200-10] Analyzing design file 'rainbow_keypair_computation.c' ... 
+WARNING: [HLS 200-40] In file included from rainbow_keypair_computation.c:1:
+rainbow_keypair_computation.c:115:22: warning: implicitly declaring library function 'printf' with type 'int (const char *, ...)'
+      if (k == 2051) printf("HERE %d \n",(32/2) * (32*(32 +1)/2));
+                     ^
+rainbow_keypair_computation.c:115:22: note: please include the header <stdio.h> or explicitly provide a declaration for 'printf'
+1 warning generated.\n
+INFO: [HLS 200-10] Analyzing design file 'rainbow_keypair.c' ... 
+INFO: [HLS 200-10] Analyzing design file 'rainbow.c' ... 
+INFO: [HLS 200-10] Analyzing design file 'parallel_matrix_op.c' ... 
+INFO: [HLS 200-10] Analyzing design file 'fips202.c' ... 
+INFO: [HLS 200-10] Analyzing design file 'blas_comm.c' ... 
+INFO: [HLS 200-10] Analyzing design file 'aes.c' ... 
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:01:12 ; elapsed = 00:01:15 . Memory (MB): peak = 450.570 ; gain = 0.129 ; free physical = 9636 ; free virtual = 456050
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:01:12 ; elapsed = 00:01:15 . Memory (MB): peak = 450.570 ; gain = 0.129 ; free physical = 9636 ; free virtual = 456050
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [XFORM 203-603] Inlining function 'sha256_transform' into 'sha256_final' (utils_hash.c:269).
+INFO: [XFORM 203-603] Inlining function 'sha256_transform' into 'sha256_final' (utils_hash.c:252).
+INFO: [XFORM 203-603] Inlining function 'sha256_transform' into 'sha256_update' (utils_hash.c:229).
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:01:14 ; elapsed = 00:01:16 . Memory (MB): peak = 450.570 ; gain = 0.129 ; free physical = 9630 ; free virtual = 456044
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [XFORM 203-602] Inlining function 'sha256_init' into '_hash' (utils_hash.c:293) automatically.
+INFO: [XFORM 203-602] Inlining function '_hash' into 'hash_msg.1' (utils_hash.c:366) automatically.
+INFO: [XFORM 203-602] Inlining function 'expand_hash' into 'hash_msg.1' (utils_hash.c:368) automatically.
+INFO: [XFORM 203-602] Inlining function '_gf256v_add_u3271' into 'gf256v_set_zero.1' (blas_comm.c:27) automatically.
+INFO: [XFORM 203-602] Inlining function '_gf256v_add_u3271.1' into 'gf256v_set_zero' (blas_comm.c:27) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf4v_mul_2_u3264' into 'gf4v_mul_u3265' (./gf16.h:52) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf4v_mul_u3265' into 'gf16v_mul_u3263' (./gf16.h:129) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf4v_mul_2_u3264' into 'gf16v_mul_u3263' (./gf16.h:135) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf16v_mul_u3263' into '_gf16v_madd_u32.1' (./blas_u32.h:84) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf16v_mul_u3263' into '_gf16v_madd_u32' (./blas_u32.h:84) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf16v_get_ele50' into 'batch_quad_trimat_eval_gf16' (parallel_matrix_op.c:251) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf256v_set_zero.1' into 'batch_quad_trimat_eval_gf16' (parallel_matrix_op.c:253) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf256v_set_zero' into 'batch_quad_trimat_eval_gf16' (parallel_matrix_op.c:255) automatically.
+INFO: [XFORM 203-602] Inlining function 'sha256_init' into '_hash.1' (utils_hash.c:293) automatically.
+INFO: [XFORM 203-602] Inlining function '_hash.1' into 'hash_msg' (utils_hash.c:366) automatically.
+INFO: [XFORM 203-602] Inlining function 'expand_hash' into 'hash_msg' (utils_hash.c:368) automatically.
+INFO: [XFORM 203-602] Inlining function 'hash_msg' into 'rainbow_verify' (rainbow.c:311) automatically.
+INFO: [XFORM 203-602] Inlining function 'hash_msg.1' into 'crypto_sign_open' (sign.c:149) automatically.
+WARNING: [SYNCHK 200-23] ./blas_u32.h:93: variable-indexed range selection may cause suboptimal QoR.
+INFO: [SYNCHK 200-10] 0 error(s), 1 warning(s).
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:01:14 ; elapsed = 00:01:17 . Memory (MB): peak = 450.570 ; gain = 0.129 ; free physical = 9629 ; free virtual = 456043
+INFO: [XFORM 203-502] Unrolling small iteration loop 'Loop-2' (./blas_u32.h:93) in function '_gf16v_madd_u32' automatically.
+INFO: [XFORM 203-502] Unrolling small iteration loop 'Loop-3' (./blas_u32.h:95) in function '_gf16v_madd_u32' automatically.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'sha256_update_label3' (utils_hash.c:225) in function 'sha256_update' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'sha256_update_label3' (utils_hash.c:225) in function 'sha256_update.1' for pipelining.
+INFO: [XFORM 203-502] Unrolling small iteration loop 'Loop-2' (./blas_u32.h:22) in function '_gf256v_add_u3271.1' automatically.
+INFO: [XFORM 203-502] Unrolling small iteration loop 'Loop-2' (./blas_u32.h:22) in function '_gf256v_add_u3271' automatically.
+INFO: [XFORM 203-502] Unrolling small iteration loop 'Loop-2' (./blas_u32.h:93) in function '_gf16v_madd_u32.1' automatically.
+INFO: [XFORM 203-502] Unrolling small iteration loop 'Loop-3' (./blas_u32.h:95) in function '_gf16v_madd_u32.1' automatically.
+INFO: [XFORM 203-501] Unrolling loop 'Loop-2' (./blas_u32.h:93) in function '_gf16v_madd_u32' completely.
+INFO: [XFORM 203-501] Unrolling loop 'Loop-3' (./blas_u32.h:95) in function '_gf16v_madd_u32' completely.
+INFO: [XFORM 203-501] Unrolling loop 'expand_hash_label9' (utils_hash.c:336) in function 'expand_hash' partially with a factor of 2.
+INFO: [XFORM 203-501] Unrolling loop 'sha256_final_label8' (utils_hash.c:254) in function 'sha256_final' partially with a factor of 2.
+INFO: [XFORM 203-501] Unrolling loop 'sha256_final_label4' (utils_hash.c:273) in function 'sha256_final' partially with a factor of 2.
+INFO: [XFORM 203-501] Unrolling loop 'sha256_update_label3' (utils_hash.c:225) in function 'sha256_update' partially with a factor of 2.
+INFO: [XFORM 203-501] Unrolling loop 'sha256_transform_label0' (utils_hash.c:171) in function 'sha256_update' completely.
+INFO: [XFORM 203-501] Unrolling loop 'sha256_transform_label1' (utils_hash.c:173) in function 'sha256_update' completely.
+INFO: [XFORM 203-501] Unrolling loop 'sha256_transform_label2' (utils_hash.c:184) in function 'sha256_update' completely.
+INFO: [XFORM 203-501] Unrolling loop 'sha256_update_label3' (utils_hash.c:225) in function 'sha256_update.1' partially with a factor of 2.
+INFO: [XFORM 203-501] Unrolling loop 'sha256_transform_label0' (utils_hash.c:171) in function 'sha256_update.1' completely.
+INFO: [XFORM 203-501] Unrolling loop 'sha256_transform_label1' (utils_hash.c:173) in function 'sha256_update.1' completely.
+INFO: [XFORM 203-501] Unrolling loop 'sha256_transform_label2' (utils_hash.c:184) in function 'sha256_update.1' completely.
+INFO: [XFORM 203-501] Unrolling loop 'Loop-2' (./blas_u32.h:22) in function '_gf256v_add_u3271.1' completely.
+INFO: [XFORM 203-501] Unrolling loop 'Loop-2' (./blas_u32.h:22) in function '_gf256v_add_u3271' completely.
+INFO: [XFORM 203-501] Unrolling loop 'Loop-2' (./blas_u32.h:93) in function '_gf16v_madd_u32.1' completely.
+INFO: [XFORM 203-501] Unrolling loop 'Loop-3' (./blas_u32.h:95) in function '_gf16v_madd_u32.1' completely.
+INFO: [XFORM 203-102] Partitioning array 'm' (utils_hash.c:168) automatically.
+INFO: [XFORM 203-102] Partitioning array 'sha256.state' (utils_hash.c:292) automatically.
+INFO: [XFORM 203-102] Partitioning array 'm' (utils_hash.c:168) automatically.
+INFO: [XFORM 203-102] Partitioning array 'sha256.state' (utils_hash.c:292) automatically.
+INFO: [XFORM 203-602] Inlining function '_hash' into 'hash_msg.1' (utils_hash.c:366) automatically.
+INFO: [XFORM 203-602] Inlining function 'expand_hash' into 'hash_msg.1' (utils_hash.c:368) automatically.
+INFO: [XFORM 203-602] Inlining function '_gf256v_add_u3271' into 'gf256v_set_zero.1' automatically.
+INFO: [XFORM 203-602] Inlining function '_gf256v_add_u3271.1' into 'gf256v_set_zero' automatically.
+INFO: [XFORM 203-602] Inlining function 'gf4v_mul_2_u3264' into 'gf4v_mul_u3265' (./gf16.h:52) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf4v_mul_u3265' into 'gf16v_mul_u3263' (./gf16.h:129) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf4v_mul_2_u3264' into 'gf16v_mul_u3263' (./gf16.h:135) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf16v_mul_u3263' into '_gf16v_madd_u32.1' (./blas_u32.h:84) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf16v_mul_u3263' into '_gf16v_madd_u32' (./blas_u32.h:84) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf16v_get_ele50' into 'batch_quad_trimat_eval_gf16' (parallel_matrix_op.c:251) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf256v_set_zero.1' into 'batch_quad_trimat_eval_gf16' (parallel_matrix_op.c:253) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf256v_set_zero' into 'batch_quad_trimat_eval_gf16' (parallel_matrix_op.c:255) automatically.
+INFO: [XFORM 203-602] Inlining function '_gf16v_madd_u32.1' into 'batch_quad_trimat_eval_gf16' (parallel_matrix_op.c:257) automatically.
+INFO: [XFORM 203-602] Inlining function '_gf16v_madd_u32' into 'batch_quad_trimat_eval_gf16' (parallel_matrix_op.c:260) automatically.
+INFO: [XFORM 203-602] Inlining function '_hash.1' into 'hash_msg' (utils_hash.c:366) automatically.
+INFO: [XFORM 203-602] Inlining function 'expand_hash' into 'hash_msg' (utils_hash.c:368) automatically.
+INFO: [XFORM 203-602] Inlining function 'hash_msg' into 'rainbow_verify' (rainbow.c:311) automatically.
+INFO: [XFORM 203-602] Inlining function 'hash_msg.1' into 'crypto_sign_open' (sign.c:149) automatically.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (utils_hash.c:225:50) to (utils_hash.c:225:28) in function 'sha256_update.1'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (utils_hash.c:225:50) to (utils_hash.c:225:44) in function 'sha256_update.1'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (utils_hash.c:225:50) to (utils_hash.c:225:28) in function 'sha256_update'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (utils_hash.c:225:50) to (utils_hash.c:225:44) in function 'sha256_update'... converting 3 basic blocks.
+INFO: [XFORM 203-11] Balancing expressions in function 'sha256_update.1' (utils_hash.c:168:3)...1202 expression(s) balanced.
+INFO: [XFORM 203-11] Balancing expressions in function 'sha256_update' (utils_hash.c:221)...1202 expression(s) balanced.
+INFO: [XFORM 203-11] Balancing expressions in function 'sha256_final' (utils_hash.c:236)...20 expression(s) balanced.
+INFO: [XFORM 203-11] Balancing expressions in function 'batch_quad_trimat_eval_gf16' (parallel_matrix_op.c:242)...10 expression(s) balanced.
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:01:58 ; elapsed = 00:02:01 . Memory (MB): peak = 578.453 ; gain = 128.012 ; free physical = 9516 ; free virtual = 455905
+WARNING: [XFORM 203-561] Updating loop lower bound from 1 to 24 for loop 'sha256_update_label3' in function 'sha256_update'.
+WARNING: [XFORM 203-631] Renaming function 'batch_quad_trimat_eval_gf16' to 'batch_quad_trimat_ev' (./blas_u32.h:15:28)
+WARNING: [HLS 200-456] Ignoring allocation pragma because function \'sha256_transform\' is missing or was optimized away (utils_hash.c:168:1)
+WARNING: [HLS 200-456] Ignoring allocation pragma because function \'sha256_transform\' is missing or was optimized away (utils_hash.c:168:1)
+WARNING: [HLS 200-456] Ignoring allocation pragma because function \'sha256_transform\' is missing or was optimized away (utils_hash.c:168:1)
+WARNING: [HLS 200-456] Ignoring allocation pragma because function \'sha256_transform\' is missing or was optimized away (utils_hash.c:168:1)
+WARNING: [HLS 200-456] Ignoring allocation pragma because function \'sha256_transform\' is missing or was optimized away (utils_hash.c:168:1)
+WARNING: [HLS 200-456] Ignoring allocation pragma because function \'sha256_transform\' is missing or was optimized away (utils_hash.c:168:1)
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:03:40 ; elapsed = 00:03:45 . Memory (MB): peak = 642.453 ; gain = 192.012 ; free physical = 9349 ; free virtual = 455808
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'crypto_sign_open' ...
+WARNING: [SYN 201-103] Legalizing function name 'sha256_update.1' to 'sha256_update_1'.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'sha256_update_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'sha256_update_label3'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 1)
+   between 'load' operation ('ctx_data_load', utils_hash.c:171->utils_hash.c:229) on array 'ctx_data' and 'store' operation (utils_hash.c:226) of variable 'data_load', utils_hash.c:226 on array 'ctx_data'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 2, distance = 1, offset = 1)
+   between 'load' operation ('ctx_data_load_64', utils_hash.c:171->utils_hash.c:229) on array 'ctx_data' and 'store' operation (utils_hash.c:226) of variable 'data_load', utils_hash.c:226 on array 'ctx_data'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 3, distance = 1, offset = 1)
+   between 'load' operation ('ctx_data_load_64', utils_hash.c:171->utils_hash.c:229) on array 'ctx_data' and 'store' operation (utils_hash.c:226) of variable 'data_load', utils_hash.c:226 on array 'ctx_data'.

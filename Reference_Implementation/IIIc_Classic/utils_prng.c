@@ -15,19 +15,35 @@
 #include "rng.h"
 
 
-int prng_set(prng_t *ctx, const void *prng_seed, unsigned long prng_seedlen)
-{
+int prng_set(prng_t *ctx, const unsigned char  *prng_seed, unsigned long prng_seedlen)
+{int k;
     unsigned char seed[48];
     if( prng_seedlen >= 48 ) {
-        memcpy( seed , prng_seed , 48 );
+        //memcpy( seed , prng_seed , 48 );
+    	for(k=0;k<48;k++) seed[k] = prng_seed[k];
     } else {
-        memcpy( seed , prng_seed , prng_seedlen );
+        //memcpy( seed , prng_seed , prng_seedlen );
+    	for(k=0;k<prng_seedlen;k++) seed[k] = prng_seed[k];
         hash_msg( seed + prng_seedlen , 48-prng_seedlen , (const unsigned char *)prng_seed, prng_seedlen);
     }
 
     randombytes_init_with_state( ctx , seed );
 
     return 0;
+}
+int p_gen1(prng_t *ctx, unsigned char out[512], unsigned long outlen)
+{
+	return randombytes_with_state512( ctx , out, outlen);
+}
+
+int p_gen2(prng_t *ctx, unsigned char out[8448], unsigned long outlen)
+{	//printf("\n in p_gen2 \n");
+	return randombytes_with_state8448( ctx , out, outlen);
+}
+
+int p_gen3(prng_t *ctx, unsigned char out[16384], unsigned long outlen)
+{//printf("\n in p_gen3 \n");
+	return randombytes_with_state16384( ctx , out, outlen);
 }
 
 int prng_gen(prng_t *ctx, unsigned char *out, unsigned long outlen)

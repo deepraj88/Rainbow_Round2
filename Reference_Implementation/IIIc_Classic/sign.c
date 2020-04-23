@@ -13,20 +13,19 @@
 
 #include "utils_hash.h"
 
-#include <rng.h>
+#include "rng.h"
 
 
 
 
-int
-crypto_sign_keypair(unsigned char *pk, unsigned char *sk)
+int crypto_sign_keypair(unsigned char pk[CRYPTO_PUBLICKEYBYTES], unsigned char sk[CRYPTO_SECRETKEYBYTES])
 {
     unsigned char sk_seed[LEN_SKSEED] = {0};
     randombytes( sk_seed , LEN_SKSEED );
 
 #if defined _RAINBOW_CLASSIC
 
-    generate_keypair( (pk_t*) pk , (sk_t*) sk , sk_seed );
+    generate_keypair( pk , sk , sk_seed );
 
 #elif defined _RAINBOW_CYCLIC
 
@@ -51,13 +50,15 @@ error here
 
 
 int
-crypto_sign(unsigned char *sm, unsigned long long *smlen, const unsigned char *m, unsigned long long mlen, const unsigned char *sk)
+crypto_sign(unsigned char sm[3300+CRYPTO_BYTES], unsigned long long smlen[1], const unsigned char m[3300], unsigned long long mlen, const unsigned char sk[CRYPTO_SECRETKEYBYTES])
 {
 	unsigned char digest[_HASH_LEN];
 
 	hash_msg( digest , _HASH_LEN , m , mlen );
 
-	memcpy( sm , m , mlen );
+	//memcpy( sm , m , mlen );
+	int k;
+	crypto_sign_label16:for(k = 0; k < mlen; k++) sm[k] = m[k];
 	smlen[0] = mlen + _SIGNATURE_BYTE;
 
 #if defined _RAINBOW_CLASSIC
@@ -85,10 +86,12 @@ error here
 
 
 int
-crypto_sign_open(unsigned char *m, unsigned long long *mlen,const unsigned char *sm, unsigned long long smlen,const unsigned char *pk)
+crypto_sign_open(unsigned char m[3300], unsigned long long mlen[1], const unsigned char sm[3300+CRYPTO_BYTES], unsigned long long smlen, const unsigned char pk[CRYPTO_PUBLICKEYBYTES])
 {
 	if( _SIGNATURE_BYTE > smlen ) return -1;
-	memcpy( m , sm , smlen-_SIGNATURE_BYTE );
+	//memcpy( m , sm , smlen-_SIGNATURE_BYTE );
+	int k;
+	crypto_sign_open_label11:for(k =0; k<smlen-_SIGNATURE_BYTE;k++) m[k]=sm[k];
 	mlen[0] = smlen-_SIGNATURE_BYTE;
 
 	unsigned char digest[_HASH_LEN];
@@ -96,7 +99,7 @@ crypto_sign_open(unsigned char *m, unsigned long long *mlen,const unsigned char 
 
 #if defined _RAINBOW_CLASSIC
 
-	return rainbow_verify( digest , sm + mlen[0] , (const pk_t *)pk );
+	return rainbow_verify( digest , sm + mlen[0] , pk );
 
 #elif defined _RAINBOW_CYCLIC
 

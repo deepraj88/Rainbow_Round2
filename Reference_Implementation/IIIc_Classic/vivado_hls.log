@@ -1,0 +1,2097 @@
+
+****** Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.2 (64-bit)
+  **** SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
+  **** IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+source /opt/Xilinx2018/Vivado/2018.2/scripts/vivado_hls/hls.tcl -notrace
+INFO: [HLS 200-10] Running '/opt/Xilinx2018/Vivado/2018.2/bin/unwrapped/lnx64.o/vivado_hls'
+INFO: [HLS 200-10] For user 'dss545' on host 'dark-knight.poly.edu' (Linux_x86_64 version 2.6.32-754.9.1.el6.x86_64) on Fri Apr 10 14:17:11 EDT 2020
+INFO: [HLS 200-10] On os "CentOS release 6.10 (Final)"
+INFO: [HLS 200-10] In directory '/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic'
+INFO: [HLS 200-10] Opening project '/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj'.
+INFO: [HLS 200-10] Adding design file 'aes.c' to the project
+INFO: [HLS 200-10] Adding design file 'blas_comm.c' to the project
+INFO: [HLS 200-10] Adding design file 'fips202.c' to the project
+INFO: [HLS 200-10] Adding design file 'parallel_matrix_op.c' to the project
+INFO: [HLS 200-10] Adding design file 'rainbow.c' to the project
+INFO: [HLS 200-10] Adding design file 'rainbow_keypair.c' to the project
+INFO: [HLS 200-10] Adding design file 'rainbow_keypair_computation.c' to the project
+INFO: [HLS 200-10] Adding design file 'rng.c' to the project
+INFO: [HLS 200-10] Adding design file 'sign.c' to the project
+INFO: [HLS 200-10] Adding design file 'utils_hash.c' to the project
+INFO: [HLS 200-10] Adding design file 'utils_prng.c' to the project
+INFO: [HLS 200-10] Adding test bench file 'PQCgenKAT_sign.c' to the project
+INFO: [HLS 200-10] Opening solution '/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair'.
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7a200tfbg676-2'
+INFO: [HLS 200-10] Analyzing design file 'utils_prng.c' ... 
+INFO: [HLS 200-10] Analyzing design file 'utils_hash.c' ... 
+INFO: [HLS 200-10] Analyzing design file 'sign.c' ... 
+WARNING: [HLS 200-40] In file included from sign.c:1:
+sign.c:66:35: warning: incompatible pointer types passing 'const sk_t *' (aka 'const struct rainbow_secretkey *') to parameter of type 'const unsigned char *' [-Wincompatible-pointer-types]
+ return rainbow_sign( sm + mlen , (const sk_t*)sk , digest );
+                                  ^~~~~~~~~~~~~~~
+./rainbow.h:25:61: note: passing argument to parameter 'sk' here
+int rainbow_sign( uint8_t * signature , const unsigned char sk[sizeof(sk_t)] , const uint8_t * digest );
+                                                            ^
+1 warning generated.\n
+INFO: [HLS 200-10] Analyzing design file 'rng.c' ... 
+INFO: [HLS 200-10] Analyzing design file 'rainbow_keypair_computation.c' ... 
+INFO: [HLS 200-10] Analyzing design file 'rainbow_keypair.c' ... 
+INFO: [HLS 200-10] Analyzing design file 'rainbow.c' ... 
+INFO: [HLS 200-10] Analyzing design file 'parallel_matrix_op.c' ... 
+INFO: [HLS 200-10] Analyzing design file 'fips202.c' ... 
+INFO: [HLS 200-10] Analyzing design file 'blas_comm.c' ... 
+INFO: [HLS 200-10] Analyzing design file 'aes.c' ... 
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:01:13 ; elapsed = 00:01:16 . Memory (MB): peak = 450.570 ; gain = 0.129 ; free physical = 2738 ; free virtual = 452004
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:01:13 ; elapsed = 00:01:16 . Memory (MB): peak = 450.570 ; gain = 0.129 ; free physical = 2738 ; free virtual = 452004
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [XFORM 203-603] Inlining function 'sha256_update' into '_hash' (utils_hash.c:293).
+INFO: [XFORM 203-603] Inlining function 'sha256_final' into '_hash' (utils_hash.c:306).
+INFO: [XFORM 203-603] Inlining function 'hash_msg' into 'prng_set' (utils_prng.c:27).
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:07:56 ; elapsed = 00:08:02 . Memory (MB): peak = 1330.461 ; gain = 880.020 ; free physical = 1889 ; free virtual = 451180
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [XFORM 203-602] Inlining function 'xtime' into 'MixColumns' (aes.c:314) automatically.
+INFO: [XFORM 203-602] Inlining function 'ShiftRows' into 'Cipher' (aes.c:424) automatically.
+INFO: [XFORM 203-602] Inlining function 'AES_init_ctx' into 'AES256_ECB.1' (rng.c:147) automatically.
+INFO: [XFORM 203-602] Inlining function 'AES_ECB_encrypt' into 'AES256_ECB.1' (rng.c:175) automatically.
+INFO: [XFORM 203-602] Inlining function 'AES_init_ctx' into 'AES256_ECB' (rng.c:147) automatically.
+INFO: [XFORM 203-602] Inlining function 'AES_ECB_encrypt' into 'AES256_ECB' (rng.c:175) automatically.
+INFO: [XFORM 203-602] Inlining function 'sha256_init' into '_hash' (utils_hash.c:292) automatically.
+INFO: [XFORM 203-602] Inlining function 'AES_init_ctx.1' into 'AES256_ECB.3' (rng.c:147) automatically.
+INFO: [XFORM 203-602] Inlining function 'AES_ECB_encrypt' into 'AES256_ECB.3' (rng.c:175) automatically.
+INFO: [XFORM 203-602] Inlining function 'expand_hash' into 'prng_set' (utils_hash.c:367->utils_prng.c:27) automatically.
+INFO: [XFORM 203-602] Inlining function 'randombytes_init_with_state' into 'prng_set' (utils_prng.c:30) automatically.
+INFO: [XFORM 203-602] Inlining function 'AES_init_ctx.1' into 'AES256_ECB.2' (rng.c:147) automatically.
+INFO: [XFORM 203-602] Inlining function 'AES_ECB_encrypt' into 'AES256_ECB.2' (rng.c:175) automatically.
+INFO: [XFORM 203-602] Inlining function 'p_gen1' into 'generate_ST1' (rainbow_keypair.c:24) automatically.
+INFO: [XFORM 203-602] Inlining function 'p_gen1.1' into 'generate_ST1' (rainbow_keypair.c:27) automatically.
+INFO: [XFORM 203-602] Inlining function 'p_gen2' into 'generate_LF1' (rainbow_keypair.c:67) automatically.
+INFO: [XFORM 203-602] Inlining function 'p_gen3' into 'generate_LF1' (rainbow_keypair.c:72) automatically.
+INFO: [XFORM 203-602] Inlining function 'p_gen2' into 'generate_l2' (rainbow_keypair.c:112) automatically.
+INFO: [XFORM 203-602] Inlining function 'p_gen3' into 'generate_l2' (rainbow_keypair.c:116) automatically.
+INFO: [XFORM 203-602] Inlining function 'p_gen2.1' into 'generate_l2' (rainbow_keypair.c:124) automatically.
+INFO: [XFORM 203-602] Inlining function 'p_gen3.1' into 'generate_l2' (rainbow_keypair.c:128) automatically.
+INFO: [XFORM 203-602] Inlining function 'generate_LF1' into 'generate_B1_B2' (rainbow_keypair.c:139) automatically.
+INFO: [XFORM 203-602] Inlining function 'generate_l2' into 'generate_B1_B2' (rainbow_keypair.c:140) automatically.
+INFO: [XFORM 203-602] Inlining function 'generate_ST1' into '_generate_secretkey' (rainbow_keypair.c:236) automatically.
+INFO: [XFORM 203-602] Inlining function 'generate_B1_B2' into '_generate_secretkey' (rainbow_keypair.c:238) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf4v_mul_2_u32' into 'gf4v_mul_u32' (./gf16.h:52) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf4v_mul_u32' into 'gf16v_mul_u32' (./gf16.h:129) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf4v_mul_2_u32' into 'gf16v_mul_u32' (./gf16.h:135) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf4v_mul_2_u32' into 'gf16v_mul_8_u32' (./gf16.h:199) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf4v_mul_3_u32' into 'gf16v_mul_8_u32' (./gf16.h:199) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf16v_mul_u32' into 'gf256v_mul_u32' (./gf16.h:259) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf16v_mul_8_u32' into 'gf256v_mul_u32' (./gf16.h:265) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf256v_get_ele' into 'batch_trimat_madd_gf256.1' (parallel_matrix_op.c:63) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf256v_get_ele' into 'batch_matTr_madd_gf256.2' (parallel_matrix_op.c:161) automatically.
+INFO: [XFORM 203-602] Inlining function 'idx_of_trimat47' into 'UpperTrianglize' (parallel_matrix_op.c:22) automatically.
+INFO: [XFORM 203-602] Inlining function 'idx_of_trimat47' into 'batch_trimatTr_madd_gf256.1' (parallel_matrix_op.c:98) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf256v_get_ele' into 'batch_trimatTr_madd_gf256.1' (parallel_matrix_op.c:98) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf256v_get_ele.1' into 'batch_mat_madd_gf256' (parallel_matrix_op.c:226) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf256v_get_ele' into 'batch_bmatTr_madd_gf256' (parallel_matrix_op.c:193) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf256v_get_ele' into 'batch_matTr_madd_gf256' (parallel_matrix_op.c:161) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf256v_get_ele.1' into 'batch_trimat_madd_gf256' (parallel_matrix_op.c:63) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf256v_get_ele.1' into 'batch_matTr_madd_gf256.1' (parallel_matrix_op.c:161) automatically.
+INFO: [XFORM 203-602] Inlining function 'idx_of_trimat47' into 'batch_trimatTr_madd_gf256' (parallel_matrix_op.c:98) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf256v_get_ele.1' into 'batch_trimatTr_madd_gf256' (parallel_matrix_op.c:98) automatically.
+INFO: [XFORM 203-602] Inlining function 'batch_matTr_madd_gf256.1' into 'calculate_Q_from_F_ref' (rainbow_keypair_computation.c:259) automatically.
+INFO: [XFORM 203-602] Inlining function '_gf256v_add_u3273.1' into 'gf256v_set_zero' (blas_comm.c:27) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf4v_mul_2_u3284' into 'gf4v_mul_u3286' (./gf16.h:52) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf4v_mul_u3286' into 'gf16v_mul_u3282' (./gf16.h:129) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf4v_mul_2_u3284' into 'gf16v_mul_u3282' (./gf16.h:135) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf4v_mul_2_u3284' into 'gf16v_mul_8_u3283' (./gf16.h:199) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf4v_mul_3_u3285' into 'gf16v_mul_8_u3283' (./gf16.h:199) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf16v_mul_u3282' into 'gf256v_mul_u3281' (./gf16.h:259) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf16v_mul_8_u3283' into 'gf256v_mul_u3281' (./gf16.h:265) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf256v_set_zero' into 'gf256mat_prod_ref.1' (blas_comm.c:60) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf256mat_prod' into 'calculate_t4' (rainbow_keypair.c:196) automatically.
+INFO: [XFORM 203-602] Inlining function '_gf256v_add_u32' into 'calculate_t4' (rainbow_keypair.c:197) automatically.
+INFO: [XFORM 203-602] Inlining function '_gf256v_add_u3273' into 'gf256v_set_zero.1' (blas_comm.c:27) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf256v_set_zero.1' into 'gf256mat_prod_ref' (blas_comm.c:60) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf256mat_prod.4' into 'obsfucate_l1_polys.3' (rainbow_keypair.c:210) automatically.
+INFO: [XFORM 203-602] Inlining function '_gf256v_add_u32.4' into 'obsfucate_l1_polys.3' (rainbow_keypair.c:211) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf256v_set_zero.1' into 'gf256mat_prod_ref.197' (blas_comm.c:60) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf256mat_prod.3' into 'obsfucate_l1_polys.2' (rainbow_keypair.c:210) automatically.
+INFO: [XFORM 203-602] Inlining function '_gf256v_add_u32.3' into 'obsfucate_l1_polys.2' (rainbow_keypair.c:211) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf256v_set_zero.1' into 'gf256mat_prod_ref.199' (blas_comm.c:60) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf256mat_prod.1' into 'obsfucate_l1_polys' (rainbow_keypair.c:210) automatically.
+INFO: [XFORM 203-602] Inlining function '_gf256v_add_u32.1' into 'obsfucate_l1_polys' (rainbow_keypair.c:211) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf256v_set_zero.1' into 'gf256mat_prod_ref.198' (blas_comm.c:60) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf256mat_prod.2' into 'obsfucate_l1_polys.1' (rainbow_keypair.c:210) automatically.
+INFO: [XFORM 203-602] Inlining function '_gf256v_add_u32.2' into 'obsfucate_l1_polys.1' (rainbow_keypair.c:211) automatically.
+INFO: [XFORM 203-602] Inlining function 'idx_of_trimat' into 'extcpk_to_pk' (rainbow_keypair_computation.c:30) automatically.
+INFO: [XFORM 203-602] Inlining function '_generate_secretkey' into 'generate_keypair' (rainbow_keypair.c:258) automatically.
+INFO: [XFORM 203-602] Inlining function 'calculate_Q_from_F' into 'generate_keypair' (rainbow_keypair.c:263) automatically.
+WARNING: [SYNCHK 200-23] ./blas_u32.h:112: variable-indexed range selection may cause suboptimal QoR.
+INFO: [SYNCHK 200-10] 0 error(s), 1 warning(s).
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:07:57 ; elapsed = 00:08:03 . Memory (MB): peak = 1330.461 ; gain = 880.020 ; free physical = 1889 ; free virtual = 451180
+INFO: [XFORM 203-502] Unrolling all loops for pipelining in function '_gf256v_madd_u3274.1' (./blas_u32.h:100:26).
+INFO: [XFORM 203-502] Unrolling all loops for pipelining in function '_gf256v_madd_u3274' (./blas_u32.h:100:26).
+INFO: [XFORM 203-501] Unrolling loop 'generate_keypair_label0' (rainbow_keypair.c:277) in function 'generate_keypair' partially with a factor of 128.
+INFO: [XFORM 203-501] Unrolling loop 'generate_keypair_label2' (rainbow_keypair.c:321) in function 'generate_keypair' partially with a factor of 128.
+INFO: [XFORM 203-501] Unrolling loop 'generate_keypair_label1' (rainbow_keypair.c:326) in function 'generate_keypair' partially with a factor of 128.
+INFO: [XFORM 203-501] Unrolling loop '_gf256v_add_u32_label20' (./blas_u32.h:18) in function '_gf256v_add_u3273.1' partially with a factor of 128.
+INFO: [XFORM 203-501] Unrolling loop '_gf256v_add_u32_label21' (./blas_u32.h:23) in function '_gf256v_add_u3273.1' partially with a factor of 128.
+INFO: [XFORM 203-501] Unrolling loop '_gf256v_add_u32_label20' (./blas_u32.h:18) in function '_gf256v_add_u3273' partially with a factor of 128.
+INFO: [XFORM 203-501] Unrolling loop '_gf256v_add_u32_label21' (./blas_u32.h:23) in function '_gf256v_add_u3273' partially with a factor of 128.
+INFO: [XFORM 203-501] Unrolling loop '_gf256v_add_u32_label20' (./blas_u32.h:18) in function '_gf256v_add_u32.1' partially with a factor of 128.
+INFO: [XFORM 203-501] Unrolling loop '_gf256v_add_u32_label21' (./blas_u32.h:23) in function '_gf256v_add_u32.1' partially with a factor of 128.
+INFO: [XFORM 203-501] Unrolling loop '_gf256v_add_u32_label20' (./blas_u32.h:18) in function '_gf256v_add_u32.2' partially with a factor of 128.
+INFO: [XFORM 203-501] Unrolling loop '_gf256v_add_u32_label21' (./blas_u32.h:23) in function '_gf256v_add_u32.2' partially with a factor of 128.
+INFO: [XFORM 203-501] Unrolling loop '_gf256v_add_u32_label20' (./blas_u32.h:18) in function '_gf256v_add_u32.3' partially with a factor of 128.
+INFO: [XFORM 203-501] Unrolling loop '_gf256v_add_u32_label21' (./blas_u32.h:23) in function '_gf256v_add_u32.3' partially with a factor of 128.
+INFO: [XFORM 203-501] Unrolling loop '_gf256v_add_u32_label20' (./blas_u32.h:18) in function '_gf256v_add_u32.4' partially with a factor of 128.
+INFO: [XFORM 203-501] Unrolling loop '_gf256v_add_u32_label21' (./blas_u32.h:23) in function '_gf256v_add_u32.4' partially with a factor of 128.
+INFO: [XFORM 203-501] Unrolling loop 'gf256mat_prod_ref_label19' (blas_comm.c:61) in function 'gf256mat_prod_ref': changing partial unrolling into complete unrolling since the unrolling factor (=128) is no less than the loop trip count (=36).
+INFO: [XFORM 203-501] Unrolling loop 'gf256mat_prod_ref_label19' (blas_comm.c:61) in function 'gf256mat_prod_ref' completely.
+WARNING: [XFORM 203-505] Pipeline directive for loop 'gf256mat_prod_ref_label19' (blas_comm.c:61) in function 'gf256mat_prod_ref' has been removed because the loop is unrolled completely.
+INFO: [XFORM 203-501] Unrolling loop 'gf256mat_prod_ref_label19' (blas_comm.c:61) in function 'gf256mat_prod_ref.1100': changing partial unrolling into complete unrolling since the unrolling factor (=128) is no less than the loop trip count (=36).
+INFO: [XFORM 203-501] Unrolling loop 'gf256mat_prod_ref_label19' (blas_comm.c:61) in function 'gf256mat_prod_ref.1100' completely.
+WARNING: [XFORM 203-505] Pipeline directive for loop 'gf256mat_prod_ref_label19' (blas_comm.c:61) in function 'gf256mat_prod_ref.1100' has been removed because the loop is unrolled completely.
+INFO: [XFORM 203-501] Unrolling loop 'gf256mat_prod_ref_label19' (blas_comm.c:61) in function 'gf256mat_prod_ref.1101': changing partial unrolling into complete unrolling since the unrolling factor (=128) is no less than the loop trip count (=36).
+INFO: [XFORM 203-501] Unrolling loop 'gf256mat_prod_ref_label19' (blas_comm.c:61) in function 'gf256mat_prod_ref.1101' completely.
+WARNING: [XFORM 203-505] Pipeline directive for loop 'gf256mat_prod_ref_label19' (blas_comm.c:61) in function 'gf256mat_prod_ref.1101' has been removed because the loop is unrolled completely.
+INFO: [XFORM 203-501] Unrolling loop 'gf256mat_prod_ref_label19' (blas_comm.c:61) in function 'gf256mat_prod_ref.1102': changing partial unrolling into complete unrolling since the unrolling factor (=128) is no less than the loop trip count (=36).
+INFO: [XFORM 203-501] Unrolling loop 'gf256mat_prod_ref_label19' (blas_comm.c:61) in function 'gf256mat_prod_ref.1102' completely.
+WARNING: [XFORM 203-505] Pipeline directive for loop 'gf256mat_prod_ref_label19' (blas_comm.c:61) in function 'gf256mat_prod_ref.1102' has been removed because the loop is unrolled completely.
+WARNING: [XFORM 203-503] Cannot unroll loop 'Loop-1' (./blas_u32.h:103) in function '_gf256v_madd_u3274.1': cannot completely unroll a loop with a variable trip count.
+WARNING: [XFORM 203-503] Cannot unroll loop 'Loop-2' (./blas_u32.h:112) in function '_gf256v_madd_u3274.1': cannot completely unroll a loop with a variable trip count.
+WARNING: [XFORM 203-503] Cannot unroll loop 'Loop-3' (./blas_u32.h:114) in function '_gf256v_madd_u3274.1': cannot completely unroll a loop with a variable trip count.
+INFO: [XFORM 203-501] Unrolling loop '_gf256v_add_u32_label20' (./blas_u32.h:18) in function '_gf256v_add_u32' partially with a factor of 128.
+INFO: [XFORM 203-501] Unrolling loop '_gf256v_add_u32_label21' (./blas_u32.h:23) in function '_gf256v_add_u32' partially with a factor of 128.
+INFO: [XFORM 203-501] Unrolling loop 'gf256mat_prod_ref_label19' (blas_comm.c:61) in function 'gf256mat_prod_ref.1': changing partial unrolling into complete unrolling since the unrolling factor (=128) is no less than the loop trip count (=36).
+INFO: [XFORM 203-501] Unrolling loop 'gf256mat_prod_ref_label19' (blas_comm.c:61) in function 'gf256mat_prod_ref.1' completely.
+WARNING: [XFORM 203-505] Pipeline directive for loop 'gf256mat_prod_ref_label19' (blas_comm.c:61) in function 'gf256mat_prod_ref.1' has been removed because the loop is unrolled completely.
+WARNING: [XFORM 203-503] Cannot unroll loop 'Loop-1' (./blas_u32.h:103) in function '_gf256v_madd_u3274': cannot completely unroll a loop with a variable trip count.
+WARNING: [XFORM 203-503] Cannot unroll loop 'Loop-2' (./blas_u32.h:112) in function '_gf256v_madd_u3274': cannot completely unroll a loop with a variable trip count.
+WARNING: [XFORM 203-503] Cannot unroll loop 'Loop-3' (./blas_u32.h:114) in function '_gf256v_madd_u3274': cannot completely unroll a loop with a variable trip count.
+INFO: [XFORM 203-501] Unrolling loop '_gf256v_add_u32_label20' (./blas_u32.h:18) in function '_gf256v_add_u3248' partially with a factor of 128.
+INFO: [XFORM 203-501] Unrolling loop '_gf256v_add_u32_label21' (./blas_u32.h:23) in function '_gf256v_add_u3248' partially with a factor of 128.
+INFO: [XFORM 203-102] Partitioning array 'tempa' (aes.c:155) automatically.
+INFO: [XFORM 203-102] Partitioning array 'sha256.state' (utils_hash.c:291) automatically.
+INFO: [XFORM 203-102] Partitioning array 'tempa' (aes.c:155) automatically.
+INFO: [XFORM 203-102] Partitioning array 'prng0.reseed_counter' (rainbow_keypair.c:231) automatically.
+WARNING: [XFORM 203-561] Updating loop upper bound from 5552 to 5551 for loop 'generate_keypair_label0' in function 'generate_keypair'.
+WARNING: [XFORM 203-561] Updating loop lower bound from 5552 to 5551 for loop 'generate_keypair_label0' in function 'generate_keypair'.
+WARNING: [XFORM 203-561] Updating loop upper bound from 188 to 187 for loop 'generate_keypair_label2' in function 'generate_keypair'.
+WARNING: [XFORM 203-561] Updating loop lower bound from 188 to 187 for loop 'generate_keypair_label2' in function 'generate_keypair'.
+WARNING: [XFORM 203-561] Updating loop upper bound from 365 to 364 for loop 'generate_keypair_label1' in function 'generate_keypair'.
+WARNING: [XFORM 203-561] Updating loop lower bound from 365 to 364 for loop 'generate_keypair_label1' in function 'generate_keypair'.
+INFO: [XFORM 203-102] Partitioning array 'prng0.Key' (rainbow_keypair.c:231) in dimension 1 automatically.
+INFO: [XFORM 203-102] Partitioning array 'prng0.V' (rainbow_keypair.c:231) in dimension 1 automatically.
+INFO: [XFORM 203-602] Inlining function 'xtime' into 'MixColumns' (aes.c:314) automatically.
+INFO: [XFORM 203-602] Inlining function 'ShiftRows' into 'Cipher' (aes.c:424) automatically.
+INFO: [XFORM 203-602] Inlining function 'MixColumns' into 'Cipher' (aes.c:425) automatically.
+INFO: [XFORM 203-602] Inlining function 'AES_init_ctx' into 'AES256_ECB.1' (rng.c:147) automatically.
+INFO: [XFORM 203-602] Inlining function 'AES_ECB_encrypt' into 'AES256_ECB.1' (rng.c:175) automatically.
+INFO: [XFORM 203-602] Inlining function 'AES_init_ctx' into 'AES256_ECB' (rng.c:147) automatically.
+INFO: [XFORM 203-602] Inlining function 'AES_ECB_encrypt' into 'AES256_ECB' (rng.c:175) automatically.
+INFO: [XFORM 203-602] Inlining function 'AES_init_ctx.1' into 'AES256_ECB.3' (rng.c:147) automatically.
+INFO: [XFORM 203-602] Inlining function 'AES_ECB_encrypt' into 'AES256_ECB.3' (rng.c:175) automatically.
+INFO: [XFORM 203-602] Inlining function 'expand_hash' into 'prng_set' (utils_hash.c:367->utils_prng.c:27) automatically.
+INFO: [XFORM 203-602] Inlining function 'randombytes_init_with_state' into 'prng_set' (utils_prng.c:30) automatically.
+INFO: [XFORM 203-602] Inlining function 'AES_init_ctx.1' into 'AES256_ECB.2' (rng.c:147) automatically.
+INFO: [XFORM 203-602] Inlining function 'AES_ECB_encrypt' into 'AES256_ECB.2' (rng.c:175) automatically.
+INFO: [XFORM 203-602] Inlining function 'p_gen1' into 'generate_ST1' (rainbow_keypair.c:24) automatically.
+INFO: [XFORM 203-602] Inlining function 'p_gen1.1' into 'generate_ST1' (rainbow_keypair.c:27) automatically.
+INFO: [XFORM 203-602] Inlining function 'p_gen2' into 'generate_LF1' (rainbow_keypair.c:67) automatically.
+INFO: [XFORM 203-602] Inlining function 'p_gen3' into 'generate_LF1' (rainbow_keypair.c:72) automatically.
+INFO: [XFORM 203-602] Inlining function 'p_gen2' into 'generate_l2' (rainbow_keypair.c:112) automatically.
+INFO: [XFORM 203-602] Inlining function 'p_gen3' into 'generate_l2' (rainbow_keypair.c:116) automatically.
+INFO: [XFORM 203-602] Inlining function 'p_gen2.1' into 'generate_l2' (rainbow_keypair.c:124) automatically.
+INFO: [XFORM 203-602] Inlining function 'p_gen3.1' into 'generate_l2' (rainbow_keypair.c:128) automatically.
+INFO: [XFORM 203-602] Inlining function 'generate_LF1' into 'generate_B1_B2' (rainbow_keypair.c:139) automatically.
+INFO: [XFORM 203-602] Inlining function 'generate_l2' into 'generate_B1_B2' (rainbow_keypair.c:140) automatically.
+INFO: [XFORM 203-602] Inlining function 'generate_ST1' into '_generate_secretkey' (rainbow_keypair.c:236) automatically.
+INFO: [XFORM 203-602] Inlining function 'generate_B1_B2' into '_generate_secretkey' (rainbow_keypair.c:238) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf4v_mul_2_u32' into 'gf4v_mul_u32' (./gf16.h:52) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf4v_mul_u32' into 'gf16v_mul_u32' (./gf16.h:129) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf4v_mul_2_u32' into 'gf16v_mul_u32' (./gf16.h:135) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf4v_mul_2_u32' into 'gf16v_mul_8_u32' (./gf16.h:199) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf4v_mul_3_u32' into 'gf16v_mul_8_u32' (./gf16.h:199) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf16v_mul_u32' into 'gf256v_mul_u32' (./gf16.h:259) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf16v_mul_8_u32' into 'gf256v_mul_u32' (./gf16.h:265) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf256v_get_ele' into 'batch_trimat_madd_gf256.1' (parallel_matrix_op.c:63) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf256v_get_ele' into 'batch_matTr_madd_gf256.2' (parallel_matrix_op.c:161) automatically.
+INFO: [XFORM 203-602] Inlining function 'idx_of_trimat47' into 'UpperTrianglize' (parallel_matrix_op.c:22) automatically.
+INFO: [XFORM 203-602] Inlining function 'idx_of_trimat47' into 'batch_trimatTr_madd_gf256.1' (parallel_matrix_op.c:98) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf256v_get_ele' into 'batch_trimatTr_madd_gf256.1' (parallel_matrix_op.c:98) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf256v_get_ele.1' into 'batch_mat_madd_gf256' (parallel_matrix_op.c:226) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf256v_get_ele' into 'batch_bmatTr_madd_gf256' (parallel_matrix_op.c:193) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf256v_get_ele' into 'batch_matTr_madd_gf256' (parallel_matrix_op.c:161) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf256v_get_ele.1' into 'batch_trimat_madd_gf256' (parallel_matrix_op.c:63) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf256v_get_ele.1' into 'batch_matTr_madd_gf256.1' (parallel_matrix_op.c:161) automatically.
+INFO: [XFORM 203-602] Inlining function 'idx_of_trimat47' into 'batch_trimatTr_madd_gf256' (parallel_matrix_op.c:98) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf256v_get_ele.1' into 'batch_trimatTr_madd_gf256' (parallel_matrix_op.c:98) automatically.
+INFO: [XFORM 203-602] Inlining function 'batch_matTr_madd_gf256.1' into 'calculate_Q_from_F_ref' (rainbow_keypair_computation.c:259) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf4v_mul_2_u3284' into 'gf4v_mul_u3286' (./gf16.h:52) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf4v_mul_u3286' into 'gf16v_mul_u3282' (./gf16.h:129) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf4v_mul_2_u3284' into 'gf16v_mul_u3282' (./gf16.h:135) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf4v_mul_2_u3284' into 'gf16v_mul_8_u3283' (./gf16.h:199) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf4v_mul_3_u3285' into 'gf16v_mul_8_u3283' (./gf16.h:199) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf16v_mul_u3282' into 'gf256v_mul_u3281' (./gf16.h:259) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf16v_mul_8_u3283' into 'gf256v_mul_u3281' (./gf16.h:265) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf256v_set_zero' into 'gf256mat_prod_ref.1' (blas_comm.c:60) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf256mat_prod' into 'calculate_t4' (rainbow_keypair.c:196) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf256v_set_zero.1' into 'gf256mat_prod_ref' (blas_comm.c:60) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf256mat_prod.4' into 'obsfucate_l1_polys.3' (rainbow_keypair.c:210) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf256v_set_zero.1' into 'gf256mat_prod_ref.1100' (blas_comm.c:60) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf256mat_prod.3' into 'obsfucate_l1_polys.2' (rainbow_keypair.c:210) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf256v_set_zero.1' into 'gf256mat_prod_ref.1102' (blas_comm.c:60) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf256mat_prod.1' into 'obsfucate_l1_polys' (rainbow_keypair.c:210) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf256v_set_zero.1' into 'gf256mat_prod_ref.1101' (blas_comm.c:60) automatically.
+INFO: [XFORM 203-602] Inlining function 'gf256mat_prod.2' into 'obsfucate_l1_polys.1' (rainbow_keypair.c:210) automatically.
+INFO: [XFORM 203-602] Inlining function 'idx_of_trimat' into 'extcpk_to_pk' (rainbow_keypair_computation.c:30) automatically.
+INFO: [XFORM 203-602] Inlining function '_generate_secretkey' into 'generate_keypair' (rainbow_keypair.c:258) automatically.
+INFO: [XFORM 203-602] Inlining function 'calculate_Q_from_F' into 'generate_keypair' (rainbow_keypair.c:263) automatically.
+INFO: [XFORM 203-602] Inlining function 'calculate_t4' into 'generate_keypair' (rainbow_keypair.c:264) automatically.
+INFO: [XFORM 203-602] Inlining function 'obsfucate_l1_polys.3' into 'generate_keypair' (rainbow_keypair.c:266) automatically.
+INFO: [XFORM 203-602] Inlining function 'obsfucate_l1_polys.2' into 'generate_keypair' (rainbow_keypair.c:267) automatically.
+INFO: [XFORM 203-602] Inlining function 'obsfucate_l1_polys' into 'generate_keypair' (rainbow_keypair.c:269) automatically.
+INFO: [XFORM 203-602] Inlining function 'obsfucate_l1_polys.1' into 'generate_keypair' (rainbow_keypair.c:270) automatically.
+WARNING: [XFORM 203-561] Updating loop upper bound from 36 to 35 for loop 'Loop-0-0' in function 'UpperTrianglize'.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (aes.c:170:7) to (aes.c:167:33) in function 'KeyExpansion.1'... converting 5 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (aes.c:170:7) to (aes.c:167:33) in function 'KeyExpansion'... converting 5 basic blocks.
+INFO: [XFORM 203-11] Balancing expressions in function 'sha256_transform' (utils_hash.c:166)...10 expression(s) balanced.
+INFO: [XFORM 203-11] Balancing expressions in function 'gf256v_mul_u3281' (./gf16.h:39:33)...14 expression(s) balanced.
+INFO: [XFORM 203-11] Balancing expressions in function 'gf256v_mul_u32' (./gf16.h:258)...14 expression(s) balanced.
+INFO: [XFORM 203-11] Balancing expressions in function 'Cipher' (aes.c:411)...9 expression(s) balanced.
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:10:06 ; elapsed = 00:10:12 . Memory (MB): peak = 1330.461 ; gain = 880.020 ; free physical = 1838 ; free virtual = 451133
+WARNING: [XFORM 203-631] Renaming function 'randombytes_with_state8448.1' to 'randombytes_with_sta' (rng.c:436:33)
+WARNING: [XFORM 203-631] Renaming function 'randombytes_with_state8448' to 'randombytes_with_sta.1' (rng.c:436:33)
+WARNING: [XFORM 203-631] Renaming function 'randombytes_with_state512.1' to 'randombytes_with_sta.2' (rng.c:393:33)
+WARNING: [XFORM 203-631] Renaming function 'randombytes_with_state512' to 'randombytes_with_sta.3' (rng.c:393:33)
+WARNING: [XFORM 203-631] Renaming function 'randombytes_with_state16384.1' to 'randombytes_with_sta.4' (rng.c:350:33)
+WARNING: [XFORM 203-631] Renaming function 'randombytes_with_state16384' to 'randombytes_with_sta.5' (rng.c:350:33)
+WARNING: [XFORM 203-631] Renaming function 'calculate_Q_from_F_ref' to 'calculate_Q_from_F_r' (rainbow_keypair_computation.c:45:34)
+WARNING: [XFORM 203-631] Renaming function 'batch_trimat_madd_gf256.1' to 'batch_trimat_madd_gf' (parallel_matrix_op.c:45:13)
+WARNING: [XFORM 203-631] Renaming function 'batch_trimat_madd_gf256' to 'batch_trimat_madd_gf.1' (parallel_matrix_op.c:45:13)
+WARNING: [XFORM 203-631] Renaming function 'batch_trimatTr_madd_gf256.1' to 'batch_trimatTr_madd_' (parallel_matrix_op.c:40:13)
+WARNING: [XFORM 203-631] Renaming function 'batch_trimatTr_madd_gf256' to 'batch_trimatTr_madd_.1' (parallel_matrix_op.c:40:13)
+WARNING: [XFORM 203-631] Renaming function 'batch_matTr_madd_gf256.2' to 'batch_matTr_madd_gf2' (parallel_matrix_op.c:45:38)
+WARNING: [XFORM 203-631] Renaming function 'batch_matTr_madd_gf256' to 'batch_matTr_madd_gf2.1' (parallel_matrix_op.c:45:38)
+WARNING: [XFORM 203-631] Renaming function 'batch_bmatTr_madd_gf256' to 'batch_bmatTr_madd_gf' (parallel_matrix_op.c:45:40)
+WARNING: [XFORM 203-631] Renaming function 'AES256_CTR_DRBG_Update2.1' to 'AES256_CTR_DRBG_Upda' (rng.c:255:19)
+WARNING: [XFORM 203-631] Renaming function 'AES256_CTR_DRBG_Update2' to 'AES256_CTR_DRBG_Upda.1' (rng.c:255:19)
+WARNING: [XFORM 203-631] Renaming function 'AES256_CTR_DRBG_Update' to 'AES256_CTR_DRBG_Upda.2' (rng.c:222:19)
+WARNING: [HLS 200-456] Ignoring allocation pragma because function \'hash_msg\' is missing or was optimized away (utils_hash.c:362:1)
+WARNING: [HLS 200-456] Ignoring allocation pragma because function \'sha256_update\' is missing or was optimized away (utils_hash.c:223:1)
+WARNING: [HLS 200-456] Ignoring allocation pragma because function \'sha256_final\' is missing or was optimized away (utils_hash.c:238:1)
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:25:37 ; elapsed = 00:25:51 . Memory (MB): peak = 2242.453 ; gain = 1792.012 ; free physical = 1072 ; free virtual = 450325
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'crypto_sign_keypair' ...
+WARNING: [SYN 201-103] Legalizing function name 'AES256_ECB.1' to 'AES256_ECB_1'.
+WARNING: [SYN 201-103] Legalizing function name 'AES256_CTR_DRBG_Upda.1' to 'AES256_CTR_DRBG_Upda_1'.
+WARNING: [SYN 201-103] Legalizing function name '_hash' to 'p_hash'.
+WARNING: [SYN 201-103] Legalizing function name 'KeyExpansion.1' to 'KeyExpansion_1'.
+WARNING: [SYN 201-103] Legalizing function name 'AES256_ECB.3' to 'AES256_ECB_3'.
+WARNING: [SYN 201-103] Legalizing function name 'AES256_CTR_DRBG_Upda.2' to 'AES256_CTR_DRBG_Upda_2'.
+WARNING: [SYN 201-103] Legalizing function name 'AES256_ECB.2' to 'AES256_ECB_2'.
+WARNING: [SYN 201-103] Legalizing function name 'randombytes_with_sta.2' to 'randombytes_with_sta_2'.
+WARNING: [SYN 201-103] Legalizing function name 'randombytes_with_sta.3' to 'randombytes_with_sta_3'.
+WARNING: [SYN 201-103] Legalizing function name 'randombytes_with_sta.4' to 'randombytes_with_sta_4'.
+WARNING: [SYN 201-103] Legalizing function name 'randombytes_with_sta.1' to 'randombytes_with_sta_1'.
+WARNING: [SYN 201-103] Legalizing function name 'randombytes_with_sta.5' to 'randombytes_with_sta_5'.
+WARNING: [SYN 201-103] Legalizing function name '_gf256v_madd_u32' to 'p_gf256v_madd_u32'.
+WARNING: [SYN 201-103] Legalizing function name '_gf256v_madd_u32.2' to 'p_gf256v_madd_u32_2'.
+WARNING: [SYN 201-103] Legalizing function name '_gf256v_add_u3248' to 'p_gf256v_add_u3248'.
+WARNING: [SYN 201-103] Legalizing function name 'batch_trimatTr_madd_' to 'batch_trimatTr_madd_s'.
+WARNING: [SYN 201-103] Legalizing function name '_gf256v_madd_u32.5' to 'p_gf256v_madd_u32_5'.
+WARNING: [SYN 201-103] Legalizing function name '_gf256v_madd_u32.4' to 'p_gf256v_madd_u32_4'.
+WARNING: [SYN 201-103] Legalizing function name 'batch_matTr_madd_gf2.1' to 'batch_matTr_madd_gf2_1'.
+WARNING: [SYN 201-103] Legalizing function name '_gf256v_madd_u32.1' to 'p_gf256v_madd_u32_1'.
+WARNING: [SYN 201-103] Legalizing function name 'batch_trimat_madd_gf.1' to 'batch_trimat_madd_gf_1'.
+WARNING: [SYN 201-103] Legalizing function name '_gf256v_madd_u32.3' to 'p_gf256v_madd_u32_3'.
+WARNING: [SYN 201-103] Legalizing function name 'batch_trimatTr_madd_.1' to 'batch_trimatTr_madd_1'.
+WARNING: [SYN 201-103] Legalizing function name '_gf256v_add_u3273.1' to 'p_gf256v_add_u3273_1'.
+WARNING: [SYN 201-103] Legalizing function name '_gf256v_madd_u3274' to 'p_gf256v_madd_u3274'.
+WARNING: [SYN 201-103] Legalizing function name 'gf256mat_prod_ref.1' to 'gf256mat_prod_ref_1'.
+WARNING: [SYN 201-103] Legalizing function name '_gf256v_add_u32' to 'p_gf256v_add_u32'.
+WARNING: [SYN 201-103] Legalizing function name '_gf256v_add_u3273' to 'p_gf256v_add_u3273'.
+WARNING: [SYN 201-103] Legalizing function name '_gf256v_madd_u3274.1' to 'p_gf256v_madd_u3274_1'.
+WARNING: [SYN 201-103] Legalizing function name '_gf256v_add_u32.4' to 'p_gf256v_add_u32_4'.
+WARNING: [SYN 201-103] Legalizing function name 'gf256mat_prod_ref.1100' to 'gf256mat_prod_ref_1100'.
+WARNING: [SYN 201-103] Legalizing function name '_gf256v_add_u32.3' to 'p_gf256v_add_u32_3'.
+WARNING: [SYN 201-103] Legalizing function name 'gf256mat_prod_ref.1102' to 'gf256mat_prod_ref_1102'.
+WARNING: [SYN 201-103] Legalizing function name '_gf256v_add_u32.1' to 'p_gf256v_add_u32_1'.
+WARNING: [SYN 201-103] Legalizing function name 'gf256mat_prod_ref.1101' to 'gf256mat_prod_ref_1101'.
+WARNING: [SYN 201-103] Legalizing function name '_gf256v_add_u32.2' to 'p_gf256v_add_u32_2'.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'KeyExpansion' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 1562.5 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-434] Only 0 loops out of a total 2 loops have been pipelined in this design.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.45 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'AddRoundKey' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.53 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.12 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'SubBytes' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.19 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.09 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'Cipher' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.36 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.54 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'AES256_ECB_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.76 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.59 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'AES256_ECB' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.91 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.71 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'AES256_CTR_DRBG_Upda_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.8 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.27 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'randombytes' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.52 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.49 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'sha256_transform' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.88 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.47 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'p_hash' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.93 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.69 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'KeyExpansion_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.99 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.45 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'AES256_ECB_3' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.77 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.69 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'AES256_CTR_DRBG_Upda_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.83 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.31 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'prng_set' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.55 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.5 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'AES256_ECB_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.85 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.59 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'AES256_CTR_DRBG_Upda' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.69 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.27 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'randombytes_with_sta_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.51 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.49 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'randombytes_with_sta_3' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.75 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.5 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'randombytes_with_sta' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.75 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.5 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'randombytes_with_sta_4' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.77 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.51 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'randombytes_with_sta_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.74 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.5 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'randombytes_with_sta_5' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.74 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.51 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'gf256v_mul_u32' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.98 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.71 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'p_gf256v_madd_u32' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.91 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.31 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'batch_trimat_madd_gf' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.54 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.26 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'p_gf256v_madd_u32_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.53 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.3 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'batch_matTr_madd_gf2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.47 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.18 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'p_gf256v_add_u3248' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop '_gf256v_add_u32_label20'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 1)
+   between 'store' operation (./blas_u32.h:17) of variable 'tmp_569', ./blas_u32.h:17 on array 'accu_b' and 'load' operation ('accu_b_load_128', ./blas_u32.h:17) on array 'accu_b'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 2, distance = 1, offset = 1)
+   between 'store' operation (./blas_u32.h:17) of variable 'tmp_574', ./blas_u32.h:17 on array 'accu_b' and 'load' operation ('accu_b_load_128', ./blas_u32.h:17) on array 'accu_b'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 3, distance = 1, offset = 1)
+   between 'store' operation (./blas_u32.h:17) of variable 'tmp_574', ./blas_u32.h:17 on array 'accu_b' and 'load' operation ('accu_b_load_128', ./blas_u32.h:17) on array 'accu_b'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 4, distance = 1, offset = 1)
+   between 'store' operation (./blas_u32.h:17) of variable 'tmp_579', ./blas_u32.h:17 on array 'accu_b' and 'load' operation ('accu_b_load_128', ./blas_u32.h:17) on array 'accu_b'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 130, distance = 1, offset = 1)
+   between 'store' operation (./blas_u32.h:17) of variable 'tmp_894', ./blas_u32.h:17 on array 'accu_b' and 'load' operation ('accu_b_load_128', ./blas_u32.h:17) on array 'accu_b'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 193, distance = 1, offset = 1)
+   between 'store' operation (./blas_u32.h:17) of variable 'tmp_1049', ./blas_u32.h:17 on array 'accu_b' and 'load' operation ('accu_b_load_128', ./blas_u32.h:17) on array 'accu_b'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 225, distance = 1, offset = 1)
+   between 'store' operation (./blas_u32.h:17) of variable 'tmp_1129', ./blas_u32.h:17 on array 'accu_b' and 'load' operation ('accu_b_load_128', ./blas_u32.h:17) on array 'accu_b'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 241, distance = 1, offset = 1)
+   between 'store' operation (./blas_u32.h:17) of variable 'tmp_1169', ./blas_u32.h:17 on array 'accu_b' and 'load' operation ('accu_b_load_128', ./blas_u32.h:17) on array 'accu_b'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 249, distance = 1, offset = 1)
+   between 'store' operation (./blas_u32.h:17) of variable 'tmp_1189', ./blas_u32.h:17 on array 'accu_b' and 'load' operation ('accu_b_load_128', ./blas_u32.h:17) on array 'accu_b'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 253, distance = 1, offset = 1)
+   between 'store' operation (./blas_u32.h:17) of variable 'tmp_1199', ./blas_u32.h:17 on array 'accu_b' and 'load' operation ('accu_b_load_128', ./blas_u32.h:17) on array 'accu_b'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 255, distance = 1, offset = 1)
+   between 'store' operation (./blas_u32.h:17) of variable 'tmp_1206', ./blas_u32.h:17 on array 'accu_b' and 'load' operation ('accu_b_load_128', ./blas_u32.h:17) on array 'accu_b'.
+WARNING: [SCHED 204-69] Unable to schedule 'load' operation ('a_load_129', ./blas_u32.h:17) on array 'a' due to limited memory ports. Please consider using a memory core with more ports or partitioning the array 'a'.
+INFO: [SCHED 204-61] Unable to satisfy pipeline directive: Unable to pipeline the region.
+INFO: [SCHED 204-61] Pipelining loop '_gf256v_add_u32_label21'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 1)
+   between 'store' operation (./blas_u32.h:22) of variable 'tmp_277', ./blas_u32.h:22 on array 'accu_b' and 'load' operation ('accu_b_load', ./blas_u32.h:22) on array 'accu_b'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 2, distance = 1, offset = 1)
+   between 'store' operation (./blas_u32.h:22) of variable 'tmp_384_1', ./blas_u32.h:22 on array 'accu_b' and 'load' operation ('accu_b_load', ./blas_u32.h:22) on array 'accu_b'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 3, distance = 1, offset = 1)
+   between 'store' operation (./blas_u32.h:22) of variable 'tmp_384_1', ./blas_u32.h:22 on array 'accu_b' and 'load' operation ('accu_b_load', ./blas_u32.h:22) on array 'accu_b'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 4, distance = 1, offset = 1)
+   between 'store' operation (./blas_u32.h:22) of variable 'tmp_384_2', ./blas_u32.h:22 on array 'accu_b' and 'load' operation ('accu_b_load', ./blas_u32.h:22) on array 'accu_b'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 130, distance = 1, offset = 1)
+   between 'store' operation (./blas_u32.h:22) of variable 'tmp_384_64', ./blas_u32.h:22 on array 'accu_b' and 'load' operation ('accu_b_load', ./blas_u32.h:22) on array 'accu_b'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 193, distance = 1, offset = 1)
+   between 'store' operation (./blas_u32.h:22) of variable 'tmp_384_95', ./blas_u32.h:22 on array 'accu_b' and 'load' operation ('accu_b_load', ./blas_u32.h:22) on array 'accu_b'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 225, distance = 1, offset = 1)
+   between 'store' operation (./blas_u32.h:22) of variable 'tmp_384_111', ./blas_u32.h:22 on array 'accu_b' and 'load' operation ('accu_b_load', ./blas_u32.h:22) on array 'accu_b'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 241, distance = 1, offset = 1)
+   between 'store' operation (./blas_u32.h:22) of variable 'tmp_384_119', ./blas_u32.h:22 on array 'accu_b' and 'load' operation ('accu_b_load', ./blas_u32.h:22) on array 'accu_b'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 249, distance = 1, offset = 1)
+   between 'store' operation (./blas_u32.h:22) of variable 'tmp_384_123', ./blas_u32.h:22 on array 'accu_b' and 'load' operation ('accu_b_load', ./blas_u32.h:22) on array 'accu_b'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 253, distance = 1, offset = 1)
+   between 'store' operation (./blas_u32.h:22) of variable 'tmp_384_125', ./blas_u32.h:22 on array 'accu_b' and 'load' operation ('accu_b_load', ./blas_u32.h:22) on array 'accu_b'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 255, distance = 1, offset = 1)
+   between 'store' operation (./blas_u32.h:22) of variable 'tmp_384_126', ./blas_u32.h:22 on array 'accu_b' and 'load' operation ('accu_b_load', ./blas_u32.h:22) on array 'accu_b'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 256, Depth = 256.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 1037.42 seconds; current allocated memory: 0.301 MB.
+WARNING: [HLS 200-433] Loop - _gf256v_add_u32_label21 has an initiation interval that is equal to the pipeline depth (256) - this results in an unpipelined loop.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 67.37 seconds; current allocated memory: 0.301 MB.
+WARNING: [HLS 200-433] Loop - _gf256v_add_u32_label21 has an initiation interval that is equal to the pipeline depth (256) - this results in an unpipelined loop.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'UpperTrianglize' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 33.76 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 2.01 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'batch_trimatTr_madd_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 5.67 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.26 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'p_gf256v_madd_u32_5' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.54 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.31 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'batch_mat_madd_gf256' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.5 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.23 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'p_gf256v_madd_u32_4' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.62 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.5 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'batch_bmatTr_madd_gf' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.74 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.25 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'batch_matTr_madd_gf2_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.48 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.22 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'p_gf256v_madd_u32_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.52 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.32 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'batch_trimat_madd_gf_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.54 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.27 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'p_gf256v_madd_u32_3' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.55 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.31 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'batch_trimatTr_madd_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.54 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.26 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'calculate_Q_from_F_r' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.83 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 14.27 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'p_gf256v_add_u3273_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function '_gf256v_add_u3273.1'.
+WARNING: [SCHED 204-69] Unable to schedule 'store' operation (./blas_u32.h:17) of constant 0 on array 'a' due to limited memory ports. Please consider using a memory core with more ports or partitioning the array 'a'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 34, Depth = 34.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 8.34 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.47 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'gf256v_mul_u3281' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.77 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.71 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'p_gf256v_madd_u3274' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.91 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.3 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'gf256mat_prod_ref_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.76 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 1.06 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'p_gf256v_add_u32' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function '_gf256v_add_u32'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 1)
+   between 'store' operation (./blas_u32.h:17) of variable 'tmp_1255', ./blas_u32.h:17 on array 'accu_b' and 'load' operation ('accu_b_load_656', ./blas_u32.h:12) on array 'accu_b'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 2, distance = 1, offset = 1)
+   between 'store' operation (./blas_u32.h:17) of variable 'tmp_1256', ./blas_u32.h:17 on array 'accu_b' and 'load' operation ('accu_b_load_656', ./blas_u32.h:12) on array 'accu_b'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 3, distance = 1, offset = 1)
+   between 'store' operation (./blas_u32.h:17) of variable 'tmp_1256', ./blas_u32.h:17 on array 'accu_b' and 'load' operation ('accu_b_load_656', ./blas_u32.h:12) on array 'accu_b'.
+WARNING: [SCHED 204-69] Unable to schedule 'load' operation ('accu_b_load_656', ./blas_u32.h:12) on array 'accu_b' due to limited memory ports. Please consider using a memory core with more ports or partitioning the array 'accu_b'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 69, Depth = 69.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 6.92 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 2.25 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'p_gf256v_add_u3273' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function '_gf256v_add_u3273'.
+WARNING: [SCHED 204-69] Unable to schedule 'store' operation (./blas_u32.h:17) of constant 0 on array 'a' due to limited memory ports. Please consider using a memory core with more ports or partitioning the array 'a'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 18, Depth = 18.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 2.41 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.28 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'p_gf256v_madd_u3274_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.38 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.29 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'gf256mat_prod_ref' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.76 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 1.05 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'p_gf256v_add_u32_4' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function '_gf256v_add_u32.4'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 1)
+   between 'store' operation (./blas_u32.h:17) of variable 'tmp_1211', ./blas_u32.h:17 on array 'accu_b' and 'load' operation ('accu_b_load_640') on array 'accu_b'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 2, distance = 1, offset = 1)
+   between 'store' operation (./blas_u32.h:17) of variable 'tmp_1212', ./blas_u32.h:17 on array 'accu_b' and 'load' operation ('accu_b_load_640') on array 'accu_b'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 3, distance = 1, offset = 1)
+   between 'store' operation (./blas_u32.h:17) of variable 'tmp_1212', ./blas_u32.h:17 on array 'accu_b' and 'load' operation ('accu_b_load_640') on array 'accu_b'.
+WARNING: [SCHED 204-69] Unable to schedule 'load' operation ('accu_b_load_640') on array 'accu_b' due to limited memory ports. Please consider using a memory core with more ports or partitioning the array 'accu_b'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 37, Depth = 37.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 2.82 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 1.23 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'gf256mat_prod_ref_1100' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 1.6 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 1.05 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'p_gf256v_add_u32_3' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function '_gf256v_add_u32.3'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 1)
+   between 'store' operation (./blas_u32.h:17) of variable 'tmp_1222', ./blas_u32.h:17 on array 'accu_b' and 'load' operation ('accu_b_load_644') on array 'accu_b'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 2, distance = 1, offset = 1)
+   between 'store' operation (./blas_u32.h:17) of variable 'tmp_1223', ./blas_u32.h:17 on array 'accu_b' and 'load' operation ('accu_b_load_644') on array 'accu_b'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 3, distance = 1, offset = 1)
+   between 'store' operation (./blas_u32.h:17) of variable 'tmp_1223', ./blas_u32.h:17 on array 'accu_b' and 'load' operation ('accu_b_load_644') on array 'accu_b'.
+WARNING: [SCHED 204-69] Unable to schedule 'load' operation ('accu_b_load_644') on array 'accu_b' due to limited memory ports. Please consider using a memory core with more ports or partitioning the array 'accu_b'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 37, Depth = 37.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 2.83 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 1.24 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'gf256mat_prod_ref_1102' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 1.6 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 1.05 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'p_gf256v_add_u32_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function '_gf256v_add_u32.1'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 1)
+   between 'store' operation (./blas_u32.h:17) of variable 'tmp_1244', ./blas_u32.h:17 on array 'accu_b' and 'load' operation ('accu_b_load_652', ./blas_u32.h:12) on array 'accu_b'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 2, distance = 1, offset = 1)
+   between 'store' operation (./blas_u32.h:17) of variable 'tmp_1245', ./blas_u32.h:17 on array 'accu_b' and 'load' operation ('accu_b_load_652', ./blas_u32.h:12) on array 'accu_b'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 3, distance = 1, offset = 1)
+   between 'store' operation (./blas_u32.h:17) of variable 'tmp_1245', ./blas_u32.h:17 on array 'accu_b' and 'load' operation ('accu_b_load_652', ./blas_u32.h:12) on array 'accu_b'.
+WARNING: [SCHED 204-69] Unable to schedule 'load' operation ('accu_b_load_652', ./blas_u32.h:12) on array 'accu_b' due to limited memory ports. Please consider using a memory core with more ports or partitioning the array 'accu_b'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 37, Depth = 37.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 2.85 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 1.25 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'gf256mat_prod_ref_1101' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 1.59 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 1.05 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'p_gf256v_add_u32_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function '_gf256v_add_u32.2'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 1)
+   between 'store' operation (./blas_u32.h:17) of variable 'tmp_1233', ./blas_u32.h:17 on array 'accu_b' and 'load' operation ('accu_b_load_648') on array 'accu_b'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 2, distance = 1, offset = 1)
+   between 'store' operation (./blas_u32.h:17) of variable 'tmp_1234', ./blas_u32.h:17 on array 'accu_b' and 'load' operation ('accu_b_load_648') on array 'accu_b'.
+WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 3, distance = 1, offset = 1)
+   between 'store' operation (./blas_u32.h:17) of variable 'tmp_1234', ./blas_u32.h:17 on array 'accu_b' and 'load' operation ('accu_b_load_648') on array 'accu_b'.
+WARNING: [SCHED 204-69] Unable to schedule 'load' operation ('accu_b_load_648') on array 'accu_b' due to limited memory ports. Please consider using a memory core with more ports or partitioning the array 'accu_b'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 37, Depth = 37.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 2.82 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 1.23 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'extcpk_to_pk' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 1.95 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 1.22 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'generate_keypair' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'generate_keypair_label0'.
+WARNING: [SCHED 204-69] Unable to schedule 'load' operation ('pk_tmp_pk_load_2', rainbow_keypair.c:278) on array 'pk_tmp.pk', rainbow_keypair.c:255 due to limited memory ports. Please consider using a memory core with more ports or partitioning the array 'pk_tmp_pk'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 65.
+INFO: [SCHED 204-61] Pipelining loop 'generate_keypair_label2'.
+WARNING: [SCHED 204-69] Unable to schedule 'load' operation ('sk_tmp_l2_F5_load_2', rainbow_keypair.c:322) on array 'sk_tmp.l2_F5', rainbow_keypair.c:256 due to limited memory ports. Please consider using a memory core with more ports or partitioning the array 'sk_tmp_l2_F5'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 65.
+INFO: [SCHED 204-61] Pipelining loop 'generate_keypair_label1'.
+WARNING: [SCHED 204-69] Unable to schedule 'load' operation ('sk_tmp_l2_F6_load_2', rainbow_keypair.c:326) on array 'sk_tmp.l2_F6', rainbow_keypair.c:256 due to limited memory ports. Please consider using a memory core with more ports or partitioning the array 'sk_tmp_l2_F6'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 65.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 14.04 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 45.08 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'crypto_sign_keypair' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 23.6 seconds; current allocated memory: 0.301 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 9.65 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'KeyExpansion' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'KeyExpansion'.
+INFO: [HLS 200-111]  Elapsed time: 14.17 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'AddRoundKey' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'AddRoundKey'.
+INFO: [HLS 200-111]  Elapsed time: 0.67 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'SubBytes' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'SubBytes'.
+INFO: [HLS 200-111]  Elapsed time: 0.23 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'Cipher' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'Cipher'.
+INFO: [HLS 200-111]  Elapsed time: 0.24 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'AES256_ECB_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'AES256_ECB_1_ctx_RoundKey' to 'AES256_ECB_1_ctx_bkb' due to the length limit 20
+INFO: [RTGEN 206-100] Finished creating RTL model for 'AES256_ECB_1'.
+INFO: [HLS 200-111]  Elapsed time: 0.76 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'AES256_ECB' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'AES256_ECB_ctx_RoundKey' to 'AES256_ECB_ctx_Rocud' due to the length limit 20
+INFO: [RTGEN 206-100] Finished creating RTL model for 'AES256_ECB'.
+INFO: [HLS 200-111]  Elapsed time: 0.77 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'AES256_CTR_DRBG_Upda_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'AES256_CTR_DRBG_Upda_1_temp' to 'AES256_CTR_DRBG_UdEe' due to the length limit 20
+INFO: [RTGEN 206-100] Finished creating RTL model for 'AES256_CTR_DRBG_Upda_1'.
+INFO: [HLS 200-111]  Elapsed time: 0.92 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'randombytes' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'randombytes'.
+INFO: [HLS 200-111]  Elapsed time: 0.55 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'sha256_transform' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'sha256_transform'.
+INFO: [HLS 200-111]  Elapsed time: 0.84 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'p_hash' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'p_hash'.
+INFO: [HLS 200-111]  Elapsed time: 0.89 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'KeyExpansion_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'KeyExpansion_1'.
+INFO: [HLS 200-111]  Elapsed time: 1.15 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'AES256_ECB_3' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'AES256_ECB_3_ctx_RoundKey' to 'AES256_ECB_3_ctx_eOg' due to the length limit 20
+INFO: [RTGEN 206-100] Finished creating RTL model for 'AES256_ECB_3'.
+INFO: [HLS 200-111]  Elapsed time: 0.8 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'AES256_CTR_DRBG_Upda_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'AES256_CTR_DRBG_Upda_2_temp' to 'AES256_CTR_DRBG_UfYi' due to the length limit 20
+INFO: [RTGEN 206-100] Finished creating RTL model for 'AES256_CTR_DRBG_Upda_2'.
+INFO: [HLS 200-111]  Elapsed time: 0.99 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'prng_set' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'prng_set_seed_material' to 'prng_set_seed_matg8j' due to the length limit 20
+INFO: [RTGEN 206-100] Finished creating RTL model for 'prng_set'.
+INFO: [HLS 200-111]  Elapsed time: 0.73 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'AES256_ECB_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'AES256_ECB_2_ctx_RoundKey' to 'AES256_ECB_2_ctx_hbi' due to the length limit 20
+INFO: [RTGEN 206-100] Finished creating RTL model for 'AES256_ECB_2'.
+INFO: [HLS 200-111]  Elapsed time: 0.97 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'AES256_CTR_DRBG_Upda' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'AES256_CTR_DRBG_Upda_temp' to 'AES256_CTR_DRBG_Uibs' due to the length limit 20
+INFO: [RTGEN 206-100] Finished creating RTL model for 'AES256_CTR_DRBG_Upda'.
+INFO: [HLS 200-111]  Elapsed time: 0.85 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'randombytes_with_sta_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'randombytes_with_sta_2_block' to 'randombytes_with_jbC' due to the length limit 20
+INFO: [RTGEN 206-100] Finished creating RTL model for 'randombytes_with_sta_2'.
+INFO: [HLS 200-111]  Elapsed time: 0.67 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'randombytes_with_sta_3' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'randombytes_with_sta_3_block' to 'randombytes_with_kbM' due to the length limit 20
+INFO: [RTGEN 206-100] Finished creating RTL model for 'randombytes_with_sta_3'.
+INFO: [HLS 200-111]  Elapsed time: 0.93 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'randombytes_with_sta' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'randombytes_with_sta_block' to 'randombytes_with_lbW' due to the length limit 20
+INFO: [RTGEN 206-100] Finished creating RTL model for 'randombytes_with_sta'.
+INFO: [HLS 200-111]  Elapsed time: 0.93 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'randombytes_with_sta_4' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'randombytes_with_sta_4_block' to 'randombytes_with_mb6' due to the length limit 20
+INFO: [RTGEN 206-100] Finished creating RTL model for 'randombytes_with_sta_4'.
+INFO: [HLS 200-111]  Elapsed time: 0.91 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'randombytes_with_sta_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'randombytes_with_sta_1_block' to 'randombytes_with_ncg' due to the length limit 20
+INFO: [RTGEN 206-100] Finished creating RTL model for 'randombytes_with_sta_1'.
+INFO: [HLS 200-111]  Elapsed time: 0.93 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'randombytes_with_sta_5' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'randombytes_with_sta_5_block' to 'randombytes_with_ocq' due to the length limit 20
+INFO: [RTGEN 206-100] Finished creating RTL model for 'randombytes_with_sta_5'.
+INFO: [HLS 200-111]  Elapsed time: 0.94 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'gf256v_mul_u32' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'gf256v_mul_u32'.
+INFO: [HLS 200-111]  Elapsed time: 0.97 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'p_gf256v_madd_u32' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'p_gf256v_madd_u32'.
+INFO: [HLS 200-111]  Elapsed time: 1.34 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'batch_trimat_madd_gf' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'batch_trimat_madd_gf'.
+INFO: [HLS 200-111]  Elapsed time: 0.79 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'p_gf256v_madd_u32_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'p_gf256v_madd_u32_2'.
+INFO: [HLS 200-111]  Elapsed time: 0.78 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'batch_matTr_madd_gf2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'batch_matTr_madd_gf2'.
+INFO: [HLS 200-111]  Elapsed time: 0.8 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'p_gf256v_add_u3248' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'p_gf256v_add_u3248'.
+INFO: [HLS 200-111]  Elapsed time: 16.13 seconds; current allocated memory: 0.301 MB.
+WARNING: [HLS 200-433] Loop - _gf256v_add_u32_label21 has an initiation interval that is equal to the pipeline depth (256) - this results in an unpipelined loop.
+WARNING: [HLS 200-433] Loop - _gf256v_add_u32_label21 has an initiation interval that is equal to the pipeline depth (256) - this results in an unpipelined loop.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'UpperTrianglize' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'UpperTrianglize'.
+INFO: [HLS 200-111]  Elapsed time: 58.7 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'batch_trimatTr_madd_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'batch_trimatTr_madd_s'.
+INFO: [HLS 200-111]  Elapsed time: 7.11 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'p_gf256v_madd_u32_5' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'p_gf256v_madd_u32_5'.
+INFO: [HLS 200-111]  Elapsed time: 2.18 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'batch_mat_madd_gf256' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'batch_mat_madd_gf256'.
+INFO: [HLS 200-111]  Elapsed time: 2.25 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'p_gf256v_madd_u32_4' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'p_gf256v_madd_u32_4'.
+INFO: [HLS 200-111]  Elapsed time: 2.12 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'batch_bmatTr_madd_gf' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'batch_bmatTr_madd_gf'.
+INFO: [HLS 200-111]  Elapsed time: 2.58 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'batch_matTr_madd_gf2_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'batch_matTr_madd_gf2_1'.
+INFO: [HLS 200-111]  Elapsed time: 2.2 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'p_gf256v_madd_u32_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'p_gf256v_madd_u32_1'.
+INFO: [HLS 200-111]  Elapsed time: 2.15 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'batch_trimat_madd_gf_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'batch_trimat_madd_gf_1'.
+INFO: [HLS 200-111]  Elapsed time: 2.27 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'p_gf256v_madd_u32_3' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'p_gf256v_madd_u32_3'.
+INFO: [HLS 200-111]  Elapsed time: 2.28 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'batch_trimatTr_madd_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'batch_trimatTr_madd_1'.
+INFO: [HLS 200-111]  Elapsed time: 2.28 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'calculate_Q_from_F_r' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'calculate_Q_from_F_r_empty_110' to 'calculate_Q_from_pcA' due to the length limit 20
+INFO: [RTGEN 206-100] Finished creating RTL model for 'calculate_Q_from_F_r'.
+INFO: [HLS 200-111]  Elapsed time: 2.36 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'p_gf256v_add_u3273_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'p_gf256v_add_u3273_1'.
+INFO: [HLS 200-111]  Elapsed time: 10.38 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'gf256v_mul_u3281' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'gf256v_mul_u3281'.
+INFO: [HLS 200-111]  Elapsed time: 2.31 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'p_gf256v_madd_u3274' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'p_gf256v_madd_u3274'.
+INFO: [HLS 200-111]  Elapsed time: 3.11 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'gf256mat_prod_ref_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'gf256mat_prod_ref_1'.
+INFO: [HLS 200-111]  Elapsed time: 2.54 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'p_gf256v_add_u32' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'p_gf256v_add_u32'.
+INFO: [HLS 200-111]  Elapsed time: 3.23 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'p_gf256v_add_u3273' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'p_gf256v_add_u3273'.
+INFO: [HLS 200-111]  Elapsed time: 4.7 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'p_gf256v_madd_u3274_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'p_gf256v_madd_u3274_1'.
+INFO: [HLS 200-111]  Elapsed time: 2.24 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'gf256mat_prod_ref' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'gf256mat_prod_ref'.
+INFO: [HLS 200-111]  Elapsed time: 2.62 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'p_gf256v_add_u32_4' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'p_gf256v_add_u32_4'.
+INFO: [HLS 200-111]  Elapsed time: 3.22 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'gf256mat_prod_ref_1100' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'gf256mat_prod_ref_1100'.
+INFO: [HLS 200-111]  Elapsed time: 3.66 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'p_gf256v_add_u32_3' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'p_gf256v_add_u32_3'.
+INFO: [HLS 200-111]  Elapsed time: 3.24 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'gf256mat_prod_ref_1102' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'gf256mat_prod_ref_1102'.
+INFO: [HLS 200-111]  Elapsed time: 3.7 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'p_gf256v_add_u32_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'p_gf256v_add_u32_1'.
+INFO: [HLS 200-111]  Elapsed time: 3.37 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'gf256mat_prod_ref_1101' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'gf256mat_prod_ref_1101'.
+INFO: [HLS 200-111]  Elapsed time: 3.7 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'p_gf256v_add_u32_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'p_gf256v_add_u32_2'.
+INFO: [HLS 200-111]  Elapsed time: 3.26 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'extcpk_to_pk' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'extcpk_to_pk'.
+INFO: [HLS 200-111]  Elapsed time: 3.56 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'generate_keypair' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'generate_keypair_temp' to 'generate_keypair_qcK' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'generate_keypair_temp_1' to 'generate_keypair_rcU' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'generate_keypair_temp_2' to 'generate_keypair_sc4' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'generate_keypair_temp_3' to 'generate_keypair_tde' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'generate_keypair_temp_4' to 'generate_keypair_udo' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'generate_keypair_temp_5' to 'generate_keypair_vdy' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'generate_keypair_temp_6' to 'generate_keypair_wdI' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'generate_keypair_prng0_0_Key' to 'generate_keypair_xdS' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'generate_keypair_prng0_0_V' to 'generate_keypair_yd2' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'generate_keypair_pk_tmp_pk' to 'generate_keypair_zec' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'generate_keypair_sk_sk_seed_assign' to 'generate_keypair_Aem' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'generate_keypair_sk_tmp_s1' to 'generate_keypair_Bew' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'generate_keypair_sk_tmp_t1' to 'generate_keypair_CeG' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'generate_keypair_sk_tmp_t4' to 'generate_keypair_DeQ' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'generate_keypair_sk_tmp_t3' to 'generate_keypair_Ee0' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'generate_keypair_sk_tmp_l1_F1' to 'generate_keypair_Ffa' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'generate_keypair_sk_tmp_l1_F2' to 'generate_keypair_Gfk' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'generate_keypair_sk_tmp_l2_F1' to 'generate_keypair_Hfu' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'generate_keypair_sk_tmp_l2_F2' to 'generate_keypair_IfE' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'generate_keypair_sk_tmp_l2_F3' to 'generate_keypair_JfO' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'generate_keypair_sk_tmp_l2_F5' to 'generate_keypair_KfY' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'generate_keypair_sk_tmp_l2_F6' to 'generate_keypair_Lf8' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'generate_keypair_pk_l1_Q1' to 'generate_keypair_Mgi' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'generate_keypair_pk_l1_Q2' to 'generate_keypair_Ngs' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'generate_keypair_pk_l1_Q3' to 'generate_keypair_OgC' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'generate_keypair_pk_l1_Q5' to 'generate_keypair_PgM' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'generate_keypair_pk_l1_Q6' to 'generate_keypair_QgW' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'generate_keypair_pk_l1_Q9' to 'generate_keypair_Rg6' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'generate_keypair_pk_l2_Q1' to 'generate_keypair_Shg' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'generate_keypair_pk_l2_Q2' to 'generate_keypair_Thq' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'generate_keypair_pk_l2_Q3' to 'generate_keypair_UhA' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'generate_keypair_pk_l2_Q5' to 'generate_keypair_VhK' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'generate_keypair_pk_l2_Q6' to 'generate_keypair_WhU' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'generate_keypair_pk_l2_Q9' to 'generate_keypair_Xh4' due to the length limit 20
+INFO: [RTGEN 206-100] Finished creating RTL model for 'generate_keypair'.
+INFO: [HLS 200-111]  Elapsed time: 10.05 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'crypto_sign_keypair' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'crypto_sign_keypair/pk' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'crypto_sign_keypair/sk' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'crypto_sign_keypair/DRBG_ctx_V' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'crypto_sign_keypair/DRBG_ctx_Key' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'crypto_sign_keypair/DRBG_ctx_reseed_counter' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'crypto_sign_keypair' to 'ap_ctrl_hs'.
+WARNING: [RTGEN 206-101] Global array 'DRBG_ctx_V' will be exposed as RTL port.
+WARNING: [RTGEN 206-101] Global array 'DRBG_ctx_Key' will be exposed as RTL port.
+WARNING: [RTGEN 206-101] Global scalar 'DRBG_ctx_reseed_counter' will be exposed as RTL port.
+INFO: [SYN 201-210] Renamed object name 'crypto_sign_keypair_sk_seed' to 'crypto_sign_keypaYie' due to the length limit 20
+INFO: [RTGEN 206-100] Finished creating RTL model for 'crypto_sign_keypair'.
+INFO: [HLS 200-111]  Elapsed time: 30.82 seconds; current allocated memory: 0.301 MB.
+INFO: [RTMG 210-279] Implementing memory 'KeyExpansion_sbox_rom' using block ROMs.
+INFO: [RTMG 210-279] Implementing memory 'KeyExpansion_Rcon_rom' using distributed ROMs.
+INFO: [RTMG 210-279] Implementing memory 'SubBytes_sbox_rom' using auto ROMs.
+INFO: [RTMG 210-278] Implementing memory 'AES256_ECB_1_ctx_bkb_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'AES256_ECB_1_test_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'AES256_ECB_ctx_Rocud_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'AES256_CTR_DRBG_UdEe_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'randombytes_block_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-279] Implementing memory 'sha256_transform_k_rom' using auto ROMs.
+INFO: [RTMG 210-278] Implementing memory 'sha256_transform_m_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'p_hash_sha256_data_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'AES256_ECB_3_ctx_eOg_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'prng_set_seed_matg8j_ram (RAM)' using distributed RAMs.
+INFO: [RTMG 210-278] Implementing memory 'prng_set_buf_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'AES256_ECB_2_ctx_hbi_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'calculate_Q_from_pcA_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'generate_keypair_qcK_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'generate_keypair_wdI_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'generate_keypair_xdS_ram (RAM)' using distributed RAMs.
+INFO: [RTMG 210-278] Implementing memory 'generate_keypair_yd2_ram (RAM)' using distributed RAMs.
+INFO: [RTMG 210-278] Implementing memory 'generate_keypair_zec_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'generate_keypair_Aem_ram (RAM)' using distributed RAMs.
+INFO: [RTMG 210-278] Implementing memory 'generate_keypair_Bew_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'generate_keypair_CeG_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'generate_keypair_DeQ_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'generate_keypair_Ffa_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'generate_keypair_Gfk_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'generate_keypair_JfO_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'generate_keypair_KfY_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'generate_keypair_Lf8_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'generate_keypair_Mgi_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'generate_keypair_Ngs_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'generate_keypair_PgM_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'generate_keypair_QgW_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'crypto_sign_keypaYie_ram (RAM)' using distributed RAMs with power-on initialization.
+INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:51:00 ; elapsed = 00:52:58 . Memory (MB): peak = 3660.656 ; gain = 3210.215 ; free physical = 1499 ; free virtual = 448964
+INFO: [SYSC 207-301] Generating SystemC RTL for crypto_sign_keypair.
+INFO: [VHDL 208-304] Generating VHDL RTL for crypto_sign_keypair.
+INFO: [VLOG 209-307] Generating Verilog RTL for crypto_sign_keypair.
+INFO: [COSIM 212-47] Using XSIM for RTL simulation.
+INFO: [COSIM 212-14] Instrumenting C test bench ...
+   Build using "/opt/Xilinx2018/Vivado/2018.2/tps/lnx64/gcc-6.2.0/bin/g++"
+   Compiling apatb_crypto_sign_keypair.cpp
+   Compiling (apcc) aes.c_pre.c.tb.c
+INFO: [HLS 200-10] Running '/opt/Xilinx2018/Vivado/2018.2/bin/unwrapped/lnx64.o/apcc'
+INFO: [HLS 200-10] For user 'dss545' on host 'dark-knight.poly.edu' (Linux_x86_64 version 2.6.32-754.9.1.el6.x86_64) on Fri Apr 10 15:10:36 EDT 2020
+INFO: [HLS 200-10] On os "CentOS release 6.10 (Final)"
+INFO: [HLS 200-10] In directory '/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/wrapc'
+clang: warning: argument unused during compilation: '-fno-builtin-isinf'
+clang: warning: argument unused during compilation: '-fno-builtin-isnan'
+INFO: [APCC 202-3] Tmp directory is /tmp/apcc_db_dss545/99211586545836994084
+INFO: [APCC 202-1] APCC is done.
+   Compiling (apcc) blas_comm.c_pre.c.tb.c
+INFO: [HLS 200-10] Running '/opt/Xilinx2018/Vivado/2018.2/bin/unwrapped/lnx64.o/apcc'
+INFO: [HLS 200-10] For user 'dss545' on host 'dark-knight.poly.edu' (Linux_x86_64 version 2.6.32-754.9.1.el6.x86_64) on Fri Apr 10 15:10:46 EDT 2020
+INFO: [HLS 200-10] On os "CentOS release 6.10 (Final)"
+INFO: [HLS 200-10] In directory '/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/wrapc'
+clang: warning: argument unused during compilation: '-fno-builtin-isinf'
+clang: warning: argument unused during compilation: '-fno-builtin-isnan'
+INFO: [APCC 202-3] Tmp directory is /tmp/apcc_db_dss545/100191586545846210335
+INFO: [APCC 202-1] APCC is done.
+   Compiling (apcc) fips202.c_pre.c.tb.c
+INFO: [HLS 200-10] Running '/opt/Xilinx2018/Vivado/2018.2/bin/unwrapped/lnx64.o/apcc'
+INFO: [HLS 200-10] For user 'dss545' on host 'dark-knight.poly.edu' (Linux_x86_64 version 2.6.32-754.9.1.el6.x86_64) on Fri Apr 10 15:10:52 EDT 2020
+INFO: [HLS 200-10] On os "CentOS release 6.10 (Final)"
+INFO: [HLS 200-10] In directory '/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/wrapc'
+clang: warning: argument unused during compilation: '-fno-builtin-isinf'
+clang: warning: argument unused during compilation: '-fno-builtin-isnan'
+INFO: [APCC 202-3] Tmp directory is /tmp/apcc_db_dss545/101171586545853030582
+INFO: [APCC 202-1] APCC is done.
+   Compiling (apcc) parallel_matrix_op.c_pre.c.tb.c
+INFO: [HLS 200-10] Running '/opt/Xilinx2018/Vivado/2018.2/bin/unwrapped/lnx64.o/apcc'
+INFO: [HLS 200-10] For user 'dss545' on host 'dark-knight.poly.edu' (Linux_x86_64 version 2.6.32-754.9.1.el6.x86_64) on Fri Apr 10 15:11:00 EDT 2020
+INFO: [HLS 200-10] On os "CentOS release 6.10 (Final)"
+INFO: [HLS 200-10] In directory '/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/wrapc'
+clang: warning: argument unused during compilation: '-fno-builtin-isinf'
+clang: warning: argument unused during compilation: '-fno-builtin-isnan'
+INFO: [APCC 202-3] Tmp directory is /tmp/apcc_db_dss545/102161586545860557435
+INFO: [APCC 202-1] APCC is done.
+   Compiling (apcc) PQCgenKAT_sign.c_pre.c.tb.c
+INFO: [HLS 200-10] Running '/opt/Xilinx2018/Vivado/2018.2/bin/unwrapped/lnx64.o/apcc'
+INFO: [HLS 200-10] For user 'dss545' on host 'dark-knight.poly.edu' (Linux_x86_64 version 2.6.32-754.9.1.el6.x86_64) on Fri Apr 10 15:11:10 EDT 2020
+INFO: [HLS 200-10] On os "CentOS release 6.10 (Final)"
+INFO: [HLS 200-10] In directory '/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/wrapc'
+clang: warning: argument unused during compilation: '-fno-builtin-isinf'
+clang: warning: argument unused during compilation: '-fno-builtin-isnan'
+/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/PQCgenKAT_sign.c:60:34: warning: format specifies type 'int' but the argument has type 'unsigned long' [-Wformat]
+    sprintf(fn_req, "PQCsignKAT_%d.req", sizeof(sk_t));
+                                ~^       ~~~~~~~~~~~~
+                                %ld
+/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/PQCgenKAT_sign.c:65:34: warning: format specifies type 'int' but the argument has type 'unsigned long' [-Wformat]
+    sprintf(fn_rsp, "PQCsignKAT_%d.rsp", sizeof(sk_t));
+                                ~^       ~~~~~~~~~~~~
+                                %ld
+2 warnings generated.
+INFO: [APCC 202-3] Tmp directory is /tmp/apcc_db_dss545/103161586545870137505
+INFO: [APCC 202-1] APCC is done.
+   Compiling (apcc) rainbow.c_pre.c.tb.c
+INFO: [HLS 200-10] Running '/opt/Xilinx2018/Vivado/2018.2/bin/unwrapped/lnx64.o/apcc'
+INFO: [HLS 200-10] For user 'dss545' on host 'dark-knight.poly.edu' (Linux_x86_64 version 2.6.32-754.9.1.el6.x86_64) on Fri Apr 10 15:11:18 EDT 2020
+INFO: [HLS 200-10] On os "CentOS release 6.10 (Final)"
+INFO: [HLS 200-10] In directory '/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/wrapc'
+clang: warning: argument unused during compilation: '-fno-builtin-isinf'
+clang: warning: argument unused during compilation: '-fno-builtin-isnan'
+INFO: [APCC 202-3] Tmp directory is /tmp/apcc_db_dss545/104161586545878919140
+INFO: [APCC 202-1] APCC is done.
+   Compiling (apcc) rainbow_keypair_computation.c_pre.c.tb.c
+INFO: [HLS 200-10] Running '/opt/Xilinx2018/Vivado/2018.2/bin/unwrapped/lnx64.o/apcc'
+INFO: [HLS 200-10] For user 'dss545' on host 'dark-knight.poly.edu' (Linux_x86_64 version 2.6.32-754.9.1.el6.x86_64) on Fri Apr 10 15:11:25 EDT 2020
+INFO: [HLS 200-10] On os "CentOS release 6.10 (Final)"
+INFO: [HLS 200-10] In directory '/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/wrapc'
+clang: warning: argument unused during compilation: '-fno-builtin-isinf'
+clang: warning: argument unused during compilation: '-fno-builtin-isnan'
+INFO: [APCC 202-3] Tmp directory is /tmp/apcc_db_dss545/105151586545885451224
+INFO: [APCC 202-1] APCC is done.
+   Compiling (apcc) rainbow_keypair.c_pre.c.tb.c
+INFO: [HLS 200-10] Running '/opt/Xilinx2018/Vivado/2018.2/bin/unwrapped/lnx64.o/apcc'
+INFO: [HLS 200-10] For user 'dss545' on host 'dark-knight.poly.edu' (Linux_x86_64 version 2.6.32-754.9.1.el6.x86_64) on Fri Apr 10 15:11:34 EDT 2020
+INFO: [HLS 200-10] On os "CentOS release 6.10 (Final)"
+INFO: [HLS 200-10] In directory '/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/wrapc'
+clang: warning: argument unused during compilation: '-fno-builtin-isinf'
+clang: warning: argument unused during compilation: '-fno-builtin-isnan'
+INFO: [APCC 202-3] Tmp directory is /tmp/apcc_db_dss545/106201586545894753990
+INFO: [APCC 202-1] APCC is done.
+   Compiling (apcc) rng.c_pre.c.tb.c
+INFO: [HLS 200-10] Running '/opt/Xilinx2018/Vivado/2018.2/bin/unwrapped/lnx64.o/apcc'
+INFO: [HLS 200-10] For user 'dss545' on host 'dark-knight.poly.edu' (Linux_x86_64 version 2.6.32-754.9.1.el6.x86_64) on Fri Apr 10 15:11:40 EDT 2020
+INFO: [HLS 200-10] On os "CentOS release 6.10 (Final)"
+INFO: [HLS 200-10] In directory '/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/wrapc'
+clang: warning: argument unused during compilation: '-fno-builtin-isinf'
+clang: warning: argument unused during compilation: '-fno-builtin-isnan'
+INFO: [APCC 202-3] Tmp directory is /tmp/apcc_db_dss545/107191586545901023609
+INFO: [APCC 202-1] APCC is done.
+   Compiling (apcc) sign.c_pre.c.tb.c
+INFO: [HLS 200-10] Running '/opt/Xilinx2018/Vivado/2018.2/bin/unwrapped/lnx64.o/apcc'
+INFO: [HLS 200-10] For user 'dss545' on host 'dark-knight.poly.edu' (Linux_x86_64 version 2.6.32-754.9.1.el6.x86_64) on Fri Apr 10 15:11:47 EDT 2020
+INFO: [HLS 200-10] On os "CentOS release 6.10 (Final)"
+INFO: [HLS 200-10] In directory '/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/wrapc'
+clang: warning: argument unused during compilation: '-fno-builtin-isinf'
+clang: warning: argument unused during compilation: '-fno-builtin-isnan'
+/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/sign.c:66:35: warning: incompatible pointer types passing 'const sk_t *' (aka 'const struct rainbow_secretkey *') to parameter of type 'const unsigned char *' [-Wincompatible-pointer-types]
+ return rainbow_sign( sm + mlen , (const sk_t*)sk , digest );
+                                  ^~~~~~~~~~~~~~~
+/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow.h:25:61: note: passing argument to parameter 'sk' here
+int rainbow_sign( uint8_t * signature , const unsigned char sk[sizeof(sk_t)] , const uint8_t * digest );
+                                                            ^
+1 warning generated.
+INFO: [APCC 202-3] Tmp directory is /tmp/apcc_db_dss545/108171586545907630429
+INFO: [APCC 202-1] APCC is done.
+   Compiling (apcc) utils_hash.c_pre.c.tb.c
+INFO: [HLS 200-10] Running '/opt/Xilinx2018/Vivado/2018.2/bin/unwrapped/lnx64.o/apcc'
+INFO: [HLS 200-10] For user 'dss545' on host 'dark-knight.poly.edu' (Linux_x86_64 version 2.6.32-754.9.1.el6.x86_64) on Fri Apr 10 15:11:55 EDT 2020
+INFO: [HLS 200-10] On os "CentOS release 6.10 (Final)"
+INFO: [HLS 200-10] In directory '/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/wrapc'
+clang: warning: argument unused during compilation: '-fno-builtin-isinf'
+clang: warning: argument unused during compilation: '-fno-builtin-isnan'
+INFO: [APCC 202-3] Tmp directory is /tmp/apcc_db_dss545/109171586545916031713
+INFO: [APCC 202-1] APCC is done.
+   Compiling (apcc) utils_prng.c_pre.c.tb.c
+INFO: [HLS 200-10] Running '/opt/Xilinx2018/Vivado/2018.2/bin/unwrapped/lnx64.o/apcc'
+INFO: [HLS 200-10] For user 'dss545' on host 'dark-knight.poly.edu' (Linux_x86_64 version 2.6.32-754.9.1.el6.x86_64) on Fri Apr 10 15:12:02 EDT 2020
+INFO: [HLS 200-10] On os "CentOS release 6.10 (Final)"
+INFO: [HLS 200-10] In directory '/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/wrapc'
+clang: warning: argument unused during compilation: '-fno-builtin-isinf'
+clang: warning: argument unused during compilation: '-fno-builtin-isnan'
+INFO: [APCC 202-3] Tmp directory is /tmp/apcc_db_dss545/110131586545922289252
+INFO: [APCC 202-1] APCC is done.
+   Generating cosim.tv.exe
+INFO: [COSIM 212-302] Starting C TB testing ... 
+ 
+ mat_l1 = 1296  mat_l2 = 1296 mat_buffer = 2592 
+ 
+ -- hash len = 48 
+INFO: [COSIM 212-333] Generating C post check test bench ...
+INFO: [COSIM 212-12] Generating RTL test bench ...
+INFO: [COSIM 212-323] Starting verilog simulation. 
+INFO: [COSIM 212-15] Starting XSIM ...
+INFO: [XSIM 43-3496] Using init file passed via -initfile option "/opt/Xilinx2018/Vivado/2018.2/data/xsim/ip/xsim_ip.ini".
+Vivado Simulator 2018.2
+Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
+Running: /opt/Xilinx2018/Vivado/2018.2/bin/unwrapped/lnx64.o/xelab xil_defaultlib.apatb_crypto_sign_keypair_top glbl -prj crypto_sign_keypair.prj -L smartconnect_v1_0 -L axi_protocol_checker_v1_1_12 -L axi_protocol_checker_v1_1_13 -L axis_protocol_checker_v1_1_11 -L axis_protocol_checker_v1_1_12 -L xil_defaultlib -L unisims_ver -L xpm --initfile /opt/Xilinx2018/Vivado/2018.2/data/xsim/ip/xsim_ip.ini --lib ieee_proposed=./ieee_proposed -s crypto_sign_keypair 
+Multi-threading is on. Using 38 slave threads.
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/glbl.v" into library work
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/prng_set.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module prng_set
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/batch_matTr_madd_gf2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module batch_matTr_madd_gf2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/AES256_ECB.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AES256_ECB
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/gf256mat_prod_ref_1100.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module gf256mat_prod_ref_1100
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/generate_keypair_Aem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module generate_keypair_Aem_ram
+INFO: [VRFC 10-311] analyzing module generate_keypair_Aem
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/generate_keypair_JfO.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module generate_keypair_JfO_ram
+INFO: [VRFC 10-311] analyzing module generate_keypair_JfO
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/p_gf256v_madd_u32_3.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module p_gf256v_madd_u32_3
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/generate_keypair_wdI.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module generate_keypair_wdI_ram
+INFO: [VRFC 10-311] analyzing module generate_keypair_wdI
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/randombytes_with_sta_4.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module randombytes_with_sta_4
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/randombytes_with_sta_2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module randombytes_with_sta_2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/gf256mat_prod_ref_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module gf256mat_prod_ref_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/AESL_automem_DRBG_ctx_Key.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_DRBG_ctx_Key
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/AES256_ECB_3_ctx_eOg.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AES256_ECB_3_ctx_eOg_ram
+INFO: [VRFC 10-311] analyzing module AES256_ECB_3_ctx_eOg
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/generate_keypair_zec.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module generate_keypair_zec_ram
+INFO: [VRFC 10-311] analyzing module generate_keypair_zec
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/KeyExpansion_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module KeyExpansion_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/AES256_CTR_DRBG_Upda.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AES256_CTR_DRBG_Upda
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/p_gf256v_madd_u32_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module p_gf256v_madd_u32_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/SubBytes.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module SubBytes
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/AddRoundKey.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AddRoundKey
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/p_gf256v_add_u3273.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module p_gf256v_add_u3273
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/p_gf256v_madd_u32_4.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module p_gf256v_madd_u32_4
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/crypto_sign_keypair.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module crypto_sign_keypair
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/AESL_automem_DRBG_ctx_V.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_DRBG_ctx_V
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/AESL_automem_sk.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_sk
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/AES256_CTR_DRBG_UdEe.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AES256_CTR_DRBG_UdEe_ram
+INFO: [VRFC 10-311] analyzing module AES256_CTR_DRBG_UdEe
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/Cipher.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Cipher
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/gf256mat_prod_ref_1101.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module gf256mat_prod_ref_1101
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/batch_trimatTr_madd_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module batch_trimatTr_madd_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/sha256_transform_k.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sha256_transform_k_rom
+INFO: [VRFC 10-311] analyzing module sha256_transform_k
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/p_gf256v_madd_u32_2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module p_gf256v_madd_u32_2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/generate_keypair_CeG.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module generate_keypair_CeG_ram
+INFO: [VRFC 10-311] analyzing module generate_keypair_CeG
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/extcpk_to_pk.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module extcpk_to_pk
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/crypto_sign_keypaYie.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module crypto_sign_keypaYie_ram
+INFO: [VRFC 10-311] analyzing module crypto_sign_keypaYie
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/sha256_transform_m.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sha256_transform_m_ram
+INFO: [VRFC 10-311] analyzing module sha256_transform_m
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/gf256v_mul_u32.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module gf256v_mul_u32
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/generate_keypair_Ngs.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module generate_keypair_Ngs_ram
+INFO: [VRFC 10-311] analyzing module generate_keypair_Ngs
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/batch_mat_madd_gf256.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module batch_mat_madd_gf256
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/AES256_ECB_1_test.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AES256_ECB_1_test_ram
+INFO: [VRFC 10-311] analyzing module AES256_ECB_1_test
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/p_gf256v_add_u32_3.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module p_gf256v_add_u32_3
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/p_gf256v_madd_u3274.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module p_gf256v_madd_u3274
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/batch_trimatTr_madd_s.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module batch_trimatTr_madd_s
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/generate_keypair_Gfk.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module generate_keypair_Gfk_ram
+INFO: [VRFC 10-311] analyzing module generate_keypair_Gfk
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/batch_trimat_madd_gf_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module batch_trimat_madd_gf_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/p_gf256v_add_u3273_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module p_gf256v_add_u3273_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/prng_set_seed_matg8j.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module prng_set_seed_matg8j_ram
+INFO: [VRFC 10-311] analyzing module prng_set_seed_matg8j
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/generate_keypair_QgW.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module generate_keypair_QgW_ram
+INFO: [VRFC 10-311] analyzing module generate_keypair_QgW
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/p_hash.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module p_hash
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/sha256_transform.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sha256_transform
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/generate_keypair_xdS.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module generate_keypair_xdS_ram
+INFO: [VRFC 10-311] analyzing module generate_keypair_xdS
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/randombytes.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module randombytes
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/AES256_CTR_DRBG_Upda_2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AES256_CTR_DRBG_Upda_2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/generate_keypair_Lf8.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module generate_keypair_Lf8_ram
+INFO: [VRFC 10-311] analyzing module generate_keypair_Lf8
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/calculate_Q_from_F_r.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module calculate_Q_from_F_r
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/p_gf256v_add_u32_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module p_gf256v_add_u32_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/p_hash_sha256_data.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module p_hash_sha256_data_ram
+INFO: [VRFC 10-311] analyzing module p_hash_sha256_data
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/batch_matTr_madd_gf2_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module batch_matTr_madd_gf2_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/generate_keypair_KfY.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module generate_keypair_KfY_ram
+INFO: [VRFC 10-311] analyzing module generate_keypair_KfY
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/generate_keypair_yd2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module generate_keypair_yd2_ram
+INFO: [VRFC 10-311] analyzing module generate_keypair_yd2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/p_gf256v_madd_u3274_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module p_gf256v_madd_u3274_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/generate_keypair_PgM.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module generate_keypair_PgM_ram
+INFO: [VRFC 10-311] analyzing module generate_keypair_PgM
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/p_gf256v_add_u32_4.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module p_gf256v_add_u32_4
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/AESL_automem_pk.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_pk
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/calculate_Q_from_pcA.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module calculate_Q_from_pcA_ram
+INFO: [VRFC 10-311] analyzing module calculate_Q_from_pcA
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/p_gf256v_madd_u32.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module p_gf256v_madd_u32
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/prng_set_buf.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module prng_set_buf_ram
+INFO: [VRFC 10-311] analyzing module prng_set_buf
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/AES256_ECB_2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AES256_ECB_2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/KeyExpansion.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module KeyExpansion
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/gf256v_mul_u3281.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module gf256v_mul_u3281
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/AES256_ECB_3.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AES256_ECB_3
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/KeyExpansion_Rcon.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module KeyExpansion_Rcon_rom
+INFO: [VRFC 10-311] analyzing module KeyExpansion_Rcon
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/p_gf256v_add_u32_2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module p_gf256v_add_u32_2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/generate_keypair_Mgi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module generate_keypair_Mgi_ram
+INFO: [VRFC 10-311] analyzing module generate_keypair_Mgi
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/generate_keypair_qcK.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module generate_keypair_qcK_ram
+INFO: [VRFC 10-311] analyzing module generate_keypair_qcK
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/p_gf256v_add_u3248.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module p_gf256v_add_u3248
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/UpperTrianglize.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module UpperTrianglize
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/randombytes_with_sta_5.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module randombytes_with_sta_5
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/AES256_ECB_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AES256_ECB_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/crypto_sign_keypair.autotb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apatb_crypto_sign_keypair_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/randombytes_with_sta_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module randombytes_with_sta_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/p_gf256v_add_u32.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module p_gf256v_add_u32
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/p_gf256v_madd_u32_5.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module p_gf256v_madd_u32_5
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/AES256_CTR_DRBG_Upda_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AES256_CTR_DRBG_Upda_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/generate_keypair.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module generate_keypair
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/gf256mat_prod_ref.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module gf256mat_prod_ref
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/KeyExpansion_sbox.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module KeyExpansion_sbox_rom
+INFO: [VRFC 10-311] analyzing module KeyExpansion_sbox
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/randombytes_with_sta.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module randombytes_with_sta
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/generate_keypair_DeQ.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module generate_keypair_DeQ_ram
+INFO: [VRFC 10-311] analyzing module generate_keypair_DeQ
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/batch_bmatTr_madd_gf.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module batch_bmatTr_madd_gf
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/AES256_ECB_2_ctx_hbi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AES256_ECB_2_ctx_hbi_ram
+INFO: [VRFC 10-311] analyzing module AES256_ECB_2_ctx_hbi
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/batch_trimat_madd_gf.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module batch_trimat_madd_gf
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/gf256mat_prod_ref_1102.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module gf256mat_prod_ref_1102
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/SubBytes_sbox.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module SubBytes_sbox_rom
+INFO: [VRFC 10-311] analyzing module SubBytes_sbox
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/generate_keypair_Bew.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module generate_keypair_Bew_ram
+INFO: [VRFC 10-311] analyzing module generate_keypair_Bew
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/randombytes_block.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module randombytes_block_ram
+INFO: [VRFC 10-311] analyzing module randombytes_block
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/randombytes_with_sta_3.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module randombytes_with_sta_3
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/AES256_ECB_1_ctx_bkb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AES256_ECB_1_ctx_bkb_ram
+INFO: [VRFC 10-311] analyzing module AES256_ECB_1_ctx_bkb
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/AES256_ECB_ctx_Rocud.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AES256_ECB_ctx_Rocud_ram
+INFO: [VRFC 10-311] analyzing module AES256_ECB_ctx_Rocud
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/generate_keypair_Ffa.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module generate_keypair_Ffa_ram
+INFO: [VRFC 10-311] analyzing module generate_keypair_Ffa
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.crypto_sign_keypaYie_ram
+Compiling module xil_defaultlib.crypto_sign_keypaYie(DataWidth=8...
+Compiling module xil_defaultlib.generate_keypair_qcK_ram
+Compiling module xil_defaultlib.generate_keypair_qcK(DataWidth=8...
+Compiling module xil_defaultlib.generate_keypair_wdI_ram
+Compiling module xil_defaultlib.generate_keypair_wdI(DataWidth=8...
+Compiling module xil_defaultlib.generate_keypair_xdS_ram
+Compiling module xil_defaultlib.generate_keypair_xdS(DataWidth=8...
+Compiling module xil_defaultlib.generate_keypair_yd2_ram
+Compiling module xil_defaultlib.generate_keypair_yd2(DataWidth=8...
+Compiling module xil_defaultlib.generate_keypair_zec_ram
+Compiling module xil_defaultlib.generate_keypair_zec(DataWidth=8...
+Compiling module xil_defaultlib.generate_keypair_Aem_ram
+Compiling module xil_defaultlib.generate_keypair_Aem(DataWidth=8...
+Compiling module xil_defaultlib.generate_keypair_Bew_ram
+Compiling module xil_defaultlib.generate_keypair_Bew(DataWidth=8...
+Compiling module xil_defaultlib.generate_keypair_CeG_ram
+Compiling module xil_defaultlib.generate_keypair_CeG(DataWidth=8...
+Compiling module xil_defaultlib.generate_keypair_DeQ_ram
+Compiling module xil_defaultlib.generate_keypair_DeQ(DataWidth=8...
+Compiling module xil_defaultlib.generate_keypair_Ffa_ram
+Compiling module xil_defaultlib.generate_keypair_Ffa(DataWidth=8...
+Compiling module xil_defaultlib.generate_keypair_Gfk_ram
+Compiling module xil_defaultlib.generate_keypair_Gfk(DataWidth=8...
+Compiling module xil_defaultlib.generate_keypair_JfO_ram
+Compiling module xil_defaultlib.generate_keypair_JfO(DataWidth=8...
+Compiling module xil_defaultlib.generate_keypair_KfY_ram
+Compiling module xil_defaultlib.generate_keypair_KfY(DataWidth=8...
+Compiling module xil_defaultlib.generate_keypair_Lf8_ram
+Compiling module xil_defaultlib.generate_keypair_Lf8(DataWidth=8...
+Compiling module xil_defaultlib.generate_keypair_Mgi_ram
+Compiling module xil_defaultlib.generate_keypair_Mgi(DataWidth=8...
+Compiling module xil_defaultlib.generate_keypair_Ngs_ram
+Compiling module xil_defaultlib.generate_keypair_Ngs(DataWidth=8...
+Compiling module xil_defaultlib.generate_keypair_PgM_ram
+Compiling module xil_defaultlib.generate_keypair_PgM(DataWidth=8...
+Compiling module xil_defaultlib.generate_keypair_QgW_ram
+Compiling module xil_defaultlib.generate_keypair_QgW(DataWidth=8...
+Compiling module xil_defaultlib.calculate_Q_from_pcA_ram
+Compiling module xil_defaultlib.calculate_Q_from_pcA(DataWidth=8...
+Compiling module xil_defaultlib.p_gf256v_add_u3248
+Compiling module xil_defaultlib.UpperTrianglize
+Compiling module xil_defaultlib.gf256v_mul_u32
+Compiling module xil_defaultlib.p_gf256v_madd_u32_4
+Compiling module xil_defaultlib.batch_bmatTr_madd_gf
+Compiling module xil_defaultlib.batch_matTr_madd_gf2_1
+Compiling module xil_defaultlib.p_gf256v_madd_u32
+Compiling module xil_defaultlib.batch_trimat_madd_gf
+Compiling module xil_defaultlib.p_gf256v_madd_u32_1
+Compiling module xil_defaultlib.batch_trimat_madd_gf_1
+Compiling module xil_defaultlib.batch_trimatTr_madd_s
+Compiling module xil_defaultlib.batch_trimatTr_madd_1
+Compiling module xil_defaultlib.p_gf256v_madd_u32_5
+Compiling module xil_defaultlib.batch_mat_madd_gf256
+Compiling module xil_defaultlib.p_gf256v_madd_u32_2
+Compiling module xil_defaultlib.batch_matTr_madd_gf2
+Compiling module xil_defaultlib.p_gf256v_madd_u32_3
+Compiling module xil_defaultlib.calculate_Q_from_F_r
+Compiling module xil_defaultlib.prng_set_seed_matg8j_ram
+Compiling module xil_defaultlib.prng_set_seed_matg8j(DataWidth=8...
+Compiling module xil_defaultlib.prng_set_buf_ram
+Compiling module xil_defaultlib.prng_set_buf(DataWidth=8,Address...
+Compiling module xil_defaultlib.p_hash_sha256_data_ram
+Compiling module xil_defaultlib.p_hash_sha256_data(DataWidth=8,A...
+Compiling module xil_defaultlib.sha256_transform_k_rom
+Compiling module xil_defaultlib.sha256_transform_k(DataWidth=32,...
+Compiling module xil_defaultlib.sha256_transform_m_ram
+Compiling module xil_defaultlib.sha256_transform_m(DataWidth=32,...
+Compiling module xil_defaultlib.sha256_transform
+Compiling module xil_defaultlib.p_hash
+Compiling module xil_defaultlib.AES256_CTR_DRBG_UdEe_ram
+Compiling module xil_defaultlib.AES256_CTR_DRBG_UdEe(DataWidth=8...
+Compiling module xil_defaultlib.AES256_ECB_3_ctx_eOg_ram
+Compiling module xil_defaultlib.AES256_ECB_3_ctx_eOg(DataWidth=8...
+Compiling module xil_defaultlib.AES256_ECB_1_test_ram
+Compiling module xil_defaultlib.AES256_ECB_1_test(DataWidth=8,Ad...
+Compiling module xil_defaultlib.KeyExpansion_sbox_rom
+Compiling module xil_defaultlib.KeyExpansion_sbox(DataWidth=8,Ad...
+Compiling module xil_defaultlib.KeyExpansion_Rcon_rom
+Compiling module xil_defaultlib.KeyExpansion_Rcon(DataWidth=8,Ad...
+Compiling module xil_defaultlib.KeyExpansion_1
+Compiling module xil_defaultlib.AddRoundKey
+Compiling module xil_defaultlib.SubBytes_sbox_rom
+Compiling module xil_defaultlib.SubBytes_sbox(DataWidth=8,Addres...
+Compiling module xil_defaultlib.SubBytes
+Compiling module xil_defaultlib.Cipher
+Compiling module xil_defaultlib.AES256_ECB_3
+Compiling module xil_defaultlib.AES256_CTR_DRBG_Upda_2
+Compiling module xil_defaultlib.prng_set
+Compiling module xil_defaultlib.p_gf256v_add_u32
+Compiling module xil_defaultlib.randombytes_block_ram
+Compiling module xil_defaultlib.randombytes_block(DataWidth=8,Ad...
+Compiling module xil_defaultlib.AES256_CTR_DRBG_Upda
+Compiling module xil_defaultlib.AES256_ECB_2_ctx_hbi_ram
+Compiling module xil_defaultlib.AES256_ECB_2_ctx_hbi(DataWidth=8...
+Compiling module xil_defaultlib.AES256_ECB_2
+Compiling module xil_defaultlib.randombytes_with_sta
+Compiling module xil_defaultlib.randombytes_with_sta_4
+Compiling module xil_defaultlib.randombytes_with_sta_3
+Compiling module xil_defaultlib.randombytes_with_sta_2
+Compiling module xil_defaultlib.randombytes_with_sta_5
+Compiling module xil_defaultlib.randombytes_with_sta_1
+Compiling module xil_defaultlib.extcpk_to_pk
+Compiling module xil_defaultlib.gf256v_mul_u3281
+Compiling module xil_defaultlib.p_gf256v_madd_u3274_1
+Compiling module xil_defaultlib.p_gf256v_add_u3273
+Compiling module xil_defaultlib.gf256mat_prod_ref
+Compiling module xil_defaultlib.gf256mat_prod_ref_1100
+Compiling module xil_defaultlib.gf256mat_prod_ref_1101
+Compiling module xil_defaultlib.gf256mat_prod_ref_1102
+Compiling module xil_defaultlib.p_gf256v_madd_u3274
+Compiling module xil_defaultlib.p_gf256v_add_u3273_1
+Compiling module xil_defaultlib.gf256mat_prod_ref_1
+Compiling module xil_defaultlib.p_gf256v_add_u32_4
+Compiling module xil_defaultlib.p_gf256v_add_u32_3
+Compiling module xil_defaultlib.p_gf256v_add_u32_2
+Compiling module xil_defaultlib.p_gf256v_add_u32_1
+Compiling module xil_defaultlib.generate_keypair
+Compiling module xil_defaultlib.AES256_ECB_ctx_Rocud_ram
+Compiling module xil_defaultlib.AES256_ECB_ctx_Rocud(DataWidth=8...
+Compiling module xil_defaultlib.KeyExpansion
+Compiling module xil_defaultlib.AES256_ECB
+Compiling module xil_defaultlib.AES256_CTR_DRBG_Upda_1
+Compiling module xil_defaultlib.AES256_ECB_1_ctx_bkb_ram
+Compiling module xil_defaultlib.AES256_ECB_1_ctx_bkb(DataWidth=8...
+Compiling module xil_defaultlib.AES256_ECB_1
+Compiling module xil_defaultlib.randombytes
+Compiling module xil_defaultlib.crypto_sign_keypair
+Compiling module xil_defaultlib.AESL_automem_pk
+Compiling module xil_defaultlib.AESL_automem_sk
+Compiling module xil_defaultlib.AESL_automem_DRBG_ctx_V
+Compiling module xil_defaultlib.AESL_automem_DRBG_ctx_Key
+Compiling module xil_defaultlib.apatb_crypto_sign_keypair_top
+Compiling module work.glbl
+Built simulation snapshot crypto_sign_keypair
+
+****** Webtalk v2018.2 (64-bit)
+  **** SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
+  **** IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+source /home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/xsim.dir/crypto_sign_keypair/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-206] Exiting Webtalk at Fri Apr 10 15:13:34 2020...
+
+****** xsim v2018.2 (64-bit)
+  **** SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
+  **** IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+source xsim.dir/crypto_sign_keypair/xsim_script.tcl
+# xsim {crypto_sign_keypair} -autoloadwcfg -tclbatch {crypto_sign_keypair.tcl}
+Vivado Simulator 2018.2
+Time resolution is 1 ps
+source crypto_sign_keypair.tcl
+## run all
+////////////////////////////////////////////////////////////////////////////////////
+// Inter-Transaction Progress: Completed Transaction / Total Transaction
+// Intra-Transaction Progress: Measured Latency / Latency Estimation * 100%
+//
+// RTL Simulation : "Inter-Transaction Progress" ["Intra-Transaction Progress"] @ "Simulation Time"
+////////////////////////////////////////////////////////////////////////////////////
+// RTL Simulation : 0 / 1 [n/a] @ "125000"
+// RTL Simulation : 0 / 1 [n/a] @ "100000145000"
+// RTL Simulation : 0 / 1 [n/a] @ "200000155000"
+// RTL Simulation : 0 / 1 [n/a] @ "300000165000"
+// RTL Simulation : 0 / 1 [n/a] @ "400000175000"
+// RTL Simulation : 0 / 1 [n/a] @ "500000185000"
+// RTL Simulation : 0 / 1 [n/a] @ "600000195000"
+// RTL Simulation : 0 / 1 [n/a] @ "700000205000"
+// RTL Simulation : 0 / 1 [n/a] @ "800000215000"
+// RTL Simulation : 0 / 1 [n/a] @ "900000225000"
+// RTL Simulation : 0 / 1 [n/a] @ "1000000235000"
+// RTL Simulation : 0 / 1 [n/a] @ "1100000245000"
+// RTL Simulation : 0 / 1 [n/a] @ "1200000255000"
+// RTL Simulation : 0 / 1 [n/a] @ "1300000265000"
+// RTL Simulation : 0 / 1 [n/a] @ "1400000275000"
+// RTL Simulation : 0 / 1 [n/a] @ "1500000285000"
+// RTL Simulation : 0 / 1 [n/a] @ "1600000295000"
+// RTL Simulation : 0 / 1 [n/a] @ "1700000305000"
+// RTL Simulation : 0 / 1 [n/a] @ "1800000315000"
+// RTL Simulation : 0 / 1 [n/a] @ "1900000325000"
+// RTL Simulation : 0 / 1 [n/a] @ "2000000335000"
+// RTL Simulation : 0 / 1 [n/a] @ "2100000345000"
+// RTL Simulation : 1 / 1 [n/a] @ "2103059415000"
+////////////////////////////////////////////////////////////////////////////////////
+$finish called at time : 2103059455 ns : File "/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow3.prj/keypair/sim/verilog/crypto_sign_keypair.autotb.v" Line 587
+run: Time (s): cpu = 00:00:14 ; elapsed = 26:29:45 . Memory (MB): peak = 1336.172 ; gain = 0.000 ; free physical = 2055 ; free virtual = 461693
+## quit
+INFO: [Common 17-206] Exiting xsim at Sat Apr 11 17:43:54 2020...
+INFO: [COSIM 212-316] Starting C post checking ...
+ 
+ mat_l1 = 1296  mat_l2 = 1296 mat_buffer = 2592 
+ 
+ -- hash len = 48 
+INFO: [COSIM 212-1000] *** C/RTL co-simulation finished: PASS ***
+INFO: [COSIM 212-211] II is measurable only when transaction number is greater than 1 in RTL simulation. Otherwise, they will be marked as all NA. If user wants to calculate them, please make sure there are at least 2 transactions in RTL simulation.
+INFO: [HLS 200-112] Total elapsed time: 98800.8 seconds; peak allocated memory: 0.301 MB.
+INFO: [Common 17-206] Exiting vivado_hls at Sat Apr 11 17:44:07 2020...
