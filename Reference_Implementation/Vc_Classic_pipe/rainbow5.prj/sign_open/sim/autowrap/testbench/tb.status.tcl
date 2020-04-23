@@ -1,1 +1,0 @@
-set ::AESL_AUTOSIM::gTopFileName sign.c_pre.c.tb.c
