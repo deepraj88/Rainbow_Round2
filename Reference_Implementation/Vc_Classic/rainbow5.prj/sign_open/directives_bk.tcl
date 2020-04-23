@@ -1,0 +1,21 @@
+############################################################
+## This file is generated automatically by Vivado HLS.
+## Please DO NOT edit it.
+## Copyright (C) 1986-2018 Xilinx, Inc. All Rights Reserved.
+############################################################
+set_directive_allocation -limit 1 -type function "sha256_update" sha256_update
+set_directive_inline "sha256_update"
+set_directive_allocation -limit 1 -type function "sha256_final" sha256_final
+set_directive_inline "sha256_final"
+set_directive_allocation -limit 1 -type function "hash_msg" hash_msg
+set_directive_inline "hash_msg"
+set_directive_unroll -factor 128 "crypto_sign_open/crypto_sign_open_label2"
+set_directive_unroll -factor 128 "rainbow_verify/rainbow_verify_label3"
+set_directive_unroll -factor 128 "rainbow_verify/rainbow_verify_label4"
+set_directive_unroll -factor 128 "rainbow_verify/rainbow_verify_label5"
+set_directive_unroll -factor 128 "batch_quad_trimat_eval_gf256/batch_quad_trimat_eval_gf256_label6"
+set_directive_pipeline "crypto_sign_open/crypto_sign_open_label2"
+set_directive_pipeline "rainbow_verify/rainbow_verify_label3"
+set_directive_pipeline "rainbow_verify/rainbow_verify_label4"
+set_directive_pipeline "rainbow_verify/rainbow_verify_label5"
+set_directive_pipeline "batch_quad_trimat_eval_gf256/batch_quad_trimat_eval_gf256_label6"

@@ -1,0 +1,75 @@
+<AutoPilot:ProjectResources xmlns:AutoPilot="com.autoesl.autopilot.ui.directiveView">
+    <sourceFile name="">
+        <directive functionName="sha256_update" label="" functionLabel="">
+            <pragma name="ALLOCATION">
+                <option name="instances" value="sha256_update" positionalBoolean="4"/>
+                <option name="limit" value="1"/>
+                <option name="function" value="" positionalBoolean="type"/>
+            </pragma>
+        </directive>
+        <directive functionName="sha256_update" label="" functionLabel="">
+            <pragma name="INLINE"/>
+        </directive>
+        <directive functionName="sha256_final" label="" functionLabel="">
+            <pragma name="ALLOCATION">
+                <option name="instances" value="sha256_final" positionalBoolean="4"/>
+                <option name="limit" value="1"/>
+                <option name="function" value="" positionalBoolean="type"/>
+            </pragma>
+        </directive>
+        <directive functionName="sha256_final" label="" functionLabel="">
+            <pragma name="INLINE"/>
+        </directive>
+        <directive functionName="hash_msg" label="" functionLabel="">
+            <pragma name="ALLOCATION">
+                <option name="instances" value="hash_msg" positionalBoolean="4"/>
+                <option name="limit" value="1"/>
+                <option name="function" value="" positionalBoolean="type"/>
+            </pragma>
+        </directive>
+        <directive functionName="hash_msg" label="" functionLabel="">
+            <pragma name="INLINE"/>
+        </directive>
+        <directive functionName="crypto_sign_open" label="crypto_sign_open_label11" functionLabel="">
+            <pragma name="UNROLL">
+                <option name="factor" value="128"/>
+            </pragma>
+        </directive>
+        <directive functionName="crypto_sign_open" label="crypto_sign_open_label11" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="rainbow_verify" label="rainbow_verify_label12" functionLabel="">
+            <pragma name="UNROLL">
+                <option name="factor" value="128"/>
+            </pragma>
+        </directive>
+        <directive functionName="rainbow_verify" label="rainbow_verify_label12" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="rainbow_verify" label="rainbow_verify_label13" functionLabel="">
+            <pragma name="UNROLL">
+                <option name="factor" value="128"/>
+            </pragma>
+        </directive>
+        <directive functionName="rainbow_verify" label="rainbow_verify_label13" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="rainbow_verify" label="rainbow_verify_label14" functionLabel="">
+            <pragma name="UNROLL">
+                <option name="factor" value="128"/>
+            </pragma>
+        </directive>
+        <directive functionName="rainbow_verify" label="rainbow_verify_label14" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="batch_quad_trimat_eval_gf16" label="batch_quad_trimat_eval_gf16_label15" functionLabel="">
+            <pragma name="UNROLL">
+                <option name="factor" value="128"/>
+            </pragma>
+        </directive>
+        <directive functionName="batch_quad_trimat_eval_gf16" label="batch_quad_trimat_eval_gf16_label15" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+    </sourceFile>
+</AutoPilot:ProjectResources>
+

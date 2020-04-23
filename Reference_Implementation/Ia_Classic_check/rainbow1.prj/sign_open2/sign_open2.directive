@@ -1,0 +1,136 @@
+<AutoPilot:ProjectResources xmlns:AutoPilot="com.autoesl.autopilot.ui.directiveView">
+    <sourceFile name="">
+        <directive functionName="sha256_transform" label="" functionLabel="">
+            <pragma name="ALLOCATION">
+                <option name="instances" value="sha256_transform" positionalBoolean="4"/>
+                <option name="limit" value="1"/>
+                <option name="function" value="" positionalBoolean="type"/>
+            </pragma>
+        </directive>
+        <directive functionName="sha256_transform" label="" functionLabel="">
+            <pragma name="INLINE"/>
+        </directive>
+        <directive functionName="sha256_final" label="" functionLabel="">
+            <pragma name="ALLOCATION">
+                <option name="instances" value="sha256_final" positionalBoolean="4"/>
+                <option name="limit" value="1"/>
+                <option name="function" value="" positionalBoolean="type"/>
+            </pragma>
+        </directive>
+        <directive functionName="sha256_final" label="" functionLabel="">
+            <pragma name="INLINE"/>
+        </directive>
+        <directive functionName="sha256_update" label="" functionLabel="">
+            <pragma name="ALLOCATION">
+                <option name="instances" value="sha256_update" positionalBoolean="4"/>
+                <option name="limit" value="1"/>
+                <option name="function" value="" positionalBoolean="type"/>
+            </pragma>
+        </directive>
+        <directive functionName="sha256_update" label="" functionLabel="">
+            <pragma name="INLINE"/>
+        </directive>
+        <directive functionName="hash_msg" label="" functionLabel="">
+            <pragma name="ALLOCATION">
+                <option name="instances" value="hash_msg" positionalBoolean="4"/>
+                <option name="limit" value="1"/>
+                <option name="function" value="" positionalBoolean="type"/>
+            </pragma>
+        </directive>
+        <directive functionName="_hash" label="" functionLabel="">
+            <pragma name="ALLOCATION">
+                <option name="instances" value="_hash" positionalBoolean="4"/>
+                <option name="limit" value="1"/>
+                <option name="function" value="" positionalBoolean="type"/>
+            </pragma>
+        </directive>
+        <directive functionName="p_hash" label="" functionLabel="">
+            <pragma name="ALLOCATION">
+                <option name="instances" value="p_hash" positionalBoolean="4"/>
+                <option name="limit" value="1"/>
+                <option name="function" value="" positionalBoolean="type"/>
+            </pragma>
+        </directive>
+        <directive functionName="p_hash" label="" functionLabel="">
+            <pragma name="INLINE"/>
+        </directive>
+        <directive functionName="hash_msg" label="" functionLabel="">
+            <pragma name="INLINE"/>
+        </directive>
+        <directive functionName="expand_hash" label="" functionLabel="">
+            <pragma name="ALLOCATION">
+                <option name="instances" value="expand_hash" positionalBoolean="4"/>
+                <option name="limit" value="1"/>
+                <option name="function" value="" positionalBoolean="type"/>
+            </pragma>
+        </directive>
+        <directive functionName="expand_hash" label="" functionLabel="">
+            <pragma name="INLINE"/>
+        </directive>
+        <directive functionName="sha256_final" label="sha256_final_label6" functionLabel="">
+            <pragma name="UNROLL">
+                <option name="factor" value="2"/>
+            </pragma>
+        </directive>
+        <directive functionName="sha256_final" label="sha256_final_label6" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="sha256_final" label="sha256_final_label7" functionLabel="">
+            <pragma name="UNROLL">
+                <option name="factor" value="2"/>
+            </pragma>
+        </directive>
+        <directive functionName="sha256_final" label="sha256_final_label7" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="sha256_final" label="sha256_final_label8" functionLabel="">
+            <pragma name="UNROLL">
+                <option name="factor" value="2"/>
+            </pragma>
+        </directive>
+        <directive functionName="sha256_final" label="sha256_final_label8" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="sha256_final" label="sha256_final_label4" functionLabel="">
+            <pragma name="UNROLL">
+                <option name="factor" value="2"/>
+            </pragma>
+        </directive>
+        <directive functionName="sha256_final" label="sha256_final_label4" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="expand_hash" label="expand_hash_label9" functionLabel="">
+            <pragma name="UNROLL">
+                <option name="factor" value="2"/>
+            </pragma>
+        </directive>
+        <directive functionName="expand_hash" label="expand_hash_label9" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="expand_hash" label="expand_hash_label10" functionLabel="">
+            <pragma name="UNROLL">
+                <option name="factor" value="2"/>
+            </pragma>
+        </directive>
+        <directive functionName="expand_hash" label="expand_hash_label10" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="expand_hash" label="expand_hash_label5" functionLabel="">
+            <pragma name="UNROLL">
+                <option name="factor" value="2"/>
+            </pragma>
+        </directive>
+        <directive functionName="expand_hash" label="expand_hash_label5" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="crypto_sign_open" label="crypto_sign_open_label11" functionLabel="">
+            <pragma name="UNROLL">
+                <option name="factor" value="2"/>
+            </pragma>
+        </directive>
+        <directive functionName="crypto_sign_open" label="crypto_sign_open_label11" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+    </sourceFile>
+</AutoPilot:ProjectResources>
+

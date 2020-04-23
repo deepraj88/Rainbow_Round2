@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
+  <source>
+    <originFiles name="aes.c" path="/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/aes.c"/>
+    <originFiles name="blas_comm.c" path="/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/blas_comm.c"/>
+    <originFiles name="fips202.c" path="/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/fips202.c"/>
+    <originFiles name="parallel_matrix_op.c" path="/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/parallel_matrix_op.c"/>
+    <originFiles name="rainbow.c" path="/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow.c"/>
+    <originFiles name="rainbow_keypair.c" path="/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow_keypair.c"/>
+    <originFiles name="rainbow_keypair_computation.c" path="/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rainbow_keypair_computation.c"/>
+    <originFiles name="rng.c" path="/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/rng.c"/>
+    <originFiles name="sign.c" path="/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/sign.c"/>
+    <originFiles name="utils_hash.c" path="/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/utils_hash.c"/>
+    <originFiles name="utils_prng.c" path="/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/utils_prng.c"/>
+  </source>
+  <testbench>
+    <originFiles name="PQCgenKAT_sign.c" path="/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/IIIc_Classic/PQCgenKAT_sign.c"/>
+  </testbench>
+</autopilotfilemapping:AutoPilotFileMapping>

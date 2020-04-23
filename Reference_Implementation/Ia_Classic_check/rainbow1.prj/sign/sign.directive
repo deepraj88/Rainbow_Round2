@@ -1,0 +1,106 @@
+<AutoPilot:ProjectResources xmlns:AutoPilot="com.autoesl.autopilot.ui.directiveView">
+    <sourceFile name="">
+        <directive functionName="sha256_final" label="" functionLabel="">
+            <pragma name="ALLOCATION">
+                <option name="instances" value="sha256_final" positionalBoolean="4"/>
+                <option name="limit" value="1"/>
+                <option name="function" value="" positionalBoolean="type"/>
+            </pragma>
+        </directive>
+        <directive functionName="sha256_final" label="" functionLabel="">
+            <pragma name="INLINE"/>
+        </directive>
+        <directive functionName="hash_msg" label="" functionLabel="">
+            <pragma name="ALLOCATION">
+                <option name="instances" value="hash_msg" positionalBoolean="4"/>
+                <option name="limit" value="1"/>
+                <option name="function" value="" positionalBoolean="type"/>
+            </pragma>
+        </directive>
+        <directive functionName="_hash" label="" functionLabel="">
+            <pragma name="ALLOCATION">
+                <option name="instances" value="_hash" positionalBoolean="4"/>
+                <option name="limit" value="1"/>
+                <option name="function" value="" positionalBoolean="type"/>
+            </pragma>
+        </directive>
+        <directive functionName="hash_msg" label="" functionLabel="">
+            <pragma name="INLINE"/>
+        </directive>
+        <directive functionName="sha256_update" label="" functionLabel="">
+            <pragma name="ALLOCATION">
+                <option name="instances" value="sha256_update" positionalBoolean="4"/>
+                <option name="limit" value="1"/>
+                <option name="function" value="" positionalBoolean="type"/>
+            </pragma>
+        </directive>
+        <directive functionName="sha256_update" label="" functionLabel="">
+            <pragma name="INLINE"/>
+        </directive>
+        <directive functionName="crypto_sign" label="crypto_sign_label16" functionLabel="">
+            <pragma name="UNROLL">
+                <option name="factor" value="128"/>
+            </pragma>
+        </directive>
+        <directive functionName="crypto_sign" label="crypto_sign_label16" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="rainbow_sign" label="rainbow_sign_label17" functionLabel="">
+            <pragma name="UNROLL">
+                <option name="factor" value="128"/>
+            </pragma>
+        </directive>
+        <directive functionName="rainbow_sign" label="rainbow_sign_label17" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="rainbow_sign" label="rainbow_sign_label18" functionLabel="">
+            <pragma name="UNROLL">
+                <option name="factor" value="128"/>
+            </pragma>
+        </directive>
+        <directive functionName="rainbow_sign" label="rainbow_sign_label18" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="rainbow_sign" label="rainbow_sign_label19" functionLabel="">
+            <pragma name="UNROLL">
+                <option name="factor" value="128"/>
+            </pragma>
+        </directive>
+        <directive functionName="rainbow_sign" label="rainbow_sign_label19" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="rainbow_sign" label="rainbow_sign_label20" functionLabel="">
+            <pragma name="UNROLL">
+                <option name="factor" value="128"/>
+            </pragma>
+        </directive>
+        <directive functionName="rainbow_sign" label="rainbow_sign_label20" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="_gf256v_add_u32" label="_gf256v_add_u32_label21" functionLabel="">
+            <pragma name="UNROLL">
+                <option name="factor" value="128"/>
+            </pragma>
+        </directive>
+        <directive functionName="_gf256v_add_u32" label="_gf256v_add_u32_label21" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="_gf256v_add_u32" label="_gf256v_add_u32_label22" functionLabel="">
+            <pragma name="UNROLL">
+                <option name="factor" value="128"/>
+            </pragma>
+        </directive>
+        <directive functionName="_gf256v_add_u32" label="_gf256v_add_u32_label22" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="gf16mat_prod_ref" label="gf16mat_prod_ref_label23" functionLabel="">
+            <pragma name="UNROLL">
+                <option name="factor" value="128"/>
+            </pragma>
+        </directive>
+        <directive functionName="gf16mat_prod_ref" label="gf16mat_prod_ref_label23" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+    </sourceFile>
+</AutoPilot:ProjectResources>
+

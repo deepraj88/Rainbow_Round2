@@ -1,0 +1,83 @@
+<AutoPilot:ProjectResources xmlns:AutoPilot="com.autoesl.autopilot.ui.directiveView">
+    <sourceFile name="">
+        <directive functionName="sha256_update" label="" functionLabel="">
+            <pragma name="ALLOCATION">
+                <option name="instances" value="sha256_update" positionalBoolean="4"/>
+                <option name="limit" value="1"/>
+                <option name="function" value="" positionalBoolean="type"/>
+            </pragma>
+        </directive>
+        <directive functionName="sha256_update" label="" functionLabel="">
+            <pragma name="INLINE"/>
+        </directive>
+        <directive functionName="sha256_final" label="" functionLabel="">
+            <pragma name="ALLOCATION">
+                <option name="instances" value="sha256_final" positionalBoolean="4"/>
+                <option name="limit" value="1"/>
+                <option name="function" value="" positionalBoolean="type"/>
+            </pragma>
+        </directive>
+        <directive functionName="sha256_final" label="" functionLabel="">
+            <pragma name="INLINE"/>
+        </directive>
+        <directive functionName="hash_msg" label="" functionLabel="">
+            <pragma name="ALLOCATION">
+                <option name="instances" value="hash_msg" positionalBoolean="4"/>
+                <option name="limit" value="1"/>
+                <option name="function" value="" positionalBoolean="type"/>
+            </pragma>
+        </directive>
+        <directive functionName="hash_msg" label="" functionLabel="">
+            <pragma name="INLINE"/>
+        </directive>
+        <directive functionName="gf256mat_prod_ref" label="gf256mat_prod_ref_label11" functionLabel="">
+            <pragma name="UNROLL">
+                <option name="factor" value="8"/>
+            </pragma>
+        </directive>
+        <directive functionName="gf256mat_prod_ref" label="gf256mat_prod_ref_label11" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="_gf256v_add_u32" label="_gf256v_add_u32_label9" functionLabel="">
+            <pragma name="UNROLL">
+                <option name="factor" value="8"/>
+            </pragma>
+        </directive>
+        <directive functionName="_gf256v_add_u32" label="_gf256v_add_u32_label9" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="_gf256v_add_u32" label="_gf256v_add_u32_label10" functionLabel="">
+            <pragma name="UNROLL">
+                <option name="factor" value="8"/>
+            </pragma>
+        </directive>
+        <directive functionName="_gf256v_add_u32" label="_gf256v_add_u32_label10" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="generate_keypair" label="generate_keypair_label12" functionLabel="">
+            <pragma name="UNROLL">
+                <option name="factor" value="8"/>
+            </pragma>
+        </directive>
+        <directive functionName="generate_keypair" label="generate_keypair_label12" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="generate_keypair" label="generate_keypair_label13" functionLabel="">
+            <pragma name="UNROLL">
+                <option name="factor" value="8"/>
+            </pragma>
+        </directive>
+        <directive functionName="generate_keypair" label="generate_keypair_label13" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="generate_keypair" label="generate_keypair_label14" functionLabel="">
+            <pragma name="UNROLL">
+                <option name="factor" value="8"/>
+            </pragma>
+        </directive>
+        <directive functionName="generate_keypair" label="generate_keypair_label14" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+    </sourceFile>
+</AutoPilot:ProjectResources>
+
