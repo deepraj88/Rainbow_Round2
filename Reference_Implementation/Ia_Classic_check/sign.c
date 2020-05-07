@@ -23,19 +23,19 @@ int crypto_sign_keypair(unsigned char pk[CRYPTO_PUBLICKEYBYTES], unsigned char s
     randombytes( sk_seed , LEN_SKSEED );
     int k;
     ext_cpk_t xpk;
-    for(k=0;k<_O1_BYTE * N_TRIANGLE_TERMS(_V1); k++) xpk.l1_Q1[k] = 0;
-    for(k=0;k<_O1_BYTE * _V1*_O1; k++) xpk.l1_Q2[k] = 0;
-    for(k=0;k<_O1_BYTE * _V1*_O2; k++) xpk.l1_Q3[k] = 0;
-    for(k=0;k<_O1_BYTE * N_TRIANGLE_TERMS(_O1); k++) xpk.l1_Q5[k] = 0;
-    for(k=0;k<_O1_BYTE * _O1*_O2; k++) xpk.l1_Q6[k] = 0;
-    for(k=0;k<_O1_BYTE * N_TRIANGLE_TERMS(_O2); k++) xpk.l1_Q9[k] = 0;
-
-    for(k=0;k<_O2_BYTE * N_TRIANGLE_TERMS(_V1); k++) xpk.l2_Q1[k] = 0;
-       for(k=0;k<_O2_BYTE * _V1*_O1; k++) xpk.l2_Q2[k] = 0;
-       for(k=0;k<_O2_BYTE * _V1*_O2; k++) xpk.l2_Q3[k] = 0;
-       for(k=0;k<_O2_BYTE * N_TRIANGLE_TERMS(_O1); k++) xpk.l2_Q5[k] = 0;
-       for(k=0;k<_O2_BYTE * _O1*_O2; k++) xpk.l2_Q6[k] = 0;
-       for(k=0;k<_O2_BYTE * N_TRIANGLE_TERMS(_O2); k++) xpk.l2_Q9[k] = 0;
+//    for(k=0;k<_O1_BYTE * N_TRIANGLE_TERMS(_V1); k++) xpk.l1_Q1[k] = 0;
+//    for(k=0;k<_O1_BYTE * _V1*_O1; k++) xpk.l1_Q2[k] = 0;
+//    for(k=0;k<_O1_BYTE * _V1*_O2; k++) xpk.l1_Q3[k] = 0;
+//    for(k=0;k<_O1_BYTE * N_TRIANGLE_TERMS(_O1); k++) xpk.l1_Q5[k] = 0;
+//    for(k=0;k<_O1_BYTE * _O1*_O2; k++) xpk.l1_Q6[k] = 0;
+//    for(k=0;k<_O1_BYTE * N_TRIANGLE_TERMS(_O2); k++) xpk.l1_Q9[k] = 0;
+//
+//    for(k=0;k<_O2_BYTE * N_TRIANGLE_TERMS(_V1); k++) xpk.l2_Q1[k] = 0;
+//       for(k=0;k<_O2_BYTE * _V1*_O1; k++) xpk.l2_Q2[k] = 0;
+//       for(k=0;k<_O2_BYTE * _V1*_O2; k++) xpk.l2_Q3[k] = 0;
+//       for(k=0;k<_O2_BYTE * N_TRIANGLE_TERMS(_O1); k++) xpk.l2_Q5[k] = 0;
+//       for(k=0;k<_O2_BYTE * _O1*_O2; k++) xpk.l2_Q6[k] = 0;
+//       for(k=0;k<_O2_BYTE * N_TRIANGLE_TERMS(_O2); k++) xpk.l2_Q9[k] = 0;
     // for(k=0;k<CRYPTO_PUBLICKEYBYTES;k++) pk[k]=0;
     //     //for(k=0;k<92960;k++) sk[k]=0;
 #if defined _RAINBOW_CLASSIC

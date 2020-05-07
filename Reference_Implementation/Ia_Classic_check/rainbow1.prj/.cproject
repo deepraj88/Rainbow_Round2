@@ -30,8 +30,9 @@
 									<listOptionValue builtIn="false" value="/opt/Xilinx2018/Vivado/2018.2/lnx64/tools/systemc/include"/>
 									<listOptionValue builtIn="false" value="/opt/Xilinx2018/Vivado/2018.2/lnx64/tools/auto_cc/include"/>
 									<listOptionValue builtIn="false" value="/opt/Xilinx2018/Vivado/2018.2/include/etc"/>
-									<listOptionValue builtIn="false" value="/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/Ia_Classic_check"/>
+									<listOptionValue builtIn="false" value="/home/dss545/vivado_hls/vivado_hls/Rainbow/Reference_Implementation/Ia_Classic_check"/>
 									<listOptionValue builtIn="false" value="/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/Ia_Classic"/>
+									<listOptionValue builtIn="false" value="/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/Ia_Classic_check"/>
 								</option>
 								<option id="gnu.cpp.compiler.option.preprocessor.def.251727741" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="AESL_TB"/>
@@ -49,8 +50,9 @@
 									<listOptionValue builtIn="false" value="/opt/Xilinx2018/Vivado/2018.2/lnx64/tools/systemc/include"/>
 									<listOptionValue builtIn="false" value="/opt/Xilinx2018/Vivado/2018.2/lnx64/tools/auto_cc/include"/>
 									<listOptionValue builtIn="false" value="/opt/Xilinx2018/Vivado/2018.2/include/etc"/>
-									<listOptionValue builtIn="false" value="/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/Ia_Classic_check"/>
+									<listOptionValue builtIn="false" value="/home/dss545/vivado_hls/vivado_hls/Rainbow/Reference_Implementation/Ia_Classic_check"/>
 									<listOptionValue builtIn="false" value="/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/Ia_Classic"/>
+									<listOptionValue builtIn="false" value="/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/Ia_Classic_check"/>
 								</option>
 								<option id="gnu.c.compiler.option.preprocessor.def.symbols.14942109" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="AESL_TB"/>
@@ -91,7 +93,7 @@
 								<listOptionValue builtIn="false" value="/opt/Xilinx2018/Vivado/2018.2/lnx64/tools/systemc/include"/>
 								<listOptionValue builtIn="false" value="/opt/Xilinx2018/Vivado/2018.2/lnx64/tools/auto_cc/include"/>
 								<listOptionValue builtIn="false" value="/opt/Xilinx2018/Vivado/2018.2/include/etc"/>
-								<listOptionValue builtIn="false" value="/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/Ia_Classic_check"/>
+								<listOptionValue builtIn="false" value="/home/dss545/vivado_hls/vivado_hls/Rainbow/Reference_Implementation/Ia_Classic_check"/>
 							</option>
 							<option id="gnu.c.compiler.option.misc.other.1470673383" name="Other flags" superClass="gnu.c.compiler.option.misc.other" value="-Wno-unknown-pragmas -c -fmessage-length=0" valueType="string"/>
 							<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1254636745" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
@@ -133,8 +135,9 @@
 									<listOptionValue builtIn="false" value="/opt/Xilinx2018/Vivado/2018.2/lnx64/tools/systemc/include"/>
 									<listOptionValue builtIn="false" value="/opt/Xilinx2018/Vivado/2018.2/lnx64/tools/auto_cc/include"/>
 									<listOptionValue builtIn="false" value="/opt/Xilinx2018/Vivado/2018.2/include/etc"/>
-									<listOptionValue builtIn="false" value="/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/Ia_Classic_check"/>
+									<listOptionValue builtIn="false" value="/home/dss545/vivado_hls/vivado_hls/Rainbow/Reference_Implementation/Ia_Classic_check"/>
 									<listOptionValue builtIn="false" value="/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/Ia_Classic"/>
+									<listOptionValue builtIn="false" value="/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/Ia_Classic_check"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.27868557" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>
@@ -147,8 +150,9 @@
 									<listOptionValue builtIn="false" value="/opt/Xilinx2018/Vivado/2018.2/lnx64/tools/systemc/include"/>
 									<listOptionValue builtIn="false" value="/opt/Xilinx2018/Vivado/2018.2/lnx64/tools/auto_cc/include"/>
 									<listOptionValue builtIn="false" value="/opt/Xilinx2018/Vivado/2018.2/include/etc"/>
-									<listOptionValue builtIn="false" value="/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/Ia_Classic_check"/>
+									<listOptionValue builtIn="false" value="/home/dss545/vivado_hls/vivado_hls/Rainbow/Reference_Implementation/Ia_Classic_check"/>
 									<listOptionValue builtIn="false" value="/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/Ia_Classic"/>
+									<listOptionValue builtIn="false" value="/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/Ia_Classic_check"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.900237061" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
@@ -184,7 +188,7 @@
 								<listOptionValue builtIn="false" value="/opt/Xilinx2018/Vivado/2018.2/lnx64/tools/systemc/include"/>
 								<listOptionValue builtIn="false" value="/opt/Xilinx2018/Vivado/2018.2/lnx64/tools/auto_cc/include"/>
 								<listOptionValue builtIn="false" value="/opt/Xilinx2018/Vivado/2018.2/include/etc"/>
-								<listOptionValue builtIn="false" value="/home/dss545/vivado_hls/Rainbow/Rainbow-Round2/rainbow/Reference_Implementation/Ia_Classic_check"/>
+								<listOptionValue builtIn="false" value="/home/dss545/vivado_hls/vivado_hls/Rainbow/Reference_Implementation/Ia_Classic_check"/>
 							</option>
 							<option id="gnu.c.compiler.option.misc.other.942046445" name="Other flags" superClass="gnu.c.compiler.option.misc.other" value="-Wno-unknown-pragmas -c -fmessage-length=0" valueType="string"/>
 							<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1181145225" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
